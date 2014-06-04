@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block titulo %}
+    Cargar Pronóstico
+{% endblock %}
+{% block contenido %}
+    <h1>Cargar Pronóstico</h1>
+    {% if mensaje %}
+        <p class="alert alert-warning">{{ mensaje }}</p>
+    {% endif %}
+    <table class="table table-responsive table-bordered">
+        <form action="." method="post">
+            {% csrf_token %}
+            {{ pronosticoSet.management_form }}
+            {% for formulario in pronosticoSet %}
+                {# formulario.errors #}
+                {{ formulario.as_table }}
+            {% endfor %}
+            <tr>
+                <td colspan="4" class="align_center">
+                    <input type="submit" value="Cargar" class="btn btn-primary"/>
+                </td>
+            </tr>
+        </form>
+    </table>
+{% endblock %}

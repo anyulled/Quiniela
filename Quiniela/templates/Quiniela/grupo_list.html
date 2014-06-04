@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block titulo %}
+Listado de Grupos
+{% endblock %}
+{% block contenido %}
+    <h1>Listado de Grupos</h1>
+    {% for grupo in grupo_list %}
+        <h2>Grupo {{ grupo.nombre }}</h2>
+        <table style="border: 1px solid gray;" class="table table-responsive table-striped table-hover">
+            <tr class="info">
+                <th colspan="2">Equipo</th>
+                <th>Partidos Jugados</th>
+                <th>Partidos Ganados</th>
+                <th>Partidos Empatados</th>
+                <th>Partidos Perdidos</th>
+                <th>Goles a Favor</th>
+                <th>Goles en Contra</th>
+                <th>Puntos</th>
+            </tr>
+                {% for equipo in grupo.equipo_set.all %}
+                    <tr>
+                        <td><img class="bandera" src="{{ equipo.url_bandera }}"/></td>
+                        <td class="align_center"><b><a href="{% url "detalle_equipo" equipo.id %}">{{ equipo.nombre }}</a></b></td>
+                        <td class="align_right">{{ equipo.partidos_jugados }}</td>
+                        <td class="align_right">{{ equipo.partidos_ganados }}</td>
+                        <td class="align_right">{{ equipo.partidos_empatados }}</td>
+                        <td class="align_right">{{ equipo.partidos_perdidos }}</td>
+                        <td class="align_right">{{ equipo.goles_a_favor }}</td>
+                        <td class="align_right">{{ equipo.goles_en_contra }}</td>
+                        <td class="align_right">{{ equipo.puntos }}</td>
+                    </tr>
+                {% endfor %}
+        </table>
+    {% endfor %}
+{% endblock %}

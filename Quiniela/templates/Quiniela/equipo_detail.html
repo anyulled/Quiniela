@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block titulo %}
+    {{ equipo.nombre }}
+{% endblock %}
+{% block contenido %}
+    <table class="table table-bordered table-responsive">
+        <tr>
+            <th colspan="3">
+                <img src="{{ equipo.url_bandera }}" height="32" class="pull-left"/> {{ equipo.nombre }}
+            </th>
+            <th colspan="3">{{ equipo.grupo }}</th>
+        </tr>
+        <tr>
+            <th>Juegos Ganados</th>
+            <th>Juegos Empatados</th>
+            <th>Juegos Perdidos</th>
+            <th>Goles a Favor</th>
+            <th>Goles en Contra</th>
+            <th>Puntos</th>
+        </tr>
+        <tr>
+            <td>{{ equipo.juegos_ganados }}</td>
+            <td>{{ equipo.juegos_empatados }}</td>
+            <td>{{ equipo.juegos_perdidos }}</td>
+            <td>{{ equipo.goles_a_favor }}</td>
+            <td>{{ equipo.goles_en_contra }}</td>
+            <td>{{ equipo.puntos }}</td>
+        </tr>
+    </table>
+    <h2>Partidos</h2>
+    <table class="table table-bordered table-responsive">
+        <tr>
+            <th>Partido</th>
+            <th>Fecha</th>
+        </tr>
+        {% for partido in partidos %}
+            <tr>
+                <td><a href="{% url 'detalle_partido' partido.id %}">{{ partido }}</a></td>
+                <td>{{ partido.fecha }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

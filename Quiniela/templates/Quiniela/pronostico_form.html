@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block titulo %}
+    Editar Pronostico
+{% endblock %}
+{% block contenido %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <h2>{{ partido }}</h2>
+        {{ form.as_p }}
+        <input type="submit" value="Registrar Pronostico" class="btn btn-primary"/>
+    </form>
+{% endblock %}

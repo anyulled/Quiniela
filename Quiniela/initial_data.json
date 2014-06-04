@@ -1,0 +1,641 @@
+[
+        {
+        "pk": 1,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/bel.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "B\u00e9lgica",
+            "grupo": 1,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 2,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/alg.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Argelia",
+            "grupo": 1,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 3,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/rus.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Rusia",
+            "grupo": 1,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 4,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/kor.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Corea",
+            "grupo": 1,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 5,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/bra.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Brasil",
+            "grupo": 2,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 6,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/cro.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Croacia",
+            "grupo": 2,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 7,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/mex.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "M\u00e9xico",
+            "grupo": 2,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 8,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/cmr.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Camer\u00fan",
+            "grupo": 2,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 9,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/esp.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Espa\u00f1a",
+            "grupo": 3,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 10,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/ned.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Pa\u00edses Bajos",
+            "grupo": 3,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 11,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/chi.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Chile",
+            "grupo": 3,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 12,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/aus.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Australia",
+            "grupo": 3,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 13,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/col.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Colombia",
+            "grupo": 5,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 14,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/gre.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Grecia",
+            "grupo": 5,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 15,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/civ.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Costa de Marfil",
+            "grupo": 5,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 16,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/jpn.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Jap\u00f3n",
+            "grupo": 5,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 17,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/uru.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Uruguay",
+            "grupo": 6,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 18,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/crc.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Costa Rica",
+            "grupo": 6,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 19,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/eng.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Inglaterra",
+            "grupo": 6,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 20,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/ita.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Italia",
+            "grupo": 6,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 21,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/sui.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Suiza",
+            "grupo": 4,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 22,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/ecu.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Ecuador",
+            "grupo": 4,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 23,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/fra.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Francia",
+            "grupo": 4,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 24,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/hon.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Honduras",
+            "grupo": 4,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 25,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/ger.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Alemania",
+            "grupo": 7,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 26,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/por.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Portugal",
+            "grupo": 7,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 27,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/gha.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Ghana",
+            "grupo": 7,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 28,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/usa.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "EEUU",
+            "grupo": 7,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 1,
+        "model": "Quiniela.grupo",
+        "fields": {
+            "nombre": "H"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "Quiniela.grupo",
+        "fields": {
+            "nombre": "A"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "Quiniela.grupo",
+        "fields": {
+            "nombre": "B"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "Quiniela.grupo",
+        "fields": {
+            "nombre": "E"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "Quiniela.grupo",
+        "fields": {
+            "nombre": "C"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "Quiniela.grupo",
+        "fields": {
+            "nombre": "D"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "Quiniela.grupo",
+        "fields": {
+            "nombre": "G"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 6,
+            "equipo_a": 5,
+            "equipo_ganador": null,
+            "fecha": "2014-06-12",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 2,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 7,
+            "equipo_a": 5,
+            "equipo_ganador": null,
+            "fecha": "2014-06-17",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 3,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 5,
+            "equipo_a": 8,
+            "equipo_ganador": null,
+            "fecha": "2014-05-23",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 1,
+        "model": "Quiniela.usuario",
+        "fields": {
+            "correo": "anyul.rivas@tcs.com.ve",
+            "nombre": "Anyul",
+            "puntos": 0,
+            "pago_realizado": false,
+            "apellido": "Rivas"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "Quiniela.usuario",
+        "fields": {
+            "correo": "alfredo.cobis@tcs.com.ve",
+            "nombre": "Alfredo",
+            "puntos": 0,
+            "pago_realizado": false,
+            "apellido": "Cobis"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "Quiniela.pronostico",
+        "fields": {
+            "partido": 1,
+            "goles_equipo_b": 0,
+            "goles_equipo_a": 2,
+            "puntos": 0,
+            "usuario": 1
+        }
+    },
+    {
+        "pk": 2,
+        "model": "Quiniela.pronostico",
+        "fields": {
+            "partido": 2,
+            "goles_equipo_b": 1,
+            "goles_equipo_a": 2,
+            "puntos": 0,
+            "usuario": 1
+        }
+    },
+    {
+        "pk": 3,
+        "model": "Quiniela.pronostico",
+        "fields": {
+            "partido": 3,
+            "goles_equipo_b": 1,
+            "goles_equipo_a": 1,
+            "puntos": 0,
+            "usuario": 1
+        }
+    },
+    {
+        "pk": 4,
+        "model": "Quiniela.pronostico",
+        "fields": {
+            "partido": 1,
+            "goles_equipo_b": 1,
+            "goles_equipo_a": 2,
+            "puntos": 0,
+            "usuario": 2
+        }
+    },
+    {
+        "pk": 5,
+        "model": "Quiniela.pronostico",
+        "fields": {
+            "partido": 2,
+            "goles_equipo_b": 1,
+            "goles_equipo_a": 1,
+            "puntos": 0,
+            "usuario": 2
+        }
+    },
+    {
+        "pk": 6,
+        "model": "Quiniela.pronostico",
+        "fields": {
+            "partido": 3,
+            "goles_equipo_b": 1,
+            "goles_equipo_a": 1,
+            "puntos": 0,
+            "usuario": 2
+        }
+    },
+    {
+        "pk": 1,
+        "model": "auth.user",
+        "fields": {
+            "username": "anyul.rivas",
+            "first_name": "Anyul",
+            "last_name": "Rivas",
+            "is_active": true,
+            "is_superuser": true,
+            "is_staff": true,
+            "last_login": "2014-05-27T14:52:34Z",
+            "groups": [],
+            "user_permissions": [],
+            "password": "pbkdf2_sha256$12000$xeboAbEXWRdb$p6C1Dc7jHcuKabK6QVg4s1DbUGCkQobeVsN2dJ98wHo=",
+            "email": "anyul.rivas@tcs.com.ve",
+            "date_joined": "2014-05-27T14:50:26Z"
+        }
+    }
+]

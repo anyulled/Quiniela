@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block titulo %}
+    {{ partido }}
+{% endblock %}
+{% block contenido %}
+    <div class="row">
+        <div class="col-md-6"><h1>{{ partido }}</h1></div>
+        <div class="col-md-6"><h2>Mi Pronostico</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-responsive">
+                <tr>
+                    <td colspan="2" class="align_center"><p>{{ partido.fecha }}</p></td>
+                </tr>
+                <tr>
+                    <th>
+                        <div class="media">
+                            <div class="media-body">
+                                <a href="#" class="pull_left">
+                                    <img class="media-object" src="{{ partido.equipo_a.url_bandera }}"/>
+                                </a>
+
+                                <p class="media-heading"> {{ partido.equipo_a }}</p>
+                            </div>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="media">
+                            <div class="media-body">
+                                <a class="pull_left" href="#">
+                                    <img class="media-object" src="{{ partido.equipo_b.url_bandera }}"/>
+                                </a>
+
+                                <p class="media-heading">{{ partido.equipo_b }}</p>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <td class="align_center">{{ partido.goles_equipo_a }}</td>
+                    <td class="align_center">{{ partido.goles_equipo_b }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-6">
+            {% if user.is_authenticated %}
+                <table class="table table-responsive">
+                    <tr>
+                        <th>{{ partido.equipo_a }}</th>
+                        <th>{{ partido.equipo_b }}</th>
+                    </tr>
+                    <tr>
+                        <td>{{ pronostico.goles_equipo_a|default:'0' }}</td>
+                        <td>{{ pronostico.goles_equipo_b|default:'0' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Puntos</th>
+                        <td>{{ pronostico.puntos|default:0 }}</td>
+                    </tr>
+                </table>
+                {% if partido.es_pasado %}
+                    <p>Partido culminado</p>
+                {% else %}
+                    <a href="{% url 'actualizar_pronostico' pronostico.id %}" class="btn btn-primary">Actualizar Pronostico</a>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

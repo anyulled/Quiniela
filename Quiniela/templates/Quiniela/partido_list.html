@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block titulo %}
+    Listado de Partidos
+{% endblock %}
+{% block contenido %}
+    <h2>Listado de Partidos</h2>
+    <ul class="list-group">
+        {% for partido in partido_list %}
+            <li class="list-group-item">
+                <a href="{% url 'detalle_partido' partido.id %}">{{ partido }}</a>
+            <span class="badge">{{ partido.fecha }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

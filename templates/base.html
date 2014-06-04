@@ -1,0 +1,55 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="es-VE">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiniela Brasil 2014:: {% block titulo %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static "Quiniela/css/default.css" %}"/>
+    <link rel="stylesheet" href="{% static "Quiniela/style.css" %}"/>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Menu</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'listado_grupos' %}">Listado de Grupos</a></li>
+                    <li><a href="{% url 'listado_usuarios' %}">Listado de Usuarios</a></li>
+                    <li><a href="{% url 'listado_partidos' %}">Listado de Partidos</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                        <li class="active"><a>Usuario</a></li>
+                        <li>
+                            <a href="{% url 'detalle_usuario' user.id %}">{{ user.first_name|capfirst }} {{ user.last_name|capfirst }}</a>
+                        </li>
+{#                        <li><a href="{% url 'cargar_pronostico' user.id %}">Cargar Pronostico</a></li>#}
+                        <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+                        <li><a href="{% url 'registro' %}">Registrarse</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="page-header">
+        <img src="http://img.fifa.com/images/fwc/2014/brand/header.es.png?v=130455967371601304" width="100%"/>
+    </div>
+    {% block contenido %}
+
+    {% endblock %}
+</div>
+</body>
+</html>
