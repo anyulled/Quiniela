@@ -8,6 +8,7 @@
         {% for usuario in user_list %}
             <li class="list-group-item">
                 <a href="{% url 'detalle_usuario' usuario.id %}">{{ usuario.first_name|capfirst }} {{ usuario.last_name|capfirst }}</a>
+            <span class="badge">{{ usuario.perfil.puntos }}</span>
             </li>
         {% endfor %}
     </ul>

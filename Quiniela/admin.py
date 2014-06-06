@@ -8,11 +8,15 @@ class EquiposInline(admin.StackedInline):
 
 
 class AdminPartido(admin.ModelAdmin):
-    fields = ["equipo_a", "equipo_b", "fecha"]
+    fields = ["equipo_a", "equipo_b", "fecha", "goles_equipo_a", "goles_equipo_b"]
+    # fieldsets =
+    list_display = ["id", "titulo", "goles_equipo_a", "goles_equipo_b", "fecha", "es_pasado"]
+    list_editable = ["goles_equipo_a", "goles_equipo_b"]
+    list_display_links = ["titulo"]
 
 
 class AdminEquipo(admin.ModelAdmin):
-    list_display = ['nombre', 'grupo']
+    list_display = ['nombre', 'grupo', "puntos"]
     fields = ["nombre", "grupo", "url_bandera"]
     list_filter = ["grupo"]
 

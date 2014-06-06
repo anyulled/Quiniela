@@ -49,10 +49,6 @@ def cargar_pronostico(request, pk):
     return render(request, "Quiniela/cargar_pronostico.html", locals())
 
 
-def pronostico_cargado(request):
-    return render(request, "Quiniela/pronostico_cargado.html", {})
-
-
 class ListadoGrupos(generic.ListView):
     model = Grupo
 
@@ -64,7 +60,7 @@ class ListadoUsuarios(generic.ListView):
     model = User
 
     def get_queryset(self):
-        return User.objects.all().order_by("first_name")
+        return User.objects.all().order_by("-perfil__puntos")
 
 
 class ListadoPartidos(generic.ListView):
@@ -119,6 +115,10 @@ class Registro(FormView):
         perfil = Perfil(usuario=user)
         perfil.save()
         return super(Registro, self).form_valid(form)
+
+
+class PronosticoCargado(TemplateView):
+    template_name = "Quiniela/pronostico_cargado.html"
 
 
 class UsuarioRegistrado(TemplateView):

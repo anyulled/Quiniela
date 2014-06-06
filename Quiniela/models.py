@@ -18,7 +18,7 @@ def calcular_partidos_ganados(equipo):
     :param equipo: equipo
     :return: numero de partidos ganados
     """
-    return Partido.objects.filter(fecha__gte=timezone.now().date(), equipo_ganador=equipo).count()
+    return Partido.objects.filter(fecha__lte=timezone.now().date(), equipo_ganador=equipo).count()
 
 
 def calcular_partidos_empatados(equipo):
@@ -29,7 +29,7 @@ def calcular_partidos_empatados(equipo):
     """
     return Partido.objects \
         .filter(Q(equipo_a=equipo) | Q(equipo_b=equipo)) \
-        .filter(fecha__gte=timezone.now().date(),
+        .filter(fecha__lte=timezone.now().date(),
                 equipo_ganador__isnull=True,
                 goles_equipo_a=F('goles_equipo_b')).count()
 
@@ -50,24 +50,22 @@ def calcular_puntaje_pronosticos(partido):
     """
     pronosticos = Pronostico.objects.filter(partido=partido)
     for pronostico in pronosticos:
-        if pronostico.partido.goles_equipo_a & pronostico.partido.goles_equipo_b:  # si existen resultados
-            if pronostico.goles_equipo_a & pronostico.goles_equipo_b:  # si el usuario ingreso algun valor
-                if (pronostico.goles_equipo_a == pronostico.partido.goles_equipo_a) & (
-                        pronostico.goles_equipo_b == pronostico.partido.goles_equipo_b):  # si acierta el resultado
-                    pronostico.puntos = 5
-                elif (pronostico.goles_equipo_a == pronostico.goles_equipo_b) & (
-                        pronostico.partido.goles_equipo_a == pronostico.partido.goles_equipo_b):  # si acierta empate
-                    pronostico.puntos = 3
-                elif (pronostico.goles_equipo_a > pronostico.goles_equipo_b) & (
-                        pronostico.partido.goles_equipo_a > pronostico.partido.goles_equipo_b):  # si acierta ganador a
-                    pronostico.puntos = 3
-                elif (pronostico.goles_equipo_b > pronostico.goles_equipo_a) & (
-                        pronostico.partido.goles_equipo_b > pronostico.partido.goles_equipo_a):  # si acierta ganador a
-                    pronostico.puntos = 3
-                else:
-                    pronostico.puntos = 0
+        if (pronostico.goles_equipo_a == pronostico.partido.goles_equipo_a) & (
+                pronostico.goles_equipo_b == pronostico.partido.goles_equipo_b):  # si acierta el resultado
+            pronostico.puntos = 5
+        elif (pronostico.goles_equipo_a == pronostico.goles_equipo_b) & (
+                pronostico.partido.goles_equipo_a == pronostico.partido.goles_equipo_b):  # si acierta empate
+            pronostico.puntos = 3
+        elif (pronostico.goles_equipo_a > pronostico.goles_equipo_b) & (
+                pronostico.partido.goles_equipo_a > pronostico.partido.goles_equipo_b):  # si acierta ganador a
+            pronostico.puntos = 3
+        elif (pronostico.goles_equipo_b > pronostico.goles_equipo_a) & (
+                pronostico.partido.goles_equipo_b > pronostico.partido.goles_equipo_a):  # si acierta ganador a
+            pronostico.puntos = 3
+        else:
+            pronostico.puntos = 0
         pronostico.save()
-        calcular_puntos_usuario()
+    calcular_puntos_usuario()
 
 
 def calcular_puntos_usuario():
@@ -77,7 +75,7 @@ def calcular_puntos_usuario():
         usuario.perfil.puntos = 0
         for pronostico in pronosticos_usuario:
             usuario.perfil.puntos += pronostico.puntos
-        usuario.save()
+        usuario.perfil.save()
 
 
 class Equipo(models.Model):
@@ -93,10 +91,13 @@ class Equipo(models.Model):
     url_bandera = models.CharField(max_length=500)
 
     class Meta:
-        ordering = ["nombre"]
+        ordering = ["grupo__nombre", "puntos", "nombre"]
 
     def __unicode__(self):
         return self.nombre
+
+    def goles_diferencia(self):
+        return self.goles_a_favor - self.goles_en_contra
 
 
 class Grupo(models.Model):
@@ -126,14 +127,20 @@ class Partido(models.Model):
     class Meta:
         ordering = ["fecha"]
 
+    def titulo(self):
+        return Partido.__unicode__(self)
+
     def __unicode__(self):
         return '%s vs %s' % (unicode(self.equipo_a), unicode(self.equipo_b))
 
     def es_pasado(self):
         return self.fecha < date.today()
 
+    es_pasado.admin_order_field = 'fecha'
+    es_pasado.boolean = True
+    es_pasado.short_description = 'Partido Culminado?'
+
     def save(self, *args, **kwargs):
-        # if self.fecha >= timezone.now().date():
         if self.goles_equipo_a == self.goles_equipo_b:  # Empate
             self.equipo_a.partidos_empatados = calcular_partidos_empatados(self.equipo_a)
             self.equipo_b.partidos_empatados = calcular_partidos_empatados(self.equipo_b)
@@ -153,8 +160,9 @@ class Partido(models.Model):
             self.equipo_a.partidos_perdidos = calcular_partidos_perdidos(self.equipo_a)
             self.equipo_b.puntos = calcular_puntos_equipo(self.equipo_b.partidos_ganados,
                                                           self.equipo_b.partidos_empatados)
+        partido_guardado = super(Partido, self).save(*args, **kwargs)
         calcular_puntaje_pronosticos(self)
-        return super(Partido, self).save(*args, **kwargs)
+        return partido_guardado
 
 
 class Usuario(models.Model):

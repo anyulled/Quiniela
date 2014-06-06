@@ -24,7 +24,7 @@ urlpatterns = patterns('',
                            name="actualizar_pronostico"),
 
                        url(r'^cargarPronostico/(?P<pk>\d+)$', cargar_pronostico, name="cargar_pronostico"),
-                       url(r'^pronosticoCargado/$', pronostico_cargado, name="pronostico_cargado"),
+                       url(r'^pronosticoCargado/$', PronosticoCargado.as_view(), name="pronostico_cargado"),
 
                        url(r'^admin/', include(admin.site.urls)),
                        )
