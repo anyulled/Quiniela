@@ -1,5 +1,146 @@
 [
-        {
+    {
+        "pk": 1,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "logentry",
+            "name": "log entry",
+            "app_label": "admin"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "permission",
+            "name": "permission",
+            "app_label": "auth"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "group",
+            "name": "group",
+            "app_label": "auth"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "user",
+            "name": "user",
+            "app_label": "auth"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "contenttype",
+            "name": "content type",
+            "app_label": "contenttypes"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "session",
+            "name": "session",
+            "app_label": "sessions"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "equipo",
+            "name": "equipo",
+            "app_label": "Quiniela"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "grupo",
+            "name": "grupo",
+            "app_label": "Quiniela"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "partido",
+            "name": "partido",
+            "app_label": "Quiniela"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "migrationhistory",
+            "name": "migration history",
+            "app_label": "south"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "usuario",
+            "name": "usuario",
+            "app_label": "Quiniela"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "pronostico",
+            "name": "pronostico",
+            "app_label": "Quiniela"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "perfil",
+            "name": "perfil",
+            "app_label": "Quiniela"
+        }
+    },
+    {
+        "pk": "cxipa7e9oj0jq5p0dk5rrrftwyuyhyog",
+        "model": "sessions.session",
+        "fields": {
+            "expire_date": "2014-06-19T08:17:31.600Z",
+            "session_data": "MWZmODIzZmRjNDRhZGVlNDI0ODQ3MzRkYzFkYzI5YzAxY2IzMjYyODp7Il9hdXRoX3VzZXJfaWQiOjEsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIn0="
+        }
+    },
+    {
+        "pk": "dwi5ilg6qzr98gxpjfmyapjdnh4f04k6",
+        "model": "sessions.session",
+        "fields": {
+            "expire_date": "2014-06-16T18:50:05.791Z",
+            "session_data": "NWE0Zjk5ODI5YmM5NDhhOTg0ZDMyZTA5MjAxNzBmZjQ1OTlhMmQ1MTp7fQ=="
+        }
+    },
+    {
+        "pk": "fwn146unpy1dv2c6q2zkkae1v8hwzgbc",
+        "model": "sessions.session",
+        "fields": {
+            "expire_date": "2014-06-10T14:52:34.927Z",
+            "session_data": "MGVkNGJhOWViYTIzZWU5NTVhNjI1ZWZlN2RjOTNkNzFhMjJlNGQ4Mjp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MX0="
+        }
+    },
+    {
         "pk": 1,
         "model": "Quiniela.equipo",
         "fields": {
@@ -448,6 +589,70 @@
         }
     },
     {
+        "pk": 29,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/arg.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Argentina",
+            "grupo": 8,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 30,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/bih.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Bosnia y Herzegovina",
+            "grupo": 8,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 31,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/irn.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Ir\u00e1n",
+            "grupo": 8,
+            "partidos_empatados": 0
+        }
+    },
+    {
+        "pk": 32,
+        "model": "Quiniela.equipo",
+        "fields": {
+            "url_bandera": "http://img.fifa.com/images/flags/4/nga.png",
+            "goles_a_favor": 0,
+            "partidos_perdidos": 0,
+            "goles_en_contra": 0,
+            "puntos": 0,
+            "partidos_ganados": 0,
+            "partidos_jugados": 0,
+            "nombre": "Nigeria",
+            "grupo": 8,
+            "partidos_empatados": 0
+        }
+    },
+    {
         "pk": 1,
         "model": "Quiniela.grupo",
         "fields": {
@@ -497,15 +702,22 @@
         }
     },
     {
+        "pk": 8,
+        "model": "Quiniela.grupo",
+        "fields": {
+            "nombre": "F"
+        }
+    },
+    {
         "pk": 1,
         "model": "Quiniela.partido",
         "fields": {
             "equipo_b": 6,
             "equipo_a": 5,
-            "equipo_ganador": null,
-            "fecha": "2014-06-12",
-            "goles_equipo_a": 0,
-            "goles_equipo_b": 0
+            "equipo_ganador": 5,
+            "fecha": "2014-06-04",
+            "goles_equipo_a": 3,
+            "goles_equipo_b": 2
         }
     },
     {
@@ -514,10 +726,10 @@
         "fields": {
             "equipo_b": 7,
             "equipo_a": 5,
-            "equipo_ganador": null,
-            "fecha": "2014-06-17",
-            "goles_equipo_a": 0,
-            "goles_equipo_b": 0
+            "equipo_ganador": 5,
+            "fecha": "2014-06-03",
+            "goles_equipo_a": 3,
+            "goles_equipo_b": 1
         }
     },
     {
@@ -526,8 +738,560 @@
         "fields": {
             "equipo_b": 5,
             "equipo_a": 8,
-            "equipo_ganador": null,
+            "equipo_ganador": 5,
             "fecha": "2014-05-23",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 3
+        }
+    },
+    {
+        "pk": 4,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 8,
+            "equipo_a": 7,
+            "equipo_ganador": 8,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 2
+        }
+    },
+    {
+        "pk": 5,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 10,
+            "equipo_a": 9,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 6,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 12,
+            "equipo_a": 11,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 7,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 14,
+            "equipo_a": 13,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 8,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 18,
+            "equipo_a": 17,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 9,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 20,
+            "equipo_a": 19,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 10,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 16,
+            "equipo_a": 15,
+            "equipo_ganador": 15,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 10,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 11,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 22,
+            "equipo_a": 21,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 12,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 24,
+            "equipo_a": 23,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 13,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 30,
+            "equipo_a": 29,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 14,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 26,
+            "equipo_a": 25,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 15,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 32,
+            "equipo_a": 31,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 16,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 28,
+            "equipo_a": 27,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 17,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 2,
+            "equipo_a": 1,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 18,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 4,
+            "equipo_a": 3,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 19,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 10,
+            "equipo_a": 12,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 20,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 11,
+            "equipo_a": 9,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 21,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 6,
+            "equipo_a": 8,
+            "equipo_ganador": 8,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 2,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 22,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 15,
+            "equipo_a": 13,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 23,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 19,
+            "equipo_a": 17,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 24,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 14,
+            "equipo_a": 16,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 25,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 18,
+            "equipo_a": 20,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 26,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 23,
+            "equipo_a": 21,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 27,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 22,
+            "equipo_a": 24,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 28,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 31,
+            "equipo_a": 29,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 29,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 28,
+            "equipo_a": 25,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 30,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 30,
+            "equipo_a": 32,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 31,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 3,
+            "equipo_a": 1,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 32,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 2,
+            "equipo_a": 4,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 33,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 26,
+            "equipo_a": 28,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 34,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 11,
+            "equipo_a": 10,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 35,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 9,
+            "equipo_a": 12,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 36,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 5,
+            "equipo_a": 8,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 37,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 7,
+            "equipo_a": 6,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 38,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 17,
+            "equipo_a": 20,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 39,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 19,
+            "equipo_a": 18,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 40,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 13,
+            "equipo_a": 16,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 41,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 15,
+            "equipo_a": 14,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 42,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 29,
+            "equipo_a": 32,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 43,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 31,
+            "equipo_a": 30,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 44,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 21,
+            "equipo_a": 24,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 45,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 23,
+            "equipo_a": 22,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 46,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 27,
+            "equipo_a": 26,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 47,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 25,
+            "equipo_a": 28,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 48,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 1,
+            "equipo_a": 4,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
+            "goles_equipo_a": 0,
+            "goles_equipo_b": 0
+        }
+    },
+    {
+        "pk": 49,
+        "model": "Quiniela.partido",
+        "fields": {
+            "equipo_b": 3,
+            "equipo_a": 2,
+            "equipo_ganador": null,
+            "fecha": "2014-06-06",
             "goles_equipo_a": 0,
             "goles_equipo_b": 0
         }
@@ -544,80 +1308,408 @@
         }
     },
     {
-        "pk": 2,
-        "model": "Quiniela.usuario",
-        "fields": {
-            "correo": "alfredo.cobis@tcs.com.ve",
-            "nombre": "Alfredo",
-            "puntos": 0,
-            "pago_realizado": false,
-            "apellido": "Cobis"
-        }
-    },
-    {
         "pk": 1,
-        "model": "Quiniela.pronostico",
+        "model": "south.migrationhistory",
         "fields": {
-            "partido": 1,
-            "goles_equipo_b": 0,
-            "goles_equipo_a": 2,
-            "puntos": 0,
-            "usuario": 1
+            "applied": "2014-05-27T17:13:16.759Z",
+            "app_name": "Quiniela",
+            "migration": "0001_initial"
         }
     },
     {
         "pk": 2,
-        "model": "Quiniela.pronostico",
+        "model": "south.migrationhistory",
         "fields": {
-            "partido": 2,
-            "goles_equipo_b": 1,
-            "goles_equipo_a": 2,
-            "puntos": 0,
-            "usuario": 1
+            "applied": "2014-05-27T19:29:58.440Z",
+            "app_name": "Quiniela",
+            "migration": "0002_auto__add_pronostico__add_usuario"
         }
     },
     {
         "pk": 3,
-        "model": "Quiniela.pronostico",
+        "model": "south.migrationhistory",
         "fields": {
-            "partido": 3,
-            "goles_equipo_b": 1,
-            "goles_equipo_a": 1,
-            "puntos": 0,
-            "usuario": 1
+            "applied": "2014-05-27T19:43:46.787Z",
+            "app_name": "Quiniela",
+            "migration": "0003_auto__add_field_pronostico_usuario"
         }
     },
     {
         "pk": 4,
-        "model": "Quiniela.pronostico",
+        "model": "south.migrationhistory",
         "fields": {
-            "partido": 1,
-            "goles_equipo_b": 1,
-            "goles_equipo_a": 2,
-            "puntos": 0,
-            "usuario": 2
+            "applied": "2014-05-27T20:03:35.281Z",
+            "app_name": "Quiniela",
+            "migration": "0004_auto__add_field_pronostico_puntos__chg_field_partido_equipo_ganador"
         }
     },
     {
         "pk": 5,
-        "model": "Quiniela.pronostico",
+        "model": "south.migrationhistory",
         "fields": {
-            "partido": 2,
-            "goles_equipo_b": 1,
-            "goles_equipo_a": 1,
-            "puntos": 0,
-            "usuario": 2
+            "applied": "2014-05-27T20:20:53.668Z",
+            "app_name": "Quiniela",
+            "migration": "0005_auto__add_unique_pronostico_partido_usuario"
         }
     },
     {
         "pk": 6,
-        "model": "Quiniela.pronostico",
+        "model": "south.migrationhistory",
         "fields": {
-            "partido": 3,
-            "goles_equipo_b": 1,
-            "goles_equipo_a": 1,
-            "puntos": 0,
-            "usuario": 2
+            "applied": "2014-06-03T21:31:33.548Z",
+            "app_name": "Quiniela",
+            "migration": "0006_auto__add_perfil__chg_field_pronostico_usuario"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_logentry",
+            "name": "Can add log entry",
+            "content_type": 1
+        }
+    },
+    {
+        "pk": 2,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_logentry",
+            "name": "Can change log entry",
+            "content_type": 1
+        }
+    },
+    {
+        "pk": 3,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_logentry",
+            "name": "Can delete log entry",
+            "content_type": 1
+        }
+    },
+    {
+        "pk": 4,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_permission",
+            "name": "Can add permission",
+            "content_type": 2
+        }
+    },
+    {
+        "pk": 5,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_permission",
+            "name": "Can change permission",
+            "content_type": 2
+        }
+    },
+    {
+        "pk": 6,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_permission",
+            "name": "Can delete permission",
+            "content_type": 2
+        }
+    },
+    {
+        "pk": 7,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_group",
+            "name": "Can add group",
+            "content_type": 3
+        }
+    },
+    {
+        "pk": 8,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_group",
+            "name": "Can change group",
+            "content_type": 3
+        }
+    },
+    {
+        "pk": 9,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_group",
+            "name": "Can delete group",
+            "content_type": 3
+        }
+    },
+    {
+        "pk": 10,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_user",
+            "name": "Can add user",
+            "content_type": 4
+        }
+    },
+    {
+        "pk": 11,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_user",
+            "name": "Can change user",
+            "content_type": 4
+        }
+    },
+    {
+        "pk": 12,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_user",
+            "name": "Can delete user",
+            "content_type": 4
+        }
+    },
+    {
+        "pk": 13,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_contenttype",
+            "name": "Can add content type",
+            "content_type": 5
+        }
+    },
+    {
+        "pk": 14,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_contenttype",
+            "name": "Can change content type",
+            "content_type": 5
+        }
+    },
+    {
+        "pk": 15,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_contenttype",
+            "name": "Can delete content type",
+            "content_type": 5
+        }
+    },
+    {
+        "pk": 16,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_session",
+            "name": "Can add session",
+            "content_type": 6
+        }
+    },
+    {
+        "pk": 17,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_session",
+            "name": "Can change session",
+            "content_type": 6
+        }
+    },
+    {
+        "pk": 18,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_session",
+            "name": "Can delete session",
+            "content_type": 6
+        }
+    },
+    {
+        "pk": 19,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_equipo",
+            "name": "Can add equipo",
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 20,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_equipo",
+            "name": "Can change equipo",
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 21,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_equipo",
+            "name": "Can delete equipo",
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 22,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_grupo",
+            "name": "Can add grupo",
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 23,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_grupo",
+            "name": "Can change grupo",
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 24,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_grupo",
+            "name": "Can delete grupo",
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 25,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_partido",
+            "name": "Can add partido",
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 26,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_partido",
+            "name": "Can change partido",
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 27,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_partido",
+            "name": "Can delete partido",
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 28,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_migrationhistory",
+            "name": "Can add migration history",
+            "content_type": 10
+        }
+    },
+    {
+        "pk": 29,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_migrationhistory",
+            "name": "Can change migration history",
+            "content_type": 10
+        }
+    },
+    {
+        "pk": 30,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_migrationhistory",
+            "name": "Can delete migration history",
+            "content_type": 10
+        }
+    },
+    {
+        "pk": 31,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_usuario",
+            "name": "Can add usuario",
+            "content_type": 11
+        }
+    },
+    {
+        "pk": 32,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_usuario",
+            "name": "Can change usuario",
+            "content_type": 11
+        }
+    },
+    {
+        "pk": 33,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_usuario",
+            "name": "Can delete usuario",
+            "content_type": 11
+        }
+    },
+    {
+        "pk": 34,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_pronostico",
+            "name": "Can add pronostico",
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 35,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_pronostico",
+            "name": "Can change pronostico",
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 36,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_pronostico",
+            "name": "Can delete pronostico",
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 37,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_perfil",
+            "name": "Can add perfil",
+            "content_type": 13
+        }
+    },
+    {
+        "pk": 38,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_perfil",
+            "name": "Can change perfil",
+            "content_type": 13
+        }
+    },
+    {
+        "pk": 39,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_perfil",
+            "name": "Can delete perfil",
+            "content_type": 13
         }
     },
     {
@@ -630,12 +1722,2224 @@
             "is_active": true,
             "is_superuser": true,
             "is_staff": true,
-            "last_login": "2014-05-27T14:52:34Z",
+            "last_login": "2014-06-05T08:17:31.566Z",
             "groups": [],
             "user_permissions": [],
             "password": "pbkdf2_sha256$12000$xeboAbEXWRdb$p6C1Dc7jHcuKabK6QVg4s1DbUGCkQobeVsN2dJ98wHo=",
             "email": "anyul.rivas@tcs.com.ve",
             "date_joined": "2014-05-27T14:50:26Z"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "auth.user",
+        "fields": {
+            "username": "gabriel.pino",
+            "first_name": "Gabriel",
+            "last_name": "Pino",
+            "is_active": true,
+            "is_superuser": false,
+            "is_staff": false,
+            "last_login": "2014-06-04T15:47:57Z",
+            "groups": [],
+            "user_permissions": [],
+            "password": "pbkdf2_sha256$12000$dFgMs1J2dWyd$fVfEx+A2JDc0ORIq7ufbw1YaLk5hq3sp6NVGEq3K02g=",
+            "email": "gabriel.pino@tcs.com.ve",
+            "date_joined": "2014-06-04T15:47:57Z"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "auth.user",
+        "fields": {
+            "username": "jedariana.belisario",
+            "first_name": "jedariana",
+            "last_name": "Belisario",
+            "is_active": true,
+            "is_superuser": false,
+            "is_staff": false,
+            "last_login": "2014-06-04T17:27:59.255Z",
+            "groups": [],
+            "user_permissions": [],
+            "password": "pbkdf2_sha256$12000$XfD9mjeP9zUM$jsk+CdrdHKqFqLgAU6z1afKLhv/5YwuFPAxEXiKfZzM=",
+            "email": "jedariana.bellisario@tcs.com.ve",
+            "date_joined": "2014-06-04T17:27:59.257Z"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "Quiniela.perfil",
+        "fields": {
+            "puntos": 3,
+            "usuario": 1
+        }
+    },
+    {
+        "pk": 2,
+        "model": "Quiniela.perfil",
+        "fields": {
+            "puntos": 0,
+            "usuario": 2
+        }
+    },
+    {
+        "pk": 3,
+        "model": "Quiniela.perfil",
+        "fields": {
+            "puntos": 0,
+            "usuario": 3
+        }
+    },
+    {
+        "pk": 1,
+        "model": "Quiniela.pronostico",
+        "fields": {
+            "partido": 1,
+            "goles_equipo_b": 2,
+            "goles_equipo_a": 2,
+            "puntos": 0,
+            "usuario": 1
+        }
+    },
+    {
+        "pk": 2,
+        "model": "Quiniela.pronostico",
+        "fields": {
+            "partido": 2,
+            "goles_equipo_b": 1,
+            "goles_equipo_a": 2,
+            "puntos": 3,
+            "usuario": 1
+        }
+    },
+    {
+        "pk": 3,
+        "model": "Quiniela.pronostico",
+        "fields": {
+            "partido": 3,
+            "goles_equipo_b": 0,
+            "goles_equipo_a": 0,
+            "puntos": 0,
+            "usuario": 1
+        }
+    },
+    {
+        "pk": 1,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T14:54:48.948Z",
+            "object_repr": "Grupo object",
+            "object_id": "1",
+            "change_message": "",
+            "user": 1,
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 2,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T14:55:00.333Z",
+            "object_repr": "Grupo object",
+            "object_id": "2",
+            "change_message": "",
+            "user": 1,
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 3,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T14:55:05.203Z",
+            "object_repr": "Grupo object",
+            "object_id": "3",
+            "change_message": "",
+            "user": 1,
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 4,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T14:55:08.838Z",
+            "object_repr": "Grupo object",
+            "object_id": "4",
+            "change_message": "",
+            "user": 1,
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 5,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T14:55:13.004Z",
+            "object_repr": "Grupo object",
+            "object_id": "5",
+            "change_message": "",
+            "user": 1,
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 6,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T14:55:19.656Z",
+            "object_repr": "Grupo object",
+            "object_id": "6",
+            "change_message": "",
+            "user": 1,
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 7,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T14:55:23.717Z",
+            "object_repr": "Grupo object",
+            "object_id": "7",
+            "change_message": "",
+            "user": 1,
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 8,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T14:55:28.662Z",
+            "object_repr": "Grupo object",
+            "object_id": "8",
+            "change_message": "",
+            "user": 1,
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 9,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:14:23.815Z",
+            "object_repr": "Brasil",
+            "object_id": "1",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 10,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:15:00.983Z",
+            "object_repr": "Croacia",
+            "object_id": "2",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 11,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:15:26.159Z",
+            "object_repr": "Mexico",
+            "object_id": "3",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 12,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:15:34.203Z",
+            "object_repr": "Camerun",
+            "object_id": "4",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 13,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:25:37.906Z",
+            "object_repr": "Espa\u00f1a",
+            "object_id": "5",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 14,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:26:05.190Z",
+            "object_repr": "Pa\u00edses Bajos",
+            "object_id": "6",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 15,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:26:14.098Z",
+            "object_repr": "Chile",
+            "object_id": "7",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 16,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:26:22.979Z",
+            "object_repr": "Australia",
+            "object_id": "8",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 17,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:26:35.401Z",
+            "object_repr": "Colombia",
+            "object_id": "9",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 18,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:26:44.162Z",
+            "object_repr": "Grecia",
+            "object_id": "10",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 19,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:26:53.979Z",
+            "object_repr": "Costa de Marfil",
+            "object_id": "11",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 20,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:27:06.607Z",
+            "object_repr": "Jap\u00f3n",
+            "object_id": "12",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 21,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:27:19.140Z",
+            "object_repr": "Uruguay",
+            "object_id": "13",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 22,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:27:26.245Z",
+            "object_repr": "Costa Rica",
+            "object_id": "14",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 23,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:27:35.941Z",
+            "object_repr": "Inglaterra",
+            "object_id": "15",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 24,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:27:43.857Z",
+            "object_repr": "Italia",
+            "object_id": "16",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 25,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:27:52.397Z",
+            "object_repr": "Suiza",
+            "object_id": "17",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 26,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:28:06.297Z",
+            "object_repr": "Ecuador",
+            "object_id": "18",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 27,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:28:14.120Z",
+            "object_repr": "Francia",
+            "object_id": "19",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 28,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:28:25.027Z",
+            "object_repr": "Honduras",
+            "object_id": "20",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 29,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:31:30.941Z",
+            "object_repr": "Argentia",
+            "object_id": "21",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 30,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:31:55.007Z",
+            "object_repr": "Bosnia y Herzegovina",
+            "object_id": "22",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 31,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:32:05.573Z",
+            "object_repr": "Ir\u00e1n",
+            "object_id": "23",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 32,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:32:13.246Z",
+            "object_repr": "Nigeria",
+            "object_id": "24",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 33,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:32:25.084Z",
+            "object_repr": "Alemania",
+            "object_id": "25",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 34,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:32:35.123Z",
+            "object_repr": "Portugal",
+            "object_id": "26",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 35,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:32:42.571Z",
+            "object_repr": "Ghana",
+            "object_id": "27",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 36,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:32:49.837Z",
+            "object_repr": "EEUU",
+            "object_id": "28",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 37,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:33:21.977Z",
+            "object_repr": "B\u00e9lgica",
+            "object_id": "29",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 38,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:33:33.231Z",
+            "object_repr": "Argelia",
+            "object_id": "30",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 39,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:33:42.893Z",
+            "object_repr": "Rusia",
+            "object_id": "31",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 40,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T15:33:55.959Z",
+            "object_repr": "Corea",
+            "object_id": "32",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 41,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T17:18:19.135Z",
+            "object_repr": "Grupo H",
+            "object_id": "1",
+            "change_message": "",
+            "user": 1,
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 42,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T17:18:23.983Z",
+            "object_repr": "B\u00e9lgica",
+            "object_id": "1",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 43,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T17:18:40.680Z",
+            "object_repr": "Argelia",
+            "object_id": "2",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 44,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T17:19:07.576Z",
+            "object_repr": "Rusia",
+            "object_id": "3",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 45,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T17:19:26.529Z",
+            "object_repr": "Corea",
+            "object_id": "4",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 46,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T18:40:45.221Z",
+            "object_repr": "Grupo A",
+            "object_id": "2",
+            "change_message": "",
+            "user": 1,
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 47,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T18:40:56.848Z",
+            "object_repr": "Brasil",
+            "object_id": "5",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 48,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T18:46:40.083Z",
+            "object_repr": "Croacia",
+            "object_id": "6",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 49,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T18:50:36.308Z",
+            "object_repr": "M\u00e9xico",
+            "object_id": "7",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 50,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T18:50:54.918Z",
+            "object_repr": "Camer\u00fan",
+            "object_id": "8",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 51,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T18:59:42.997Z",
+            "object_repr": "Grupo B",
+            "object_id": "3",
+            "change_message": "",
+            "user": 1,
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 52,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T18:59:45.866Z",
+            "object_repr": "Espa\u00f1a",
+            "object_id": "9",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 53,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T19:00:02.106Z",
+            "object_repr": "Pa\u00edses Bajos",
+            "object_id": "10",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 54,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T19:00:18.117Z",
+            "object_repr": "Chile",
+            "object_id": "11",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 55,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T19:00:33.129Z",
+            "object_repr": "Australia",
+            "object_id": "12",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 56,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T19:01:06.607Z",
+            "object_repr": "Colombia",
+            "object_id": "13",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 57,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T19:01:17.094Z",
+            "object_repr": "Grecia",
+            "object_id": "14",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 58,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T19:01:29.944Z",
+            "object_repr": "Costa de Marfil",
+            "object_id": "15",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 59,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T19:01:41.743Z",
+            "object_repr": "Jap\u00f3n",
+            "object_id": "16",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 60,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T19:02:00.635Z",
+            "object_repr": "Uruguay",
+            "object_id": "17",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 61,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T19:02:15.419Z",
+            "object_repr": "Costa Rica",
+            "object_id": "18",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 62,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T19:02:29.914Z",
+            "object_repr": "Inglaterra",
+            "object_id": "19",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 63,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T19:02:43.248Z",
+            "object_repr": "Italia",
+            "object_id": "20",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 64,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T19:03:15.897Z",
+            "object_repr": "Grupo E",
+            "object_id": "4",
+            "change_message": "",
+            "user": 1,
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 65,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T19:03:20.778Z",
+            "object_repr": "Suiza",
+            "object_id": "21",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 66,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T19:04:43.802Z",
+            "object_repr": "Ecuador",
+            "object_id": "22",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 67,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T19:04:56.657Z",
+            "object_repr": "Francia",
+            "object_id": "23",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 68,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T19:05:13.670Z",
+            "object_repr": "Honduras",
+            "object_id": "24",
+            "change_message": "",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 69,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T19:05:37.667Z",
+            "object_repr": "Grupo C",
+            "object_id": "5",
+            "change_message": "",
+            "user": 1,
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 70,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T19:05:48.443Z",
+            "object_repr": "Grupo D",
+            "object_id": "6",
+            "change_message": "",
+            "user": 1,
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 71,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-05-27T19:16:12.870Z",
+            "object_repr": "Uruguay",
+            "object_id": "17",
+            "change_message": "Modificado/a grupo.",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 72,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-05-27T19:16:24.978Z",
+            "object_repr": "Costa Rica",
+            "object_id": "18",
+            "change_message": "Modificado/a grupo.",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 73,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-05-27T19:16:33.125Z",
+            "object_repr": "Inglaterra",
+            "object_id": "19",
+            "change_message": "Modificado/a grupo.",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 74,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-05-27T19:16:40.740Z",
+            "object_repr": "Italia",
+            "object_id": "20",
+            "change_message": "Modificado/a grupo.",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 75,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-05-27T19:16:56.266Z",
+            "object_repr": "Colombia",
+            "object_id": "13",
+            "change_message": "Modificado/a grupo.",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 76,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-05-27T19:17:04.839Z",
+            "object_repr": "Grecia",
+            "object_id": "14",
+            "change_message": "Modificado/a grupo.",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 77,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-05-27T19:17:13.692Z",
+            "object_repr": "Costa de Marfil",
+            "object_id": "15",
+            "change_message": "Modificado/a grupo.",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 78,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-05-27T19:17:22.759Z",
+            "object_repr": "Jap\u00f3n",
+            "object_id": "16",
+            "change_message": "Modificado/a grupo.",
+            "user": 1,
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 79,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T19:18:24.910Z",
+            "object_repr": "Grupo G",
+            "object_id": "7",
+            "change_message": "",
+            "user": 1,
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 80,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T19:39:28.505Z",
+            "object_repr": "Usuario object",
+            "object_id": "1",
+            "change_message": "",
+            "user": 1,
+            "content_type": 11
+        }
+    },
+    {
+        "pk": 81,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T20:03:46.939Z",
+            "object_repr": "Brasil vs Croacia",
+            "object_id": "1",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 82,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T20:06:32.190Z",
+            "object_repr": "Brasil vs M\u00e9xico",
+            "object_id": "2",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 83,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T20:07:09.086Z",
+            "object_repr": "Camer\u00fan vs Brasil",
+            "object_id": "3",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 84,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T20:07:59.900Z",
+            "object_repr": "Pronostico object",
+            "object_id": "1",
+            "change_message": "",
+            "user": 1,
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 85,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T20:08:12.182Z",
+            "object_repr": "Pronostico object",
+            "object_id": "2",
+            "change_message": "",
+            "user": 1,
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 86,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T20:08:22.420Z",
+            "object_repr": "Pronostico object",
+            "object_id": "3",
+            "change_message": "",
+            "user": 1,
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 87,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T20:12:27.416Z",
+            "object_repr": "Alfredo Cobis",
+            "object_id": "2",
+            "change_message": "",
+            "user": 1,
+            "content_type": 11
+        }
+    },
+    {
+        "pk": 88,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T20:12:35.352Z",
+            "object_repr": "Alfredo Cobis | Brasil:2 - Croacia:1",
+            "object_id": "4",
+            "change_message": "",
+            "user": 1,
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 89,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T20:12:44.651Z",
+            "object_repr": "Alfredo Cobis | Brasil:1 - M\u00e9xico:1",
+            "object_id": "5",
+            "change_message": "",
+            "user": 1,
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 90,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-05-27T20:12:53.920Z",
+            "object_repr": "Alfredo Cobis | Camer\u00fan:1 - Brasil:1",
+            "object_id": "6",
+            "change_message": "",
+            "user": 1,
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 91,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-05-27T21:55:04.339Z",
+            "object_repr": "anyul.rivas",
+            "object_id": "1",
+            "change_message": "Modificado/a first_name y last_name.",
+            "user": 1,
+            "content_type": 4
+        }
+    },
+    {
+        "pk": 92,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 3,
+            "action_time": "2014-06-03T19:47:50.688Z",
+            "object_repr": "Alfredo Cobis | Camer\u00fan:1 - Brasil:1",
+            "object_id": "6",
+            "change_message": "",
+            "user": 1,
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 93,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 3,
+            "action_time": "2014-06-03T19:47:50.811Z",
+            "object_repr": "Alfredo Cobis | Brasil:2 - Croacia:1",
+            "object_id": "4",
+            "change_message": "",
+            "user": 1,
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 94,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 3,
+            "action_time": "2014-06-03T19:47:50.900Z",
+            "object_repr": "Alfredo Cobis | Brasil:1 - M\u00e9xico:1",
+            "object_id": "5",
+            "change_message": "",
+            "user": 1,
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 95,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 3,
+            "action_time": "2014-06-03T19:48:21.376Z",
+            "object_repr": "Anyul Rivas | Camer\u00fan:1 - Brasil:1",
+            "object_id": "3",
+            "change_message": "",
+            "user": 1,
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 96,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 3,
+            "action_time": "2014-06-03T21:01:18.319Z",
+            "object_repr": "Alfredo Cobis",
+            "object_id": "2",
+            "change_message": "",
+            "user": 1,
+            "content_type": 11
+        }
+    },
+    {
+        "pk": 97,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-06-04T16:21:39.256Z",
+            "object_repr": "gabriel.pino",
+            "object_id": "2",
+            "change_message": "Modificado/a first_name, last_name y email.",
+            "user": 1,
+            "content_type": 4
+        }
+    },
+    {
+        "pk": 98,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 3,
+            "action_time": "2014-06-04T17:27:27.222Z",
+            "object_repr": "alfredo.cobis",
+            "object_id": "4",
+            "change_message": "",
+            "user": 1,
+            "content_type": 4
+        }
+    },
+    {
+        "pk": 99,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 3,
+            "action_time": "2014-06-04T17:27:27.416Z",
+            "object_repr": "jedariana.belisario",
+            "object_id": "3",
+            "change_message": "",
+            "user": 1,
+            "content_type": 4
+        }
+    },
+    {
+        "pk": 100,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 3,
+            "action_time": "2014-06-04T17:27:27.595Z",
+            "object_repr": "miguel.urbano",
+            "object_id": "5",
+            "change_message": "",
+            "user": 1,
+            "content_type": 4
+        }
+    },
+    {
+        "pk": 101,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 3,
+            "action_time": "2014-06-04T17:27:27.765Z",
+            "object_repr": "saul.rivero",
+            "object_id": "6",
+            "change_message": "",
+            "user": 1,
+            "content_type": 4
+        }
+    },
+    {
+        "pk": 102,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-06-05T08:13:24.829Z",
+            "object_repr": "anyul.rivas",
+            "object_id": "1",
+            "change_message": "Modificado/a password.",
+            "user": 1,
+            "content_type": 4
+        }
+    },
+    {
+        "pk": 103,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-06-05T08:21:40.691Z",
+            "object_repr": "Camer\u00fan vs Brasil",
+            "object_id": "3",
+            "change_message": "Modificado/a goles_equipo_a y goles_equipo_b.",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 104,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-06-05T08:25:20.027Z",
+            "object_repr": "Brasil vs M\u00e9xico",
+            "object_id": "2",
+            "change_message": "Modificado/a goles_equipo_a.",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 105,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-06-05T08:28:34.754Z",
+            "object_repr": "Brasil vs Croacia",
+            "object_id": "1",
+            "change_message": "Modificado/a goles_equipo_a y goles_equipo_b.",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 106,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-06-05T08:44:57.957Z",
+            "object_repr": "Brasil vs Croacia",
+            "object_id": "1",
+            "change_message": "Modificado/a fecha.",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 107,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-06-05T08:45:16.500Z",
+            "object_repr": "Brasil vs M\u00e9xico",
+            "object_id": "2",
+            "change_message": "Modificado/a fecha.",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 108,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-06-06T19:49:02.291Z",
+            "object_repr": "Camer\u00fan vs Brasil",
+            "object_id": "3",
+            "change_message": "Modificado/a goles_equipo_a y goles_equipo_b.",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 109,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-06-06T19:55:44.722Z",
+            "object_repr": "Camer\u00fan vs Brasil",
+            "object_id": "3",
+            "change_message": "Modificado/a goles_equipo_a y goles_equipo_b.",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 110,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-06-06T20:10:36.064Z",
+            "object_repr": "Camer\u00fan vs Brasil",
+            "object_id": "3",
+            "change_message": "Modificado/a goles_equipo_a y goles_equipo_b.",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 111,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-06-06T20:36:07.178Z",
+            "object_repr": "Perfil object",
+            "object_id": "1",
+            "change_message": "Modificado/a puntos.",
+            "user": 1,
+            "content_type": 13
+        }
+    },
+    {
+        "pk": 112,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-06-06T20:49:01.637Z",
+            "object_repr": "Camer\u00fan vs Brasil",
+            "object_id": "3",
+            "change_message": "Modificado/a goles_equipo_b.",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 113,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-06-06T21:17:09.812Z",
+            "object_repr": "Brasil vs Croacia",
+            "object_id": "1",
+            "change_message": "Modificado/a goles_equipo_a.",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 114,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-06-06T21:21:32.238Z",
+            "object_repr": "Brasil vs M\u00e9xico",
+            "object_id": "2",
+            "change_message": "Modificado/a goles_equipo_b.",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 115,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:26:19.299Z",
+            "object_repr": "Grupo F",
+            "object_id": "8",
+            "change_message": "",
+            "user": 1,
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 116,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:28:58.742Z",
+            "object_repr": "M\u00e9xico vs Camer\u00fan",
+            "object_id": "4",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 117,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:30:07.872Z",
+            "object_repr": "Espa\u00f1a vs Pa\u00edses Bajos",
+            "object_id": "5",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 118,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:30:57.261Z",
+            "object_repr": "Chile vs Australia",
+            "object_id": "6",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 119,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:31:20.637Z",
+            "object_repr": "Colombia vs Grecia",
+            "object_id": "7",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 120,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:31:35.301Z",
+            "object_repr": "Uruguay vs Costa Rica",
+            "object_id": "8",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 121,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:31:45.429Z",
+            "object_repr": "Inglaterra vs Italia",
+            "object_id": "9",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 122,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:32:00.083Z",
+            "object_repr": "Costa de Marfil vs Jap\u00f3n",
+            "object_id": "10",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 123,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:32:31.518Z",
+            "object_repr": "Suiza vs Ecuador",
+            "object_id": "11",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 124,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:32:43.306Z",
+            "object_repr": "Francia vs Honduras",
+            "object_id": "12",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 125,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:32:57.647Z",
+            "object_repr": "Argentina vs Bosnia y Herzegovina",
+            "object_id": "13",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 126,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:33:16.028Z",
+            "object_repr": "Alemania vs Portugal",
+            "object_id": "14",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 127,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:33:28.417Z",
+            "object_repr": "Ir\u00e1n vs Nigeria",
+            "object_id": "15",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 128,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:33:37.976Z",
+            "object_repr": "Ghana vs EEUU",
+            "object_id": "16",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 129,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:33:51.597Z",
+            "object_repr": "B\u00e9lgica vs Argelia",
+            "object_id": "17",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 130,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:34:16.781Z",
+            "object_repr": "Rusia vs Corea",
+            "object_id": "18",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 131,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:35:58.813Z",
+            "object_repr": "Australia vs Pa\u00edses Bajos",
+            "object_id": "19",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 132,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:36:08.701Z",
+            "object_repr": "Espa\u00f1a vs Chile",
+            "object_id": "20",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 133,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:36:19.549Z",
+            "object_repr": "Camer\u00fan vs Croacia",
+            "object_id": "21",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 134,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:36:30.365Z",
+            "object_repr": "Colombia vs Costa de Marfil",
+            "object_id": "22",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 135,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:37:15.317Z",
+            "object_repr": "Uruguay vs Inglaterra",
+            "object_id": "23",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 136,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:37:24.670Z",
+            "object_repr": "Jap\u00f3n vs Grecia",
+            "object_id": "24",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 137,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:37:39.862Z",
+            "object_repr": "Italia vs Costa Rica",
+            "object_id": "25",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 138,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:37:53.216Z",
+            "object_repr": "Suiza vs Francia",
+            "object_id": "26",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 139,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:38:05.505Z",
+            "object_repr": "Honduras vs Ecuador",
+            "object_id": "27",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 140,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:38:34.067Z",
+            "object_repr": "Argentina vs Ir\u00e1n",
+            "object_id": "28",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 141,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:38:45.235Z",
+            "object_repr": "Alemania vs EEUU",
+            "object_id": "29",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 142,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:38:54.772Z",
+            "object_repr": "Nigeria vs Bosnia y Herzegovina",
+            "object_id": "30",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 143,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:39:07.062Z",
+            "object_repr": "B\u00e9lgica vs Rusia",
+            "object_id": "31",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 144,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:39:27Z",
+            "object_repr": "Corea vs Argelia",
+            "object_id": "32",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 145,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:39:36.662Z",
+            "object_repr": "EEUU vs Portugal",
+            "object_id": "33",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 146,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:39:51.678Z",
+            "object_repr": "Pa\u00edses Bajos vs Chile",
+            "object_id": "34",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 147,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:40:00.815Z",
+            "object_repr": "Australia vs Espa\u00f1a",
+            "object_id": "35",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 148,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:40:11.642Z",
+            "object_repr": "Camer\u00fan vs Brasil",
+            "object_id": "36",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 149,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:40:23.612Z",
+            "object_repr": "Croacia vs M\u00e9xico",
+            "object_id": "37",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 150,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:40:35.303Z",
+            "object_repr": "Italia vs Uruguay",
+            "object_id": "38",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 151,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:40:47.449Z",
+            "object_repr": "Costa Rica vs Inglaterra",
+            "object_id": "39",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 152,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:41:02.008Z",
+            "object_repr": "Jap\u00f3n vs Colombia",
+            "object_id": "40",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 153,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:41:13.903Z",
+            "object_repr": "Grecia vs Costa de Marfil",
+            "object_id": "41",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 154,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:41:32.942Z",
+            "object_repr": "Nigeria vs Argentina",
+            "object_id": "42",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 155,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:41:46.578Z",
+            "object_repr": "Bosnia y Herzegovina vs Ir\u00e1n",
+            "object_id": "43",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 156,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:41:57.483Z",
+            "object_repr": "Honduras vs Suiza",
+            "object_id": "44",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 157,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:42:10.028Z",
+            "object_repr": "Ecuador vs Francia",
+            "object_id": "45",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 158,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:42:23.541Z",
+            "object_repr": "Portugal vs Ghana",
+            "object_id": "46",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 159,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:42:32.861Z",
+            "object_repr": "EEUU vs Alemania",
+            "object_id": "47",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 160,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:42:42.416Z",
+            "object_repr": "Corea vs B\u00e9lgica",
+            "object_id": "48",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 161,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-06-06T21:42:51.936Z",
+            "object_repr": "Argelia vs Rusia",
+            "object_id": "49",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 162,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-06-06T21:49:26.709Z",
+            "object_repr": "M\u00e9xico vs Camer\u00fan",
+            "object_id": "4",
+            "change_message": "Modificado/a goles_equipo_b.",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 163,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-06-06T21:54:51.082Z",
+            "object_repr": "Camer\u00fan vs Croacia",
+            "object_id": "21",
+            "change_message": "Modificado/a goles_equipo_a.",
+            "user": 1,
+            "content_type": 9
         }
     }
 ]
