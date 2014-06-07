@@ -130,6 +130,10 @@ class Partido(models.Model):
     def titulo(self):
         return Partido.__unicode__(self)
 
+    titulo.admin_order_field = "equipo_a"
+    titulo.boolean = False
+    titulo.short_description = "Partido"
+
     def __unicode__(self):
         return '%s vs %s' % (unicode(self.equipo_a), unicode(self.equipo_b))
 
@@ -141,6 +145,7 @@ class Partido(models.Model):
     es_pasado.short_description = 'Partido Culminado?'
 
     def save(self, *args, **kwargs):
+        super(Partido, self).save(*args, **kwargs)
         if self.goles_equipo_a == self.goles_equipo_b:  # Empate
             self.equipo_a.partidos_empatados = calcular_partidos_empatados(self.equipo_a)
             self.equipo_b.partidos_empatados = calcular_partidos_empatados(self.equipo_b)
