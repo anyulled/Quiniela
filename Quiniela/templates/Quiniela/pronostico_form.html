@@ -3,11 +3,33 @@
     Editar Pronostico
 {% endblock %}
 {% block contenido %}
-    <form action="" method="post">
-        {% csrf_token %}
+    <div class="page-header">
         <h2>{{ partido }}</h2>
-        {{ form.as_p }}
-        <input type="submit" value="Registrar Pronostico" class="btn btn-primary"/>
-        <a class="btn btn-danger" href="{% url "detalle_partido" partido.id %}">Atrás</a>
+    </div>
+    {{ form.errors }}
+    <form action="" method="post" class="form-horizontal" role="form">
+        {{ form.partido }}
+        {{ form.usuario }}
+        {% csrf_token %}
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label for="id_goles_equipo_a"><img src="{{ partido.equipo_a.url_bandera }}" />{{ partido.equipo_a }}</label>
+            </div>
+            <div class="col-sm-3">
+                <input id="id_goles_equipo_a" type="number" min="0" max="10" name="goles_equipo_a" value="{{ form.goles_equipo_a.value }}"/>
+                <span class="help-block">{{ form.goles_equipo_a.errors }}</span>
+            </div>
+            <div class="col-sm-3">
+                <input id="id_goles_equipo_b" type="number" min="0" max="10" name="goles_equipo_b" value="{{ form.goles_equipo_b.value }}"/>
+                <span class="help-block">{{ form.goles_equipo_b.errors }}</span>
+            </div>
+            <div class="col-sm-3">
+                <label for="id_goles_equipo_b"><img src="{{ partido.equipo_b.url_bandera }}" />{{ partido.equipo_b }}</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Registrar Pronostico" class="btn btn-primary"/>
+            <a class="btn btn-danger" href="{% url "detalle_partido" partido.id %}">Atrás</a>
+        </div>
     </form>
 {% endblock %}

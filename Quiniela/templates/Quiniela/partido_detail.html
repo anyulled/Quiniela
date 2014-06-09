@@ -9,8 +9,8 @@
     <div class="row">
         <div class="col-md-6">
             <table class="table table-responsive">
-                <tr>
-                    <td colspan="2" class="align_center"><p>{{ partido.fecha }}</p></td>
+                <tr class="active">
+                    <td colspan="2" class="align_center">{{ partido.fecha }}</td>
                 </tr>
                 <tr>
                     <th>
@@ -43,7 +43,7 @@
         <div class="col-md-6">
             {% if user.is_authenticated %}
                 <table class="table table-responsive">
-                    <tr>
+                    <tr class="active">
                         <th>{{ partido.equipo_a }}</th>
                         <th>{{ partido.equipo_b }}</th>
                     </tr>

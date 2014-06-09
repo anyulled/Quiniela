@@ -4,18 +4,18 @@
 {% endblock %}
 {% block contenido %}
     <div class="page-header">
-        <h2><img src="{{ equipo.url_bandera }}" height="32" class="pull-left"/> {{ equipo.nombre }}
+        <h2> <img src="{{ equipo.url_bandera }}" height="32" class="pull-left" /> {{ equipo.nombre }}
             <small>{{ equipo.grupo }}</small>
         </h2>
     </div>
     <table class="table table-bordered table-responsive">
         <tr>
-            <th>Juegos Ganados</th>
-            <th>Juegos Empatados</th>
-            <th>Juegos Perdidos</th>
-            <th>Goles a Favor</th>
-            <th>Goles en Contra</th>
-            <th>Puntos</th>
+            <th class="active">Juegos Ganados</th>
+            <th class="active">Juegos Empatados</th>
+            <th class="active">Juegos Perdidos</th>
+            <th class="active">Goles a Favor</th>
+            <th class="active">Goles en Contra</th>
+            <th class="active">Puntos</th>
         </tr>
         <tr>
             <td>{{ equipo.partidos_ganados }}</td>
@@ -27,10 +27,10 @@
         </tr>
     </table>
     <h2>Partidos</h2>
-    <table class="table table-bordered table-responsive">
+    <table class="table table-bordered table-responsive table-striped">
         <tr>
-            <th>Partido</th>
-            <th>Fecha</th>
+            <th class="active">Partido</th>
+            <th class="active">Fecha</th>
         </tr>
         {% for partido in partidos %}
             <tr>
