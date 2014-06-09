@@ -24,9 +24,10 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="{% url 'listado_grupos' %}">Listado de Grupos</a></li>
-                    <li><a href="{% url 'listado_usuarios' %}">Listado de Usuarios</a></li>
-                    <li><a href="{% url 'listado_partidos' %}">Listado de Partidos</a></li>
+                    <li><a href="{% url 'listado_equipos' %}">Equipos</a></li>
+                    <li><a href="{% url 'listado_grupos' %}">Grupos</a></li>
+                    <li><a href="{% url 'listado_usuarios' %}">Usuarios</a></li>
+                    <li><a href="{% url 'listado_partidos' %}">Partidos</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
@@ -34,7 +35,10 @@
                         <li>
                             <a href="{% url 'detalle_usuario' user.id %}">{{ user.first_name|capfirst }} {{ user.last_name|capfirst }}</a>
                         </li>
-{#                        <li><a href="{% url 'cargar_pronostico' user.id %}">Cargar Pronostico</a></li>#}
+                        {% if user.is_superuser %}
+                            <li><a href="/admin" target="_blank">Admin</a></li>
+                            <li><a href="{% url "simular_quiniela" %}" target="_blank">Simular Quiniela</a></li>
+                        {% endif %}
                         <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
                     {% else %}
                         <li><a href="{% url 'login' %}">Iniciar sesión</a></li>

@@ -8,5 +8,6 @@
         <h2>{{ partido }}</h2>
         {{ form.as_p }}
         <input type="submit" value="Registrar Pronostico" class="btn btn-primary"/>
+        <a class="btn btn-danger" href="{% url "detalle_partido" partido.id %}">Atrás</a>
     </form>
 {% endblock %}

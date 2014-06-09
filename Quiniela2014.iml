@@ -7,7 +7,7 @@
     <facet type="django" name="Django">
       <configuration>
         <option name="rootFolder" value="$MODULE_DIR$" />
-        <option name="settingsModule" value="settings.py" />
+        <option name="settingsModule" value="Quiniela2014/settings.py" />
         <option name="manageScript" value="manage.py" />
       </configuration>
     </facet>
@@ -17,7 +17,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 2.7.5 " jdkType="Python SDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">

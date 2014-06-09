@@ -1,4 +1,4 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 from datetime import date
 from django.contrib.auth.models import User
 from django.db import models
@@ -6,22 +6,63 @@ from django.db.models import Q
 from django.db.models import F
 from django.utils import timezone
 
+tipo_partido_opciones = (["C", "Clasificatorio"], ["E", "Eliminatorio"])
 
-def calcular_puntos_equipo(partidos_ganados, partidos_empatados):
+
+def contar_goles_a_favor(equipo):
+    """
+    Calcular goles a favor
+    :param equipo: Equipo
+    :return: integer
+    """
+    goles = 0
+    for goles in Partido.objects.filter(equipo_a=equipo).values_list("goles_equipo_a"):
+        goles += goles
+    for goles in Partido.objects.filter(equipo_b=equipo).values_list("goles_equipo_b"):
+        goles += goles
+    sum(goles)
+    return goles
+
+
+def contar_goles_en_contra(equipo):
+    """
+    Calcular goles en contra
+    :param equipo: Equipo
+    :return: integer
+    """
+    goles = 0
+    for goles in Partido.objects.filter(equipo_a=equipo).values_list("goles_equipo_b"):
+        goles += goles
+    for goles in Partido.objects.filter(equipo_b=equipo).values_list("goles_equipo_a"):
+        goles += goles
+    sum(goles)
+    return goles
+
+
+def contar_partidos_jugados(equipo):
+    return Partido.objects.filter(Q(equipo_a=equipo) | Q(equipo_b=equipo)).filter(partido_jugado=True).count()
+
+
+def calcular_puntos_equipo(equipo):
+    partidos_ganados = contar_partidos_ganados(equipo)
+    partidos_empatados = contar_partidos_empatados(equipo)
     return (partidos_ganados * 3) + partidos_empatados
 
 
-def calcular_partidos_ganados(equipo):
+def contar_partidos_ganados(equipo):
     """
     cuenta el numero de partidos ganados
     :rtype : Integer
     :param equipo: equipo
     :return: numero de partidos ganados
     """
-    return Partido.objects.filter(fecha__lte=timezone.now().date(), equipo_ganador=equipo).count()
+    return Partido.objects.filter(
+        tipo_partido="C",
+        partido_jugado=True,
+        equipo_ganador=equipo).count()
 
 
-def calcular_partidos_empatados(equipo):
+def contar_partidos_empatados(equipo):
     """
     Cuenta el numero de partidos culminados en empate
     :param equipo: equipo
@@ -29,18 +70,20 @@ def calcular_partidos_empatados(equipo):
     """
     return Partido.objects \
         .filter(Q(equipo_a=equipo) | Q(equipo_b=equipo)) \
-        .filter(fecha__lte=timezone.now().date(),
-                equipo_ganador__isnull=True,
+        .filter(partido_jugado=True,
+                tipo_partido="C",
                 goles_equipo_a=F('goles_equipo_b')).count()
 
 
-def calcular_partidos_perdidos(equipo):
+def contar_partidos_perdidos(equipo):
     """
      Realiza el conteo de los partidos perdidos de un equipo
     :param equipo: equipo perdedor
     :return: numero de partidos perdidos
     """
-    return Partido.objects.filter((Q(equipo_a=equipo) | Q(equipo_b=equipo)) & ~Q(equipo_ganador=equipo)).count()
+    return Partido.objects.filter((Q(equipo_a=equipo) & Q(goles_equipo_a__lt=F('goles_equipo_b')))
+                                  | (Q(equipo_b=equipo) & Q(goles_equipo_b__lt=F('goles_equipo_a')))).\
+        filter(tipo_partido="C", partido_jugado=True).count()
 
 
 def calcular_puntaje_pronosticos(partido):
@@ -91,7 +134,7 @@ class Equipo(models.Model):
     url_bandera = models.CharField(max_length=500)
 
     class Meta:
-        ordering = ["grupo__nombre", "puntos", "nombre"]
+        ordering = ["grupo__nombre", "-puntos", "nombre"]
 
     def __unicode__(self):
         return self.nombre
@@ -122,6 +165,8 @@ class Partido(models.Model):
     goles_equipo_a = models.IntegerField(default=0)
     goles_equipo_b = models.IntegerField(default=0)
     equipo_ganador = models.ForeignKey(Equipo, related_name="equipo_ganador", null=True)
+    tipo_partido = models.CharField(choices=tipo_partido_opciones, max_length=100, null=False)
+    partido_jugado = models.BooleanField(default=False)
     fecha = models.DateField()
 
     class Meta:
@@ -146,28 +191,33 @@ class Partido(models.Model):
 
     def save(self, *args, **kwargs):
         super(Partido, self).save(*args, **kwargs)
-        if self.goles_equipo_a == self.goles_equipo_b:  # Empate
-            self.equipo_a.partidos_empatados = calcular_partidos_empatados(self.equipo_a)
-            self.equipo_b.partidos_empatados = calcular_partidos_empatados(self.equipo_b)
-            self.equipo_a.puntos = calcular_puntos_equipo(self.equipo_a.partidos_ganados,
-                                                          self.equipo_a.partidos_empatados)
-            self.equipo_b.puntos = calcular_puntos_equipo(self.equipo_b.partidos_ganados,
-                                                          self.equipo_b.partidos_empatados)
-        elif self.goles_equipo_a > self.goles_equipo_b:  # Ganador A
-            self.equipo_ganador = self.equipo_a
-            self.equipo_a.partidos_ganados = calcular_partidos_ganados(self.equipo_a)
-            self.equipo_b.partidos_perdidos = calcular_partidos_perdidos(self.equipo_b)
-            self.equipo_a.puntos = calcular_puntos_equipo(self.equipo_a.partidos_ganados,
-                                                          self.equipo_a.partidos_empatados)
-        else:  # Ganador B
-            self.equipo_ganador = self.equipo_b
-            self.equipo_b.partidos_ganados = calcular_partidos_ganados(self.equipo_b)
-            self.equipo_a.partidos_perdidos = calcular_partidos_perdidos(self.equipo_a)
-            self.equipo_b.puntos = calcular_puntos_equipo(self.equipo_b.partidos_ganados,
-                                                          self.equipo_b.partidos_empatados)
-        partido_guardado = super(Partido, self).save(*args, **kwargs)
+        if self.partido_jugado:
+            if self.goles_equipo_a == self.goles_equipo_b:      # Empate
+                self.equipo_a.partidos_empatados = contar_partidos_empatados(self.equipo_a)
+                self.equipo_b.partidos_empatados = contar_partidos_empatados(self.equipo_b)
+                self.equipo_a.puntos = calcular_puntos_equipo(self.equipo_a)
+                self.equipo_b.puntos = calcular_puntos_equipo(self.equipo_b)
+            elif self.goles_equipo_a > self.goles_equipo_b:     # Ganador A
+                self.equipo_ganador = self.equipo_a
+                self.equipo_a.partidos_ganados = contar_partidos_ganados(self.equipo_a)
+                self.equipo_b.partidos_perdidos = contar_partidos_perdidos(self.equipo_b)
+                self.equipo_a.puntos = calcular_puntos_equipo(self.equipo_a)
+            else:                                               # Ganador B
+                self.equipo_ganador = self.equipo_b
+                self.equipo_b.partidos_ganados = contar_partidos_ganados(self.equipo_b)
+                self.equipo_a.partidos_perdidos = contar_partidos_perdidos(self.equipo_a)
+                self.equipo_b.puntos = calcular_puntos_equipo(self.equipo_b)
+            self.equipo_a.partidos_jugados = contar_partidos_jugados(self.equipo_a)
+            self.equipo_b.partidos_jugados = contar_partidos_jugados(self.equipo_b)
+            # self.equipo_a.goles_a_favor = contar_goles_a_favor(self.equipo_a)
+            # self.equipo_a.goles_en_contra = contar_goles_en_contra(self.equipo_a)
+            # self.equipo_b.goles_a_favor = contar_goles_a_favor(self.equipo_b)
+            # self.equipo_b.goles_en_contra = contar_goles_en_contra(self.equipo_b)
+            self.equipo_a.save()
+            self.equipo_b.save()
+        super(Partido, self).save(*args, **kwargs)
         calcular_puntaje_pronosticos(self)
-        return partido_guardado
+        return super(Partido, self).save(*args, **kwargs)
 
 
 class Usuario(models.Model):

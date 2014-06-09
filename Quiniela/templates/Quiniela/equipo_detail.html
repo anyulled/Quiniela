@@ -3,13 +3,12 @@
     {{ equipo.nombre }}
 {% endblock %}
 {% block contenido %}
+    <div class="page-header">
+        <h2><img src="{{ equipo.url_bandera }}" height="32" class="pull-left"/> {{ equipo.nombre }}
+            <small>{{ equipo.grupo }}</small>
+        </h2>
+    </div>
     <table class="table table-bordered table-responsive">
-        <tr>
-            <th colspan="3">
-                <img src="{{ equipo.url_bandera }}" height="32" class="pull-left"/> {{ equipo.nombre }}
-            </th>
-            <th colspan="3">{{ equipo.grupo }}</th>
-        </tr>
         <tr>
             <th>Juegos Ganados</th>
             <th>Juegos Empatados</th>
@@ -19,9 +18,9 @@
             <th>Puntos</th>
         </tr>
         <tr>
-            <td>{{ equipo.juegos_ganados }}</td>
-            <td>{{ equipo.juegos_empatados }}</td>
-            <td>{{ equipo.juegos_perdidos }}</td>
+            <td>{{ equipo.partidos_ganados }}</td>
+            <td>{{ equipo.partidos_empatados }}</td>
+            <td>{{ equipo.partidos_perdidos }}</td>
             <td>{{ equipo.goles_a_favor }}</td>
             <td>{{ equipo.goles_en_contra }}</td>
             <td>{{ equipo.puntos }}</td>

@@ -3,10 +3,8 @@
     {{ partido }}
 {% endblock %}
 {% block contenido %}
-    <div class="row">
-        <div class="col-md-6"><h1>{{ partido }}</h1></div>
-        <div class="col-md-6"><h2>Mi Pronostico</h2>
-        </div>
+    <div class="page-header">
+        <h2>{{ partido }}<small> Mi Pronostico</small></h2>
     </div>
     <div class="row">
         <div class="col-md-6">
@@ -21,7 +19,6 @@
                                 <a href="#" class="pull_left">
                                     <img class="media-object" src="{{ partido.equipo_a.url_bandera }}"/>
                                 </a>
-
                                 <p class="media-heading"> {{ partido.equipo_a }}</p>
                             </div>
                         </div>
@@ -32,7 +29,6 @@
                                 <a class="pull_left" href="#">
                                     <img class="media-object" src="{{ partido.equipo_b.url_bandera }}"/>
                                 </a>
-
                                 <p class="media-heading">{{ partido.equipo_b }}</p>
                             </div>
                         </div>
@@ -61,7 +57,7 @@
                     </tr>
                 </table>
                 {% if partido.es_pasado %}
-                    <p>Partido culminado</p>
+                    <p class="alert alert-warning">Partido culminado</p>
                 {% else %}
                     <a href="{% url 'actualizar_pronostico' pronostico.id %}" class="btn btn-primary">Actualizar Pronostico</a>
                 {% endif %}

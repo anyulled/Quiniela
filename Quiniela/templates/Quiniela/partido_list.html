@@ -5,11 +5,17 @@
 {% block contenido %}
     <h2>Listado de Partidos</h2>
     <ul class="list-group">
-        {% for partido in partido_list %}
-            <li class="list-group-item">
-                <a href="{% url 'detalle_partido' partido.id %}">{{ partido }}</a>
-            <span class="badge">{{ partido.fecha }}</span>
-            </li>
+        {% regroup partido_list by fecha as partidos %}
+        {% for partido_group in partidos %}
+            <li class="list-group-item list-group-item-info">{{ partido_group.grouper }}</li>
+            {% for partido in partido_group.list %}
+                <li class="list-group-item">
+                    <img src="{{ partido.equipo_a.url_bandera }}" alt="{{ partido.equipo_a }}" height="24" border="1"/> -
+                    <img src="{{ partido.equipo_b.url_bandera }}" alt="{{ partido.equipo_b }}" height="24" border="1"/>
+                    <a href="{% url 'detalle_partido' partido.id %}">{{ partido }}</a>
+                    <span class="badge">{{ partido.goles_equipo_a }}-{{ partido.goles_equipo_b }}</span>
+                </li>
+            {% endfor %}
         {% endfor %}
     </ul>
 {% endblock %}

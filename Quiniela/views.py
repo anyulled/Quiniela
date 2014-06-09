@@ -1,22 +1,25 @@
-from django.core.urlresolvers import reverse, reverse_lazy
-from django.http import HttpResponseRedirect, request
-from django.shortcuts import render
-from django.views import generic
-from django.db.models import Q
+import random
+import user
+from django.core.urlresolvers import reverse_lazy
+from django.forms import Field
 from django.forms.formsets import formset_factory
-from django.views.generic import FormView, UpdateView, TemplateView
+from django.shortcuts import render_to_response
+from django.views.generic import FormView, UpdateView, TemplateView, DetailView, ListView
+
 from Quiniela.forms import PronosticoForm, UsuarioForm
 from Quiniela.models import *
 
 
-def cargar_pronostico(request, pk):
+class CargarPronostico(FormView):
     partidos = Partido.objects.all()
     data_inicial = []
-    PronosticoFormSet = formset_factory(PronosticoForm, extra=0)
+    pronostico_form_set = formset_factory(PronosticoForm, extra=0)
     mensaje = "seleccione un usuario"
-    if request.method == 'GET':
-        mensaje = ""
-        usuario_seleccionado = pk
+    form_class = pronostico_form_set
+
+    def get(self, request, data_inicial=data_inicial, form_set=pronostico_form_set, *args, **kwargs):
+        pronostico_set = form_set()
+        usuario_seleccionado = user
         for partido in Partido.objects.all():
             pron_usu_partido, creado = Pronostico.objects.get_or_create(partido=partido,
                                                                         usuario=usuario_seleccionado,
@@ -28,10 +31,12 @@ def cargar_pronostico(request, pk):
                                  "usuario": pron_usu_partido.usuario,
                                  "goles_equipo_a": pron_usu_partido.goles_equipo_a,
                                  "goles_equipo_b": pron_usu_partido.goles_equipo_b})
-            pronosticoSet = PronosticoFormSet(initial=data_inicial)
-    if request.method == 'POST':
-        pronosticoSet = PronosticoFormSet(request.POST)
-        for pronostico in pronosticoSet:
+            pronostico_set = form_set(initial=data_inicial)
+        return render_to_response("Quiniela/cargar_pronostico.html", {"pronostico": pronostico_set})
+
+    def post(self, request, pronostico_form_set=pronostico_form_set, *args, **kwargs):
+        pronostico_set = pronostico_form_set(request.POST)
+        for pronostico in pronostico_set:
             pronostico_db, creado = Pronostico.objects.get_or_create(partido=pronostico.partido,
                                                                      usuario=pronostico.usuario,
                                                                      defaults={
@@ -43,53 +48,58 @@ def cargar_pronostico(request, pk):
             else:
                 pronostico.pk = pronostico.pk
                 pronostico.save()
-        return HttpResponseRedirect(reverse("pronostico_cargado"))
-    else:
-        return render(request, "Quiniela/cargar_pronostico.html", locals())
-    return render(request, "Quiniela/cargar_pronostico.html", locals())
+        pass
 
 
-class ListadoGrupos(generic.ListView):
+class ListadoGrupos(ListView):
     model = Grupo
 
     def get_queryset(self):
-        return Grupo.objects.all().order_by("nombre", "equipo__puntos").distinct()
+        return Grupo.objects.all().order_by("nombre").distinct()
 
 
-class ListadoUsuarios(generic.ListView):
+class ListadoEquipos(ListView):
+    model = Equipo
+
+    def get_queryset(self):
+        return Equipo.objects.all().order_by("grupo", "-puntos", "nombre")
+
+
+class ListadoUsuarios(ListView):
     model = User
 
     def get_queryset(self):
         return User.objects.all().order_by("-perfil__puntos")
 
 
-class ListadoPartidos(generic.ListView):
+class ListadoPartidos(ListView):
     model = Partido
 
     def get_queryset(self):
         return Partido.objects.all().order_by("fecha")
 
 
-class DetalleUsuario(generic.DetailView):
+class DetalleUsuario(DetailView):
     model = User
     context_object_name = "usuario"
 
 
-class DetallePartido(generic.DetailView):
+class DetallePartido(DetailView):
     model = Partido
 
     def get_context_data(self, **kwargs):
         context = super(DetallePartido, self).get_context_data(**kwargs)
         partido = kwargs.get('object')
         usuario = context['view'].request.user
-        context['pronostico'], creado = Pronostico.objects.get_or_create(partido=partido, usuario_id=usuario.id, defaults={
-            "goles_equipo_a": 0,
-            "goles_equipo_b": 0
-        })
+        context['pronostico'], creado = Pronostico.objects.get_or_create(partido=partido, usuario_id=usuario.id,
+                                                                         defaults={
+                                                                             "goles_equipo_a": 0,
+                                                                             "goles_equipo_b": 0
+                                                                         })
         return context
 
 
-class DetalleEquipo(generic.DetailView):
+class DetalleEquipo(DetailView):
     model = Equipo
 
     def get_context_data(self, **kwargs):
@@ -106,13 +116,13 @@ class Registro(FormView):
 
     def form_valid(self, form):
         print form.errors
-        user = form.save()
-        user.first_name = form.data["first_name"]
-        user.last_name = form.data["last_name"]
-        user.email = form.data["email"]
-        user.save()
+        usuario = form.save()
+        usuario.first_name = form.data["first_name"]
+        usuario.last_name = form.data["last_name"]
+        usuario.email = form.data["email"]
+        usuario.save()
 
-        perfil = Perfil(usuario=user)
+        perfil = Perfil(usuario=usuario)
         perfil.save()
         return super(Registro, self).form_valid(form)
 
@@ -134,3 +144,30 @@ class ActualizarPronostico(UpdateView):
         context = super(ActualizarPronostico, self).get_context_data(**kwargs)
         context["partido"] = self.object.partido
         return context
+
+
+class SimularQuiniela(TemplateView):
+    template_name = "Quiniela/simulacion_finalizada.html"
+
+    def get(self, request, *args, **kwargs):
+        for equipo in Equipo.objects.all():
+            equipo.partidos_jugados = 0
+            equipo.partidos_ganados = 0
+            equipo.partidos_empatados = 0
+            equipo.partidos_perdidos = 0
+            equipo.puntos = 0
+            equipo.save()
+        for partido in Partido.objects.all():
+            partido.equipo_ganador = 
+            # partido.partido_jugado = False
+            # partido.goles_equipo_a = 0
+            # partido.goles_equipo_b = 0
+
+            # for partido in Partido.objects.all():
+            # partido.partido_jugado = True
+            #     partido.goles_equipo_a = random.randint(0, 4)
+            #     partido.goles_equipo_b = random.randint(0, 4)
+            partido.save()
+            calcular_puntaje_pronosticos(partido)
+        calcular_puntos_usuario()
+        return render_to_response(self.template_name)
