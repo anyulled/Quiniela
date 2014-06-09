@@ -5,7 +5,7 @@ from Quiniela.views import *
 admin.autodiscover()
 
 urlpatterns = patterns('',
-                       url(r'^$', ListadoGrupos.as_view(), name="listado_grupos"),
+                       url(r'^grupos/$', ListadoGrupos.as_view(), name="listado_grupos"),
                        url(r'^login/$', 'django.contrib.auth.views.login', name="login"),
                        url(r'^logout/$', 'django.contrib.auth.views.logout_then_login', name="logout"),
                        url(r'^registro/$', Registro.as_view(), name="registro"),
@@ -17,7 +17,7 @@ urlpatterns = patterns('',
                        url(r'^partidos/$', ListadoPartidos.as_view(), name="listado_partidos"),
                        url(r'^partidos/(?P<pk>\d+)$', DetallePartido.as_view(), name="detalle_partido"),
 
-                       url(r'^equipos/$', ListadoEquipos.as_view(), name="listado_equipos"),
+                       url(r'^$', ListadoEquipos.as_view(), name="listado_equipos"),
                        url(r'^equipos/(?P<pk>\d+)$', DetalleEquipo.as_view(), name="detalle_equipo"),
 
                        url(r'^actualizar_pronostico/(?P<pk>\d+)$', ActualizarPronostico.as_view(),

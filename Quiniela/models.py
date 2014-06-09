@@ -15,13 +15,11 @@ def contar_goles_a_favor(equipo):
     :param equipo: Equipo
     :return: integer
     """
-    goles = 0
-    for goles in Partido.objects.filter(equipo_a=equipo).values_list("goles_equipo_a"):
-        goles += goles
-    for goles in Partido.objects.filter(equipo_b=equipo).values_list("goles_equipo_b"):
-        goles += goles
-    sum(goles)
-    return goles
+    goles_casa = Partido.objects.filter(equipo_a=equipo).extra(
+        select={"total_goles": "SUM(goles_equipo_a)"}).values("total_goles")
+    goles_visitante = Partido.objects.filter(equipo_b=equipo).extra(
+        select={"total_goles": "SUM(goles_equipo_b)"}).values("total_goles")
+    return goles_casa[0]['total_goles'] + goles_visitante[0]['total_goles']
 
 
 def contar_goles_en_contra(equipo):
@@ -30,13 +28,11 @@ def contar_goles_en_contra(equipo):
     :param equipo: Equipo
     :return: integer
     """
-    goles = 0
-    for goles in Partido.objects.filter(equipo_a=equipo).values_list("goles_equipo_b"):
-        goles += goles
-    for goles in Partido.objects.filter(equipo_b=equipo).values_list("goles_equipo_a"):
-        goles += goles
-    sum(goles)
-    return goles
+    goles_casa = Partido.objects.filter(equipo_a=equipo).extra(
+        select={"total_goles": "SUM(goles_equipo_b)"}).values("total_goles")
+    goles_visitante = Partido.objects.filter(equipo_b=equipo).extra(
+        select={"total_goles": "SUM(goles_equipo_a)"}).values("total_goles")
+    return goles_casa[0]['total_goles'] + goles_visitante[0]['total_goles']
 
 
 def contar_partidos_jugados(equipo):
@@ -56,10 +52,9 @@ def contar_partidos_ganados(equipo):
     :param equipo: equipo
     :return: numero de partidos ganados
     """
-    return Partido.objects.filter(
-        tipo_partido="C",
-        partido_jugado=True,
-        equipo_ganador=equipo).count()
+    return Partido.objects.filter((Q(equipo_a=equipo) & Q(goles_equipo_a__gt=F('goles_equipo_b')))
+                                  | (Q(equipo_b=equipo) & Q(goles_equipo_b__gt=F('goles_equipo_a')))). \
+        filter(tipo_partido="C", partido_jugado=True).count()
 
 
 def contar_partidos_empatados(equipo):
@@ -82,7 +77,7 @@ def contar_partidos_perdidos(equipo):
     :return: numero de partidos perdidos
     """
     return Partido.objects.filter((Q(equipo_a=equipo) & Q(goles_equipo_a__lt=F('goles_equipo_b')))
-                                  | (Q(equipo_b=equipo) & Q(goles_equipo_b__lt=F('goles_equipo_a')))).\
+                                  | (Q(equipo_b=equipo) & Q(goles_equipo_b__lt=F('goles_equipo_a')))). \
         filter(tipo_partido="C", partido_jugado=True).count()
 
 
@@ -156,7 +151,8 @@ class Grupo(models.Model):
         return self.equipo_set.all().count()
 
     def equipos_clasificados(self):
-        return self.equipo_set.all().order_by("puntos")[0:2]
+        return self.equipo_set.extra(select={"goles_diferencia": "goles_a_favor - goles_en_contra"},
+                                     order_by=["-puntos", "-goles_diferencia"])[0:2]
 
 
 class Partido(models.Model):
@@ -209,10 +205,10 @@ class Partido(models.Model):
                 self.equipo_b.puntos = calcular_puntos_equipo(self.equipo_b)
             self.equipo_a.partidos_jugados = contar_partidos_jugados(self.equipo_a)
             self.equipo_b.partidos_jugados = contar_partidos_jugados(self.equipo_b)
-            # self.equipo_a.goles_a_favor = contar_goles_a_favor(self.equipo_a)
-            # self.equipo_a.goles_en_contra = contar_goles_en_contra(self.equipo_a)
-            # self.equipo_b.goles_a_favor = contar_goles_a_favor(self.equipo_b)
-            # self.equipo_b.goles_en_contra = contar_goles_en_contra(self.equipo_b)
+            self.equipo_a.goles_a_favor = contar_goles_a_favor(self.equipo_a)
+            self.equipo_a.goles_en_contra = contar_goles_en_contra(self.equipo_a)
+            self.equipo_b.goles_a_favor = contar_goles_a_favor(self.equipo_b)
+            self.equipo_b.goles_en_contra = contar_goles_en_contra(self.equipo_b)
             self.equipo_a.save()
             self.equipo_b.save()
         super(Partido, self).save(*args, **kwargs)

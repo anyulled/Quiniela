@@ -62,7 +62,8 @@ class ListadoEquipos(ListView):
     model = Equipo
 
     def get_queryset(self):
-        return Equipo.objects.all().order_by("grupo", "-puntos", "nombre")
+        return Equipo.objects.all().extra(select={"goles_diferencia": "goles_a_favor - goles_en_contra"},
+                                          order_by=["grupo", "-puntos", "-goles_diferencia", "goles_a_favor"])
 
 
 class ListadoUsuarios(ListView):
@@ -158,7 +159,7 @@ class SimularQuiniela(TemplateView):
             equipo.puntos = 0
             equipo.save()
         for partido in Partido.objects.all():
-            partido.equipo_ganador = 
+            partido.equipo_ganador = None
             # partido.partido_jugado = False
             # partido.goles_equipo_a = 0
             # partido.goles_equipo_b = 0
