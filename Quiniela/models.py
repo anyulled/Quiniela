@@ -109,7 +109,7 @@ def calcular_puntaje_pronosticos(partido):
 def calcular_puntos_usuario():
     usuarios = User.objects.all()
     for usuario in usuarios:
-        pronosticos_usuario = Pronostico.objects.all().filter(usuario=usuario)
+        pronosticos_usuario = Pronostico.objects.all().filter(usuario=usuario, partido__partido_jugado=True)
         usuario.perfil.puntos = 0
         for pronostico in pronosticos_usuario:
             usuario.perfil.puntos += pronostico.puntos
@@ -132,7 +132,7 @@ class Equipo(models.Model):
         ordering = ["grupo__nombre", "-puntos", "nombre"]
 
     def __unicode__(self):
-        return self.nombre
+        return unicode(self.nombre)
 
     def goles_diferencia(self):
         return self.goles_a_favor - self.goles_en_contra
@@ -176,7 +176,7 @@ class Partido(models.Model):
     titulo.short_description = "Partido"
 
     def __unicode__(self):
-        return '%s vs %s' % (unicode(self.equipo_a), unicode(self.equipo_b))
+        return '%s vs %s' % (unicode(self.equipo_a.nombre), unicode(self.equipo_b.nombre))
 
     def es_pasado(self):
         return self.fecha < date.today()
@@ -234,12 +234,18 @@ class Perfil(models.Model):
     usuario = models.OneToOneField(User)
     puntos = models.IntegerField(default=0)
 
+    def __str__(self):
+        return unicode(self.usuario)
+
+    def __unicode__(self):
+        return unicode(self.usuario)
+
 
 class Pronostico(models.Model):
     partido = models.ForeignKey(Partido)
     usuario = models.ForeignKey(User)
-    goles_equipo_a = models.IntegerField(null=False)
-    goles_equipo_b = models.IntegerField(null=False)
+    goles_equipo_a = models.IntegerField(null=False, default=0)
+    goles_equipo_b = models.IntegerField(null=False, default=0)
     puntos = models.IntegerField(default=0)
 
     class Meta:

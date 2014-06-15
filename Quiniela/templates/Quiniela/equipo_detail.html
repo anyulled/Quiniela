@@ -4,7 +4,7 @@
 {% endblock %}
 {% block contenido %}
     <div class="page-header">
-        <h2> <img src="{{ equipo.url_bandera }}" height="32" class="pull-left" /> {{ equipo.nombre }}
+        <h2><img src="{{ equipo.url_bandera }}" height="32" class="pull-left"/> {{ equipo.nombre }}
             <small>{{ equipo.grupo }}</small>
         </h2>
     </div>
@@ -26,17 +26,26 @@
             <td>{{ equipo.puntos }}</td>
         </tr>
     </table>
+    {% regroup partidos by tipo_partido as total_partidos %}
     <h2>Partidos</h2>
-    <table class="table table-bordered table-responsive table-striped">
-        <tr>
-            <th class="active">Partido</th>
-            <th class="active">Fecha</th>
-        </tr>
-        {% for partido in partidos %}
+    {% for total_partido in total_partidos %}
+        <h3>{% if total_partido.grouper == 'C' %}
+            Clasificatorio
+        {% else %}
+            Eliminatorio
+        {% endif %} </h3>
+        <table class="table table-bordered table-responsive table-striped">
             <tr>
-                <td><a href="{% url 'detalle_partido' partido.id %}">{{ partido }}</a></td>
-                <td>{{ partido.fecha }}</td>
+                <th class="active">Partido</th>
+                <th class="active">Fecha</th>
             </tr>
-        {% endfor %}
-    </table>
+            {% for partido in total_partido.list %}
+                <tr>
+                    <td><a href="{% url 'detalle_partido' partido.id %}">{{ partido }}</a></td>
+                    <td>{{ partido.fecha }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endfor %}
+
 {% endblock %}

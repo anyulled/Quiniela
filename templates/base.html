@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load staticfiles %} {% load humanize %}
 <!doctype html>
 <html lang="es-VE">
 <head>
@@ -38,6 +38,7 @@
                         {% if user.is_superuser %}
                             <li><a href="/admin" target="_blank">Admin</a></li>
                             <li><a href="{% url "simular_quiniela" %}" target="_blank">Simular Quiniela</a></li>
+                            <li><a href="{% url "cargar_pronostico" %}" target="_blank">Cargar Pronósticos</a></li>
                         {% endif %}
                         <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
                     {% else %}
@@ -49,7 +50,7 @@
         </div>
     </nav>
     <div class="page-header">
-        <img src="http://img.fifa.com/images/fwc/2014/brand/header.es.png?v=130455967371601304" width="100%"/>
+        <img src="http://img.fifa.com/images/fwc/2014/brand/header.es.png?v=130455967371601304" height="120"/>
     </div>
     {% block contenido %}
 

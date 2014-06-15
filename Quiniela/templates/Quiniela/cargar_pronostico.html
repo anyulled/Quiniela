@@ -3,23 +3,36 @@
     Cargar Pronóstico
 {% endblock %}
 {% block contenido %}
-    <h1>Cargar Pronóstico</h1>
+    <div class="page-header">
+        <h2>Cargar Pronóstico</h2>
+    </div>
     {% if mensaje %}
         <p class="alert alert-warning">{{ mensaje }}</p>
     {% endif %}
-    <table class="table table-responsive table-bordered">
-        <form action="." method="post">
-            {% csrf_token %}
-            {{ pronosticoSet.management_form }}
-            {% for formulario in pronosticoSet %}
+    <p>{{ datos.0.partido.equipo_a }}</p>
+    <form action="." method="post">
+        {% csrf_token %}
+        {{ formularios.management_form }}
+        <table class="table table-responsive table-bordered">
+            {% for formulario in formularios %}
+                {{ formulario.partido }}
+                {{ formulario.usuario }}
+                <tr>
+                    <td class="align_right">{{ datos.forloop.counter0.partido.equipo_a }}</td>
+                    <td class="align_right">{{ formulario.goles_equipo_a.label_tag }}</td>
+                    <td class="align_right">{{ formulario.goles_equipo_a }}</td>
+                    <td class="align-left">{{ formulario.goles_equipo_b }}</td>
+                    <td class="align-left">{{ formulario.goles_equipo_b.label_tag }}</td>
+                    <td class="align-left">{{ forloop.counter0 }}</td>
+                </tr>
                 {# formulario.errors #}
-                {{ formulario.as_table }}
+                {#                {{ formulario.as_table }}#}
             {% endfor %}
             <tr>
                 <td colspan="4" class="align_center">
                     <input type="submit" value="Cargar" class="btn btn-primary"/>
                 </td>
             </tr>
-        </form>
-    </table>
+        </table>
+    </form>
 {% endblock %}

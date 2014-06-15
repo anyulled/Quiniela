@@ -1,40 +1,42 @@
 import random
-import user
+from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
-from django.forms import Field
 from django.forms.formsets import formset_factory
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
+from django.template import RequestContext
+from django.utils.decorators import method_decorator
 from django.views.generic import FormView, UpdateView, TemplateView, DetailView, ListView
-
 from Quiniela.forms import PronosticoForm, UsuarioForm
 from Quiniela.models import *
 
 
 class CargarPronostico(FormView):
-    partidos = Partido.objects.all()
-    data_inicial = []
-    pronostico_form_set = formset_factory(PronosticoForm, extra=0)
-    mensaje = "seleccione un usuario"
-    form_class = pronostico_form_set
 
-    def get(self, request, data_inicial=data_inicial, form_set=pronostico_form_set, *args, **kwargs):
-        pronostico_set = form_set()
-        usuario_seleccionado = user
+    @method_decorator(login_required)
+    def get(self, request, *args, **kwargs):
+        data_inicial = []
+        pronostico_form_set = formset_factory(PronosticoForm, extra=0)
         for partido in Partido.objects.all():
             pron_usu_partido, creado = Pronostico.objects.get_or_create(partido=partido,
-                                                                        usuario=usuario_seleccionado,
+                                                                        usuario=request.user,
                                                                         defaults={"goles_equipo_a": 0,
                                                                                   "goles_equipo_b": 0
-                                                                        })
+                                                                                  })
             data_inicial.append({"pk": pron_usu_partido.pk,
                                  "partido": pron_usu_partido.partido,
                                  "usuario": pron_usu_partido.usuario,
                                  "goles_equipo_a": pron_usu_partido.goles_equipo_a,
                                  "goles_equipo_b": pron_usu_partido.goles_equipo_b})
-            pronostico_set = form_set(initial=data_inicial)
-        return render_to_response("Quiniela/cargar_pronostico.html", {"pronostico": pronostico_set})
+            formularios = pronostico_form_set(initial=data_inicial)
+        return render_to_response("Quiniela/cargar_pronostico.html",
+                                  {"request": request,
+                                   "formularios": formularios,
+                                   "datos": formularios.initial},
+                                  context_instance=RequestContext(request))
 
-    def post(self, request, pronostico_form_set=pronostico_form_set, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
+        pronostico_form_set = formset_factory(PronosticoForm)
         pronostico_set = pronostico_form_set(request.POST)
         for pronostico in pronostico_set:
             pronostico_db, creado = Pronostico.objects.get_or_create(partido=pronostico.partido,
@@ -48,7 +50,7 @@ class CargarPronostico(FormView):
             else:
                 pronostico.pk = pronostico.pk
                 pronostico.save()
-        pass
+        return HttpResponseRedirect(reverse_lazy("pronostico_cargado"))
 
 
 class ListadoGrupos(ListView):
@@ -157,6 +159,8 @@ class SimularQuiniela(TemplateView):
             equipo.partidos_empatados = 0
             equipo.partidos_perdidos = 0
             equipo.puntos = 0
+            equipo.goles_a_favor = 0
+            equipo.goles_en_contra = 0
             equipo.save()
         for partido in Partido.objects.all():
             partido.equipo_ganador = None
