@@ -1,14 +1,23 @@
-import random
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
+from django.forms.models import inlineformset_factory
 from django.forms.formsets import formset_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.decorators import method_decorator
-from django.views.generic import FormView, UpdateView, TemplateView, DetailView, ListView
+from django.views.generic import FormView, UpdateView, TemplateView, DetailView, ListView, CreateView
 from Quiniela.forms import PronosticoForm, UsuarioForm
 from Quiniela.models import *
+
+
+class ActualizarPronostico(CreateView):
+    def get(self, request, *args, **kwargs):
+        usuario_pronostico_set = inlineformset_factory(Usuario, Pronostico)
+        usuario = request.user
+        formset = usuario_pronostico_set(instance=usuario)
+        self.form_class = formset
+        return super(ActualizarPronostico, self).get(request, *args, **kwargs)
 
 
 class CargarPronostico(FormView):
@@ -38,18 +47,19 @@ class CargarPronostico(FormView):
     def post(self, request, *args, **kwargs):
         pronostico_form_set = formset_factory(PronosticoForm)
         pronostico_set = pronostico_form_set(request.POST)
-        for pronostico in pronostico_set:
-            pronostico_db, creado = Pronostico.objects.get_or_create(partido=pronostico.partido,
-                                                                     usuario=pronostico.usuario,
-                                                                     defaults={
-                                                                         "goles_equipo_a": pronostico.goles_equipo_a,
-                                                                         "goles_equipo_b": pronostico.goles_equipo_b
-                                                                     })
-            if creado:
-                pronostico_db.save()
-            else:
-                pronostico.pk = pronostico.pk
-                pronostico.save()
+        pronostico_set.save()
+        # for pronostico in pronostico_set:
+        #     pronostico_db, creado = Pronostico.objects.get_or_create(partido=pronostico.partido,
+        #                                                              usuario=pronostico.usuario,
+        #                                                              defaults={
+        #                                                                  "goles_equipo_a": pronostico.goles_equipo_a,
+        #                                                                  "goles_equipo_b": pronostico.goles_equipo_b
+        #                                                              })
+        #     if creado:
+        #         pronostico_db.save()
+        #     else:
+        #         pronostico.pk = pronostico.pk
+        #         pronostico.save()
         return HttpResponseRedirect(reverse_lazy("pronostico_cargado"))
 
 
