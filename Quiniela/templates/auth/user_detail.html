@@ -4,27 +4,38 @@
 {% endblock %}
 {% block contenido %}
     <h2>{{ usuario.first_name|capfirst }} {{ usuario.last_name|capfirst }} &raquo;
-        Puntos {{ usuario.perfil.puntos|default:0 }}</h2>
+        <small>{{ usuario.perfil.puntos|default:0 }} Puntos</small>
+    </h2>
     <h3>Pronósticos</h3>
-    <table class="table table-responsive">
+    <table class="table table-responsive table-hover">
         <tr>
             <th>Partido</th>
             <th>Score</th>
             <th>Pronóstico</th>
             <th>Puntos</th>
         </tr>
-        {% for pronostico in usuario.pronostico_set.all %}
+        {% regroup usuario.pronostico_set.all by partido.fecha as pronosticos %}
+        {% for pronostico_group in pronosticos %}
             <tr>
-                <td>
-                    <img src="{{ pronostico.partido.equipo_a.url_bandera }}" alt="{{ pronostico.partido.equipo_a }}" height="24" border="1"/>
-                    -
-                    <img src="{{ pronostico.partido.equipo_b.url_bandera }}" alt="{{ pronostico.partido.equipo_b }}" height="24" border="1"/>
-                    {{ pronostico.partido }}
-                </td>
-                <td class="align_center">{{ pronostico.partido.goles_equipo_a }}:{{ pronostico.partido.goles_equipo_b }}</td>
-                <td class="align_center">{{ pronostico.goles_equipo_a }}:{{ pronostico.goles_equipo_b }}</td>
-                <td class="align_right">{{ pronostico.puntos }}</td>
+                <th colspan="4" class="active">{{ pronostico_group.grouper }}</th>
             </tr>
+            {% for pronostico in pronostico_group.list %}
+                <tr>
+                    <td {% if not  pronostico.partido.partido_jugado %} colspan="4" {% endif %} >
+                        <img src="{{ pronostico.partido.equipo_a.url_bandera }}" alt="{{ pronostico.partido.equipo_a }}"
+                             height="24" border="1"/>
+                        -
+                        <img src="{{ pronostico.partido.equipo_b.url_bandera }}" alt="{{ pronostico.partido.equipo_b }}"
+                             height="24" border="1"/>
+                        <a href="{%  url "detalle_partido" pronostico.partido.id %}">{{ pronostico.partido }}</a>
+                    </td>
+                    {% if pronostico.partido.partido_jugado %}
+                        <td class="align_center">{{ pronostico.partido.goles_equipo_a }}:{{ pronostico.partido.goles_equipo_b }}</td>
+                        <td class="align_center">{{ pronostico.goles_equipo_a }}:{{ pronostico.goles_equipo_b }}</td>
+                        <td class="align_right">{{ pronostico.puntos }}</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
         {% endfor %}
     </table>
 {% endblock %}

@@ -41,7 +41,16 @@
             </tr>
             {% for partido in total_partido.list %}
                 <tr>
-                    <td><a href="{% url 'detalle_partido' partido.id %}">{{ partido }}</a></td>
+                    <td>
+                        <a href="{% url 'detalle_partido' partido.id %}">{{ partido }}
+                            {% if partido.partido_jugado %}
+                                <span class="badge pull-right">
+                            {{ partido.goles_equipo_a }} - {{ partido.goles_equipo_b }}
+                        </span>
+                            {% endif %}
+
+                        </a>
+                    </td>
                     <td>{{ partido.fecha }}</td>
                 </tr>
             {% endfor %}

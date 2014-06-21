@@ -6,7 +6,13 @@ from django.db.models import Q
 from django.db.models import F
 from django.utils import timezone
 
-tipo_partido_opciones = (["C", "Clasificatorio"], ["E", "Eliminatorio"])
+tipo_partido_opciones = (
+    ["C", "Clasificatorio"],
+    ["E", "Eliminatorio"],
+    ["O", "Octavos de Final"],
+    ["CU", "Cuartos de Final"],
+    ["S", "Semifinal"], ["F", "Final"],
+    ["TL", "Tercer Lugar"])
 
 
 def contar_goles_a_favor(equipo):

@@ -17,8 +17,8 @@ urlpatterns = patterns('',
                        url(r'^grupos/$', ListadoGrupos.as_view(), name="listado_grupos"),
 
                        url(r'^partidos/$', ListadoPartidos.as_view(), name="listado_partidos"),
-                       url(r'^partidos/(?P<pk>\d+)$', DetallePartido.as_view(), name="detalle_partido"),
-
+                       url(r'^partidos/(?P<pk>\d+)/$', DetallePartido.as_view(), name="detalle_partido"),
+                       url(r'^partidos/(?P<pk>\d+)/editar/$', EditarPartido.as_view(), name="editar_partido"),
                        url(r'^$', ListadoEquipos.as_view(), name="listado_equipos"),
                        url(r'^equipos/(?P<pk>\d+)$', DetalleEquipo.as_view(), name="detalle_equipo"),
 

@@ -13,7 +13,9 @@
                     <img src="{{ partido.equipo_a.url_bandera }}" alt="{{ partido.equipo_a }}" height="24" border="1"/> -
                     <img src="{{ partido.equipo_b.url_bandera }}" alt="{{ partido.equipo_b }}" height="24" border="1"/>
                     <a href="{% url 'detalle_partido' partido.id %}">{{ partido }}</a>
-                    <span class="badge">{{ partido.goles_equipo_a }}-{{ partido.goles_equipo_b }}</span>
+                    {% if partido.partido_jugado %}
+                        <span class="badge">{{ partido.goles_equipo_a }}-{{ partido.goles_equipo_b }}</span>
+                    {% endif %}
                 </li>
             {% endfor %}
         {% endfor %}

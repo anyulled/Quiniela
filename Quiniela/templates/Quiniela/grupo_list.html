@@ -7,21 +7,64 @@
         <h2>Listado de Grupos<small> Equipos Clasificados</small></h2>
     </div>
     <div class="row">
-    {% for grupo in grupo_list %}
-        <div class="col-md-6">
-            <div class="list-group">
-            <a href="#" class="list-group-item active">
-                Grupo {{ grupo.nombre }}
-            </a>
-            {% for equipo in grupo.equipos_clasificados %}
-                <a href="{% url "detalle_equipo" equipo.id %}" class="list-group-item">
-                    <img class="bandera" src="{{ equipo.url_bandera }}" height="24"/>
-                    {{ equipo.nombre }}
-                    <span class="badge">Pts. {{ equipo.puntos }} | DG. {{ equipo.goles_diferencia }}</span>
-                </a>
-            {% endfor %}
-        </div>
-        </div>
-    {% endfor %}
+        {% for grupo in grupo_list %}
+            <div class="col-md-6">
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">
+                        Grupo {{ grupo.nombre }}
+                    </a>
+                    {% for equipo in grupo.equipos_clasificados %}
+                        <a href="{% url "detalle_equipo" equipo.id %}" class="list-group-item">
+                            <img class="bandera" src="{{ equipo.url_bandera }}" height="24"/>
+                            {{ equipo.nombre }}
+                            <span class="badge">Pts. {{ equipo.puntos }} | DG. {{ equipo.goles_diferencia }}</span>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
     </div>
+    {% comment %}ronda eliminatoria{% endcomment %}
+    <div class="row">
+        <div class="col-md12">
+            <h2>Ronda Eliminatoria</h2>
+        </div>
+    </div>
+    <table class="table table-bordered table-responsive table-hover">
+        <tr class="active">
+            <th class="info" colspan="8">Octavos de Final</th>
+        </tr>
+        <tr>
+            <td><p class="text-center">{{ grupo_list.0.equipos_clasificados.0.nombre|capfirst }} vs. {{ grupo_list.1.equipos_clasificados.1.nombre }} </p></td>
+            <td><p class="text-center">{{ grupo_list.0.equipos_clasificados.1.nombre|capfirst }} vs. {{ grupo_list.1.equipos_clasificados.0.nombre }}</p></td>
+            <td><p class="text-center">{{ grupo_list.2.equipos_clasificados.0.nombre|capfirst }} vs. {{ grupo_list.3.equipos_clasificados.1.nombre }}</p></td>
+            <td><p class="text-center">{{ grupo_list.2.equipos_clasificados.1.nombre|capfirst }} vs. {{ grupo_list.3.equipos_clasificados.0.nombre }}</p></td>
+            <td><p class="text-center">{{ grupo_list.4.equipos_clasificados.0.nombre|capfirst }} vs. {{ grupo_list.5.equipos_clasificados.1.nombre }}</p></td>
+            <td><p class="text-center">{{ grupo_list.4.equipos_clasificados.1.nombre|capfirst }} vs. {{ grupo_list.5.equipos_clasificados.0.nombre }}</p></td>
+            <td><p class="text-center">{{ grupo_list.6.equipos_clasificados.0.nombre|capfirst }} vs. {{ grupo_list.7.equipos_clasificados.1.nombre }}</p></td>
+            <td><p class="text-center">{{ grupo_list.6.equipos_clasificados.1.nombre|capfirst }} vs. {{ grupo_list.7.equipos_clasificados.0.nombre }}</p></td>
+        </tr>
+        <tr class="warning">
+            <th colspan="8">Cuatros de Final</th>
+        </tr>
+        <tr>
+            <td colspan="2"><p class="text-center">uno</p></td>
+            <td colspan="2"><p class="text-center">dos</p></td>
+            <td colspan="2"><p class="text-center">tres</p></td>
+            <td colspan="2"><p class="text-center">cuatro</p></td>
+        </tr>
+        <tr class="danger">
+            <th colspan="8">Semifinal</th>
+        </tr>
+        <tr>
+            <td colspan="4"><p class="text-center">uno</p></td>
+            <td colspan="4"><p class="text-center">dos</p></td>
+        </tr>
+        <tr class="success">
+            <th colspan="8">Final</th>
+        </tr>
+        <tr>
+            <td colspan="8"><p class="text-center">uno</p></td>
+        </tr>
+    </table>
 {% endblock %}
