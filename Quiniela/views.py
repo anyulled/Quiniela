@@ -1,4 +1,3 @@
-import random
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
 from django.forms.formsets import formset_factory
@@ -7,16 +6,15 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.decorators import method_decorator
 from django.views.generic import FormView, UpdateView, TemplateView, DetailView, ListView
-from Quiniela.forms import PronosticoForm, UsuarioForm
-from Quiniela.models import *
+from Quiniela.forms import *
 
 
 class CargarPronostico(FormView):
-
     @method_decorator(login_required)
     def get(self, request, *args, **kwargs):
         data_inicial = []
         pronostico_form_set = formset_factory(PronosticoForm, extra=0)
+        # formularios = pronostico_form_set()
         for partido in Partido.objects.all():
             pron_usu_partido, creado = Pronostico.objects.get_or_create(partido=partido,
                                                                         usuario=request.user,
@@ -38,18 +36,24 @@ class CargarPronostico(FormView):
     def post(self, request, *args, **kwargs):
         pronostico_form_set = formset_factory(PronosticoForm)
         pronostico_set = pronostico_form_set(request.POST)
-        for pronostico in pronostico_set:
-            pronostico_db, creado = Pronostico.objects.get_or_create(partido=pronostico.partido,
-                                                                     usuario=pronostico.usuario,
-                                                                     defaults={
-                                                                         "goles_equipo_a": pronostico.goles_equipo_a,
-                                                                         "goles_equipo_b": pronostico.goles_equipo_b
-                                                                     })
-            if creado:
-                pronostico_db.save()
-            else:
-                pronostico.pk = pronostico.pk
-                pronostico.save()
+        for i in range(0, 47, 1):
+            partido_form = pronostico_set.data["form-" + str(i) + "-partido"]
+            usuario_form = request.user
+            goles_equipo_a_form = pronostico_set.data["form-" + str(i) + "-goles_equipo_a"]
+            goles_equipo_b_form = pronostico_set.data["form-" + str(i) + "-goles_equipo_b"]
+            pronostico, creado = Pronostico.objects.get_or_create(
+                partido=partido_form,
+                usuario=usuario_form,
+                defaults={
+                    "goles_equipo_a": goles_equipo_a_form,
+                    "goles_equipo_b": goles_equipo_b_form
+                }
+            )
+            if not creado:
+                pronostico.goles_equipo_a = goles_equipo_a_form
+                pronostico.goles_equipo_b = goles_equipo_b_form
+            pronostico.save()
+
         return HttpResponseRedirect(reverse_lazy("pronostico_cargado"))
 
 
@@ -94,12 +98,21 @@ class DetallePartido(DetailView):
         context = super(DetallePartido, self).get_context_data(**kwargs)
         partido = kwargs.get('object')
         usuario = context['view'].request.user
-        context['pronostico'], creado = Pronostico.objects.get_or_create(partido=partido, usuario_id=usuario.id,
+        context['pronostico'], creado = Pronostico.objects.get_or_create(partido=partido,
+                                                                         usuario_id=usuario.id,
                                                                          defaults={
                                                                              "goles_equipo_a": 0,
                                                                              "goles_equipo_b": 0
                                                                          })
         return context
+
+
+class EditarPartido(UpdateView):
+    model = Partido
+    form_class = PartidoForm
+
+    def get_success_url(self):
+        return reverse_lazy("detalle_partido", args=[self.object.pk])
 
 
 class DetalleEquipo(DetailView):

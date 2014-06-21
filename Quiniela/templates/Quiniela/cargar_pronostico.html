@@ -6,8 +6,8 @@
     <div class="page-header">
         <h2>Cargar Pronóstico</h2>
     </div>
-    {% if mensaje %}
-        <p class="alert alert-warning">{{ mensaje }}</p>
+    {% if formularios.errors %}
+        <p class="alert alert-warning">{{ formularios.errors }}</p>
     {% endif %}
     <p>{{ datos.0.partido.equipo_a }}</p>
     <form action="." method="post">
@@ -15,21 +15,30 @@
         {{ formularios.management_form }}
         <table class="table table-responsive table-bordered">
             {% for formulario in formularios %}
-                {{ formulario.partido }}
-                {{ formulario.usuario }}
-                <tr>
-                    <td class="align_right">{{ datos.forloop.counter0.partido.equipo_a }}</td>
-                    <td class="align_right">{{ formulario.goles_equipo_a.label_tag }}</td>
-                    <td class="align_right">{{ formulario.goles_equipo_a }}</td>
-                    <td class="align-left">{{ formulario.goles_equipo_b }}</td>
-                    <td class="align-left">{{ formulario.goles_equipo_b.label_tag }}</td>
-                    <td class="align-left">{{ forloop.counter0 }}</td>
-                </tr>
-                {# formulario.errors #}
-                {#                {{ formulario.as_table }}#}
+                {% for datos_partido in datos %}
+                    {{ formulario.id }}
+                    {{ formulario.partido }}
+                    {{ formulario.usuario }}
+                    {% if forloop.counter == forloop.parentloop.counter %}
+                        <tr>
+                            <td class="align_right">
+                                <img src="{{ datos_partido.partido.equipo_a.url_bandera }}" height="24"
+                                     alt="{{ datos_partido.partido.equipo_a.nombre }}"/>
+                            </td>
+                            <td class="align_right"> {{ datos_partido.partido.equipo_a.nombre }} </td>
+                            <td class="align_right">{{ formulario.goles_equipo_a }}</td>
+                            <td class="align-left">{{ formulario.goles_equipo_b }}</td>
+                            <td class="align-left">{{ datos_partido.partido.equipo_b.nombre }}</td>
+                            <td class="align-left">
+                                <img src="{{ datos_partido.partido.equipo_b.url_bandera }}" height="24"
+                                                        alt="{{ datos_partido.partido.equipo_b.nombre }}"/>
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
             {% endfor %}
             <tr>
-                <td colspan="4" class="align_center">
+                <td colspan="6" class="align_center">
                     <input type="submit" value="Cargar" class="btn btn-primary"/>
                 </td>
             </tr>

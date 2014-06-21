@@ -19,3 +19,10 @@ class PronosticoForm(forms.ModelForm):
 
 class UsuarioForm(UserCreationForm):
     pass
+
+
+class PartidoForm(forms.ModelForm):
+
+    class Meta:
+        model = Partido
+        exclude = ["tipo_partido", "equipo_ganador", "fecha", "equipo_a", "equipo_b"]

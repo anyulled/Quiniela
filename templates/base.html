@@ -31,14 +31,13 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
-                        <li class="active"><a>Usuario</a></li>
-                        <li>
+                        <li class="active">
                             <a href="{% url 'detalle_usuario' user.id %}">{{ user.first_name|capfirst }} {{ user.last_name|capfirst }}</a>
                         </li>
                         {% if user.is_superuser %}
                             <li><a href="/admin" target="_blank">Admin</a></li>
                             <li><a href="{% url "simular_quiniela" %}" target="_blank">Simular Quiniela</a></li>
-                            <li><a href="{% url "cargar_pronostico" %}" target="_blank">Cargar Pronósticos</a></li>
+                            <li><a href="{% url "cargar_pronostico" %}">Cargar Pronósticos</a></li>
                         {% endif %}
                         <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
                     {% else %}
