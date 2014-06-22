@@ -4,12 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Quiniela Brasil 2014:: {% block titulo %} {% endblock %}</title>
-    <link rel="stylesheet" href="{% static "Quiniela/css/default.css" %}"/>
     <link rel="stylesheet" href="{% static "Quiniela/style.css" %}"/>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:400,300,600' rel='stylesheet'
+          type='text/css'>
+    <style>
+        * {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        small {
+            font-family: 'Open Sans Condensed', sans-serif;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -54,6 +64,13 @@
     {% block contenido %}
 
     {% endblock %}
+    <hr/>
+    <footer>
+        <p class="pull-right"><a href="#"><strong>&uarr;</strong> Arriba</a></p>
+
+        <p class="text-center text-muted"><strong>&copy; Aled</strong> <em>Soluciones Multimedia C.
+            A.</em> {% now "Y" %}</p>
+    </footer>
 </div>
 </body>
 </html>

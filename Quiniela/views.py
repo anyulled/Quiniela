@@ -1,12 +1,23 @@
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
+from django.forms.models import inlineformset_factory
 from django.forms.formsets import formset_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.decorators import method_decorator
-from django.views.generic import FormView, UpdateView, TemplateView, DetailView, ListView
+from django.views.generic import FormView, UpdateView, TemplateView, DetailView, ListView, CreateView
+
 from Quiniela.forms import *
+
+
+class CargarPronosticoInlne(CreateView):
+    def get(self, request, *args, **kwargs):
+        usuario_pronostico_set = inlineformset_factory(Usuario, Pronostico)
+        usuario = request.user
+        formset = usuario_pronostico_set(instance=usuario)
+        self.form_class = formset
+        return super(ActualizarPronostico, self).get(request, *args, **kwargs)
 
 
 class CargarPronostico(FormView):
@@ -20,7 +31,7 @@ class CargarPronostico(FormView):
                                                                         usuario=request.user,
                                                                         defaults={"goles_equipo_a": 0,
                                                                                   "goles_equipo_b": 0
-                                                                                  })
+                                                                        })
             data_inicial.append({"pk": pron_usu_partido.pk,
                                  "partido": pron_usu_partido.partido,
                                  "usuario": pron_usu_partido.usuario,
@@ -84,6 +95,16 @@ class ListadoPartidos(ListView):
 
     def get_queryset(self):
         return Partido.objects.all().order_by("fecha")
+
+
+class DetalleGrupo(DetailView):
+    model = Grupo
+    context_object_name = "grupo"
+
+    def get_context_data(self, **kwargs):
+        context = super(DetalleGrupo, self).get_context_data(**kwargs)
+        context['partidos'] = Partido.objects.filter(equipo_a__grupo=self.object)
+        return context
 
 
 class DetalleUsuario(DetailView):

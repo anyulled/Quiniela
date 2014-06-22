@@ -4,13 +4,16 @@
 {% endblock %}
 {% block contenido %}
     <div class="page-header">
-        <h2>Listado de Grupos<small> Equipos Clasificados</small></h2>
+        <h2>Listado de Grupos
+            <small> Equipos Clasificados</small>
+        </h2>
     </div>
+
     <div class="row">
         {% for grupo in grupo_list %}
             <div class="col-md-6">
                 <div class="list-group">
-                    <a href="#" class="list-group-item active">
+                    <a href="{% url "detalle_grupo" grupo.id %}" class="list-group-item active">
                         Grupo {{ grupo.nombre }}
                     </a>
                     {% for equipo in grupo.equipos_clasificados %}
@@ -24,25 +27,96 @@
             </div>
         {% endfor %}
     </div>
-    {% comment %}ronda eliminatoria{% endcomment %}
+    {% comment %} Ronda Eliminatoria {% endcomment %}
     <div class="row">
         <div class="col-md12">
             <h2>Ronda Eliminatoria</h2>
         </div>
     </div>
     <table class="table table-bordered table-responsive table-hover">
-        <tr class="active">
+        <tr class="default">
             <th class="info" colspan="8">Octavos de Final</th>
         </tr>
         <tr>
-            <td><p class="text-center">{{ grupo_list.0.equipos_clasificados.0.nombre|capfirst }} vs. {{ grupo_list.1.equipos_clasificados.1.nombre }} </p></td>
-            <td><p class="text-center">{{ grupo_list.0.equipos_clasificados.1.nombre|capfirst }} vs. {{ grupo_list.1.equipos_clasificados.0.nombre }}</p></td>
-            <td><p class="text-center">{{ grupo_list.2.equipos_clasificados.0.nombre|capfirst }} vs. {{ grupo_list.3.equipos_clasificados.1.nombre }}</p></td>
-            <td><p class="text-center">{{ grupo_list.2.equipos_clasificados.1.nombre|capfirst }} vs. {{ grupo_list.3.equipos_clasificados.0.nombre }}</p></td>
-            <td><p class="text-center">{{ grupo_list.4.equipos_clasificados.0.nombre|capfirst }} vs. {{ grupo_list.5.equipos_clasificados.1.nombre }}</p></td>
-            <td><p class="text-center">{{ grupo_list.4.equipos_clasificados.1.nombre|capfirst }} vs. {{ grupo_list.5.equipos_clasificados.0.nombre }}</p></td>
-            <td><p class="text-center">{{ grupo_list.6.equipos_clasificados.0.nombre|capfirst }} vs. {{ grupo_list.7.equipos_clasificados.1.nombre }}</p></td>
-            <td><p class="text-center">{{ grupo_list.6.equipos_clasificados.1.nombre|capfirst }} vs. {{ grupo_list.7.equipos_clasificados.0.nombre }}</p></td>
+            <td>
+                <p class="text-center">
+                    <img src="{{ grupo_list.0.equipos_clasificados.0.url_bandera }}" alt="" height="24"/> -
+                    <img src="{{ grupo_list.1.equipos_clasificados.1.url_bandera }}" alt="" height="24"/>
+                </p>
+
+                <p class="text-center">
+                    {{ grupo_list.0.equipos_clasificados.0.nombre|capfirst }}
+                    vs. {{ grupo_list.1.equipos_clasificados.1.nombre }} </p>
+            </td>
+            <td>
+                <p class="text-center">
+                    <img src="{{ grupo_list.0.equipos_clasificados.1.url_bandera }}" alt="" height="24"/> -
+                    <img src="{{ grupo_list.1.equipos_clasificados.0.url_bandera }}" alt="" height="24"/>
+                </p>
+
+                <p class="text-center">
+                    {{ grupo_list.0.equipos_clasificados.1.nombre|capfirst }}
+                    vs. {{ grupo_list.1.equipos_clasificados.0.nombre }}</p>
+            </td>
+            <td>
+                <p class="text-center">
+                    <img src="{{ grupo_list.2.equipos_clasificados.0.url_bandera }}" alt="" height="24"/> -
+                    <img src="{{ grupo_list.3.equipos_clasificados.1.url_bandera }}" alt="" height="24"/>
+                </p>
+
+                <p class="text-center">
+                    {{ grupo_list.2.equipos_clasificados.0.nombre|capfirst }}
+                    vs. {{ grupo_list.3.equipos_clasificados.1.nombre }}</p>
+            </td>
+            <td>
+                <p class="text-center">
+                    <img src="{{ grupo_list.2.equipos_clasificados.1.url_bandera }}" alt="" height="24"/> -
+                    <img src="{{ grupo_list.3.equipos_clasificados.0.url_bandera }}" alt="" height="24"/>
+                </p>
+
+                <p class="text-center">
+                    {{ grupo_list.2.equipos_clasificados.1.nombre|capfirst }}
+                    vs. {{ grupo_list.3.equipos_clasificados.0.nombre }}</p>
+            </td>
+            <td>
+                <p class="text-center">
+                    <img src="{{ grupo_list.4.equipos_clasificados.0.url_bandera }}" alt="" height="24"/> -
+                    <img src="{{ grupo_list.5.equipos_clasificados.1.url_bandera }}" alt="" height="24"/>
+                </p>
+
+                <p class="text-center">
+                    {{ grupo_list.4.equipos_clasificados.0.nombre|capfirst }}
+                    vs. {{ grupo_list.5.equipos_clasificados.1.nombre }}</p>
+            </td>
+            <td>
+                <p class="text-center">
+                    <img src="{{ grupo_list.4.equipos_clasificados.1.url_bandera }}" alt="" height="24"/> -
+                    <img src="{{ grupo_list.5.equipos_clasificados.0.url_bandera }}" alt="" height="24"/>
+                </p>
+
+                <p class="text-center">
+                    {{ grupo_list.4.equipos_clasificados.1.nombre|capfirst }}
+                    vs. {{ grupo_list.5.equipos_clasificados.0.nombre }}</p>
+            </td>
+            <td>
+                <p class="text-center">
+                    <img src="{{ grupo_list.6.equipos_clasificados.0.url_bandera }}" alt="" height="24"/> -
+                    <img src="{{ grupo_list.7.equipos_clasificados.1.url_bandera }}" alt="" height="24"/>
+                </p>
+
+                <p class="text-center">{{ grupo_list.6.equipos_clasificados.0.nombre|capfirst }}
+                    vs. {{ grupo_list.7.equipos_clasificados.1.nombre }}</p>
+            </td>
+            <td>
+                <p class="text-center">
+                    <img src="{{ grupo_list.6.equipos_clasificados.1.url_bandera }}" alt="" height="24"/> -
+                    <img src="{{ grupo_list.7.equipos_clasificados.0.url_bandera }}" alt="" height="24"/>
+                </p>
+
+                <p class="text-center">
+                    {{ grupo_list.6.equipos_clasificados.1.nombre|capfirst }}
+                    vs. {{ grupo_list.7.equipos_clasificados.0.nombre }}</p>
+            </td>
         </tr>
         <tr class="warning">
             <th colspan="8">Cuatros de Final</th>
@@ -65,6 +139,12 @@
         </tr>
         <tr>
             <td colspan="8"><p class="text-center">uno</p></td>
+        </tr>
+        <tr class="active">
+            <th colspan="8">Tercer Lugar</th>
+        </tr>
+        <tr>
+            <td colspan="8"><p class="text-center">Uno</p></td>
         </tr>
     </table>
 {% endblock %}
