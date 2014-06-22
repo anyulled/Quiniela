@@ -9,7 +9,7 @@
 
     {% regroup equipo_list by grupo as equipos %}
     {% for equipo in equipos %}
-        <h2>{{ equipo.grouper }}</h2>
+        <h2><a href="{% url "detalle_grupo" equipo.grouper.id %}">{{ equipo.grouper }}</a></h2>
         <table class="table table-responsive table-striped table-hover table-bordered">
             <tr class="info">
                 <th colspan="2">Equipo</th>
@@ -42,5 +42,4 @@
             {% endfor %}
         </table>
     {% endfor %}
-
 {% endblock %}
