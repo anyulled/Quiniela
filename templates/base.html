@@ -7,13 +7,40 @@
     <link rel="stylesheet" href="{% static "Quiniela/style.css" %}"/>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:400,300,600' rel='stylesheet'
           type='text/css'>
-    <style>
+    <style media="all">
         * {
             font-family: 'Open Sans', sans-serif;
         }
 
         small {
             font-family: 'Open Sans Condensed', sans-serif;
+        }
+
+        body {
+            background: url("http://img.fifa.com/images/fwc/2014/brand/bg.jpg?v=130480061310043630") center 159px no-repeat;
+        }
+
+        .navbar {
+            background: #326295;
+        }
+
+        .navbar-default .navbar-brand,
+        .navbar-default .navbar-brand:hover,
+        .navbar-default .navbar-brand:focus {
+            color: #f9f9f9;
+        }
+
+        .navbar-default .navbar-nav>li>a,
+        .navbar-default .navbar-nav>li>a:hover,
+        .navbar-default .navbar-nav>li>a:focus {
+            color: #f1f1f1;
+        }
+
+        .navbar-default .navbar-nav>.active>a,
+        .navbar-default .navbar-nav>.active>a:hover,
+        .navbar-default .navbar-nav>.active>a:focus {
+            color: #f0f0f0;
+            background: rgb(51, 114, 166);
         }
     </style>
 </head>
@@ -43,11 +70,11 @@
                     {% if user.is_authenticated %}
                         <li class="active">
                             <a href="{% url 'detalle_usuario' user.id %}">{{ user.first_name|capfirst }} {{ user.last_name|capfirst }}</a>
+                        <li><a href="{% url "cargar_pronostico" %}">Cargar Pronósticos</a></li>
                         </li>
                         {% if user.is_superuser %}
                             <li><a href="/admin" target="_blank">Admin</a></li>
                             <li><a href="{% url "simular_quiniela" %}" target="_blank">Simular Quiniela</a></li>
-                            <li><a href="{% url "cargar_pronostico" %}">Cargar Pronósticos</a></li>
                         {% endif %}
                         <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
                     {% else %}

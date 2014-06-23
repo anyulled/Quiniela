@@ -17,7 +17,7 @@ class CargarPronosticoInlne(CreateView):
         usuario = request.user
         formset = usuario_pronostico_set(instance=usuario)
         self.form_class = formset
-        return super(ActualizarPronostico, self).get(request, *args, **kwargs)
+        return super(CargarPronosticoInlne, self).get(request, *args, **kwargs)
 
 
 class CargarPronostico(FormView):
@@ -118,13 +118,14 @@ class DetallePartido(DetailView):
     def get_context_data(self, **kwargs):
         context = super(DetallePartido, self).get_context_data(**kwargs)
         partido = kwargs.get('object')
-        usuario = context['view'].request.user
-        context['pronostico'], creado = Pronostico.objects.get_or_create(partido=partido,
-                                                                         usuario_id=usuario.id,
-                                                                         defaults={
-                                                                             "goles_equipo_a": 0,
-                                                                             "goles_equipo_b": 0
-                                                                         })
+        if self.request.user.is_authenticated():
+            usuario = self.request.user
+            context['pronostico'], creado = Pronostico.objects.get_or_create(partido=partido,
+                                                                             usuario_id=usuario.id,
+                                                                             defaults={
+                                                                                 "goles_equipo_a": 0,
+                                                                                 "goles_equipo_b": 0
+                                                                             })
         return context
 
 

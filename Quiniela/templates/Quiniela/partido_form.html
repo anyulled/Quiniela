@@ -19,12 +19,12 @@
             <form action="." method="POST" class="form-inline">
                 <div class="form-group">
                     {% csrf_token %}
-                    <label for="id-goles_equipo_agoles_equipo_a">{{ partido.equipo_a }}</label>
+                    <label for="id-goles_equipo_a">{{ partido.equipo_a }}</label>
                     <input name="goles_equipo_a" id="id-goles_equipo_a" type="number" min="0" max="10"
                            class="form-control" value="{{ form.goles_equipo_a.value }}"/>
                 </div>
                 <div class="form-group">
-                    <label for="id-goles_equipo_bgoles_equipo_b">{{ partido.equipo_b }}</label>
+                    <label for="id-goles_equipo_b">{{ partido.equipo_b }}</label>
                     <input name="goles_equipo_b" id="id-goles_equipo_b" type="number" min="0" max="10"
                            class="form-control" value="{{ form.goles_equipo_b.value }}"/>
                 </div>

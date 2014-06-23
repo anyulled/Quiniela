@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import Q
 from django.db.models import F
-from django.utils import timezone
 
 tipo_partido_opciones = (
     ["C", "Clasificatorio"],
