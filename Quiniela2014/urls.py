@@ -35,5 +35,6 @@ urlpatterns = patterns('',
                            name="pronostico_cargado"),
 
                        url(r'^admin/', include(admin.site.urls)),
+                       url('^en_vivo/$', ResultadosEnVivo.as_view(), name="en_vivo"),
                        url(r'^simular_quiniela/', SimularQuiniela.as_view(), name="simular_quiniela")
 )

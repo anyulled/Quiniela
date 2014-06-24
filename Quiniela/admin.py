@@ -8,7 +8,6 @@ class EquiposInline(admin.StackedInline):
 
 
 class AdminPartido(admin.ModelAdmin):
-    # fields = ["equipo_a", "equipo_b", "fecha", "goles_equipo_a", "goles_equipo_b", "tipo_partido", "partido_jugado"]
     fieldsets = (
         ("Partido", {
             "fields": ("fecha", "equipo_a", "equipo_b", "tipo_partido")
@@ -24,8 +23,8 @@ class AdminPartido(admin.ModelAdmin):
 
 
 class AdminEquipo(admin.ModelAdmin):
-    list_display = ['nombre', 'grupo', "puntos"]
-    fields = ["nombre", "grupo", "url_bandera"]
+    list_display = ['codigo', 'nombre', 'grupo', "puntos"]
+    fields = ["nombre", "codigo", "grupo", "url_bandera"]
     list_filter = ["grupo"]
 
 

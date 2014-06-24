@@ -94,7 +94,7 @@ STATICFILES_DIRS = (
 STATIC_ROOT = os.path.join(BASE_DIR, "Quiniela/static")
 TEMPLATE_DIRS = os.path.join(BASE_DIR, "templates")
 STATIC_URL = '/static/'
-
+MEDIA_ROOT = os.path.join(BASE_DIR, "Quiniela/static/Quiniela/img").replace("/", os.pathsep)
 LOGIN_URL = "/login"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT = "/logout"
