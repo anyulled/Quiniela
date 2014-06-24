@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
-from django.db import models
 
 
 class Migration(SchemaMigration):
-
     def forwards(self, orm):
         # Adding model 'Equipo'
         db.create_table(u'Quiniela_equipo', (
@@ -34,11 +31,14 @@ class Migration(SchemaMigration):
         # Adding model 'Partido'
         db.create_table(u'Quiniela_partido', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('equipo_a', self.gf('django.db.models.fields.related.ForeignKey')(related_name='equipo_a', to=orm['Quiniela.Equipo'])),
-            ('equipo_b', self.gf('django.db.models.fields.related.ForeignKey')(related_name='equipo_b', to=orm['Quiniela.Equipo'])),
+            ('equipo_a',
+             self.gf('django.db.models.fields.related.ForeignKey')(related_name='equipo_a', to=orm['Quiniela.Equipo'])),
+            ('equipo_b',
+             self.gf('django.db.models.fields.related.ForeignKey')(related_name='equipo_b', to=orm['Quiniela.Equipo'])),
             ('goles_equipo_a', self.gf('django.db.models.fields.IntegerField')(default=0)),
             ('goles_equipo_b', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('equipo_ganador', self.gf('django.db.models.fields.related.ForeignKey')(related_name='equipo_ganador', to=orm['Quiniela.Equipo'])),
+            ('equipo_ganador', self.gf('django.db.models.fields.related.ForeignKey')(related_name='equipo_ganador',
+                                                                                     to=orm['Quiniela.Equipo'])),
             ('fecha', self.gf('django.db.models.fields.DateField')()),
         ))
         db.send_create_signal(u'Quiniela', ['Partido'])
@@ -77,9 +77,12 @@ class Migration(SchemaMigration):
         },
         u'Quiniela.partido': {
             'Meta': {'object_name': 'Partido'},
-            'equipo_a': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'equipo_a'", 'to': u"orm['Quiniela.Equipo']"}),
-            'equipo_b': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'equipo_b'", 'to': u"orm['Quiniela.Equipo']"}),
-            'equipo_ganador': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'equipo_ganador'", 'to': u"orm['Quiniela.Equipo']"}),
+            'equipo_a': ('django.db.models.fields.related.ForeignKey', [],
+                         {'related_name': "'equipo_a'", 'to': u"orm['Quiniela.Equipo']"}),
+            'equipo_b': ('django.db.models.fields.related.ForeignKey', [],
+                         {'related_name': "'equipo_b'", 'to': u"orm['Quiniela.Equipo']"}),
+            'equipo_ganador': ('django.db.models.fields.related.ForeignKey', [],
+                               {'related_name': "'equipo_ganador'", 'to': u"orm['Quiniela.Equipo']"}),
             'fecha': ('django.db.models.fields.DateField', [], {}),
             'goles_equipo_a': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'goles_equipo_b': ('django.db.models.fields.IntegerField', [], {'default': '0'}),

@@ -4,11 +4,9 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import Q
 from django.db.models import F
-from django.utils import timezone
 
 tipo_partido_opciones = (
     ["C", "Clasificatorio"],
-    ["E", "Eliminatorio"],
     ["O", "Octavos de Final"],
     ["CU", "Cuartos de Final"],
     ["S", "Semifinal"], ["F", "Final"],
@@ -125,6 +123,7 @@ def calcular_puntos_usuario():
 class Equipo(models.Model):
     nombre = models.CharField(max_length=200)
     grupo = models.ForeignKey("Grupo")
+    codigo = models.CharField(default="BRA", null=False, max_length=3)
     partidos_jugados = models.IntegerField(default=0)
     partidos_ganados = models.IntegerField(default=0)
     partidos_perdidos = models.IntegerField(default=0)
@@ -132,7 +131,7 @@ class Equipo(models.Model):
     goles_a_favor = models.IntegerField(default=0)
     goles_en_contra = models.IntegerField(default=0)
     puntos = models.IntegerField(default=0)
-    url_bandera = models.CharField(max_length=500)
+    url_bandera = models.FileField(upload_to="banderas", default="bra.png")
 
     class Meta:
         ordering = ["grupo__nombre", "-puntos", "nombre"]
@@ -162,14 +161,14 @@ class Grupo(models.Model):
 
 
 class Partido(models.Model):
-    equipo_a = models.ForeignKey(Equipo, related_name="equipo_a")
-    equipo_b = models.ForeignKey(Equipo, related_name="equipo_b")
+    equipo_a = models.ForeignKey(Equipo, related_name="equipo_a", null=True)
+    equipo_b = models.ForeignKey(Equipo, related_name="equipo_b", null=True)
     goles_equipo_a = models.IntegerField(default=0)
     goles_equipo_b = models.IntegerField(default=0)
     equipo_ganador = models.ForeignKey(Equipo, related_name="equipo_ganador", null=True)
     tipo_partido = models.CharField(choices=tipo_partido_opciones, max_length=100, null=False)
     partido_jugado = models.BooleanField(default=False)
-    fecha = models.DateField()
+    fecha = models.DateField(null=False)
 
     class Meta:
         ordering = ["fecha"]

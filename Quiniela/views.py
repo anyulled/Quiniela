@@ -1,3 +1,5 @@
+import json
+import requests
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
 from django.forms.models import inlineformset_factory
@@ -7,8 +9,36 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.decorators import method_decorator
 from django.views.generic import FormView, UpdateView, TemplateView, DetailView, ListView, CreateView
-
 from Quiniela.forms import *
+
+
+class ResultadosEnVivo(TemplateView):
+    template_name = "Quiniela/en_vivo.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(ResultadosEnVivo, self).get_context_data(**kwargs)
+        url = "http://worldcup.sfg.io/matches/current"
+        headers = {'content-type': 'application/json'}
+        r = requests.get(url, headers=headers)
+        if r.status_code == 200:
+            # json_raw = ast.literal_eval(r.content)
+            partidos = []
+            json_content = json.loads(r.content)
+            for partido in json_content:
+                partidos.append({
+                    "equipo_a": partido["home_team"]["country"],
+                    "url_bandera_a": Equipo.objects.get(codigo=partido['home_team']['code']).url_bandera,
+                    "goles_equipo_a": partido["home_team"]["goals"],
+                    "equipo_b": partido["away_team"]["country"],
+                    "url_bandera_b": Equipo.objects.get(codigo=partido['away_team']['code']).url_bandera,
+                    "goles_equipo_b": partido["away_team"]["goals"]
+                })
+
+            context["json"] = partidos
+            # context["raw"] = json_raw
+        else:
+            context["json"] = "no hay datos disponibles" + r.status_code
+        return context
 
 
 class CargarPronosticoInlne(CreateView):
@@ -17,7 +47,7 @@ class CargarPronosticoInlne(CreateView):
         usuario = request.user
         formset = usuario_pronostico_set(instance=usuario)
         self.form_class = formset
-        return super(ActualizarPronostico, self).get(request, *args, **kwargs)
+        return super(CargarPronosticoInlne, self).get(request, *args, **kwargs)
 
 
 class CargarPronostico(FormView):
@@ -31,7 +61,7 @@ class CargarPronostico(FormView):
                                                                         usuario=request.user,
                                                                         defaults={"goles_equipo_a": 0,
                                                                                   "goles_equipo_b": 0
-                                                                                  })
+                                                                        })
             data_inicial.append({"pk": pron_usu_partido.pk,
                                  "partido": pron_usu_partido.partido,
                                  "usuario": pron_usu_partido.usuario,
@@ -118,13 +148,14 @@ class DetallePartido(DetailView):
     def get_context_data(self, **kwargs):
         context = super(DetallePartido, self).get_context_data(**kwargs)
         partido = kwargs.get('object')
-        usuario = context['view'].request.user
-        context['pronostico'], creado = Pronostico.objects.get_or_create(partido=partido,
-                                                                         usuario_id=usuario.id,
-                                                                         defaults={
-                                                                             "goles_equipo_a": 0,
-                                                                             "goles_equipo_b": 0
-                                                                         })
+        if self.request.user.is_authenticated():
+            usuario = self.request.user
+            context['pronostico'], creado = Pronostico.objects.get_or_create(partido=partido,
+                                                                             usuario_id=usuario.id,
+                                                                             defaults={
+                                                                                 "goles_equipo_a": 0,
+                                                                                 "goles_equipo_b": 0
+                                                                             })
         return context
 
 

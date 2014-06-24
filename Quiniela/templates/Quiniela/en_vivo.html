@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block titulo %}
+    Resultados en vivo
+{% endblock %}
+{% block contenido %}
+    <div class="page-header">
+        <h2>Resultados en vivo</h2>
+    </div>
+    <div class="row">
+        {% for partido in json %}
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <p class="text-center">
+                            <img src="{{ partido.url_bandera_a }}" alt="{{ partido.equipo_a }}" height="24"/>
+                            {{ partido.equipo_a }} vs. {{ partido.equipo_b }}
+                            <img src="{{ partido.url_bandera_b }}" alt="{{ partido.equipo_b }}" height="24"/>
+                        </p>
+                    </div>
+                    <div class="panel-body">
+                        <p class="text-center">{{ partido.goles_equipo_a }} - {{ partido.goles_equipo_b }}</p>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-md-12">
+                <p>No hay partidos disponibles</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
