@@ -1,5 +1,6 @@
 import json
 import requests
+
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
 from django.forms.models import inlineformset_factory
@@ -9,6 +10,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.decorators import method_decorator
 from django.views.generic import FormView, UpdateView, TemplateView, DetailView, ListView, CreateView
+
 from Quiniela.forms import *
 
 
@@ -17,7 +19,7 @@ class ResultadosEnVivo(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ResultadosEnVivo, self).get_context_data(**kwargs)
-        url = "http://worldcup.sfg.io/matches/current"
+        url = "http://worldcup.sfg.io/matches/today"
         headers = {'content-type': 'application/json'}
         r = requests.get(url, headers=headers)
         if r.status_code == 200:
@@ -95,7 +97,7 @@ class CargarPronostico(FormView):
                 pronostico.goles_equipo_b = goles_equipo_b_form
             pronostico.save()
 
-        return HttpResponseRedirect(reverse_lazy("pronostico_cargado"))
+        return HttpResponseRedirect(reverse_lazy("simular_quiniela"))
 
 
 class ListadoGrupos(ListView):

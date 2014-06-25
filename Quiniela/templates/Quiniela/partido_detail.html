@@ -18,8 +18,8 @@
                     <th>
                         <div class="media">
                             <div class="media-body">
-                                <a href="#" class="pull_left">
-                                    <img class="media-object" src="{{ partido.equipo_a.url_bandera }}"/>
+                                <a href="{% url "detalle_equipo" partido.equipo_a.id %}" class="pull_left">
+                                <img class="media-object" src="{{ partido.equipo_a.url_bandera }}"/>
                                 </a>
 
                                 <p class="media-heading"> {{ partido.equipo_a }}</p>
@@ -29,8 +29,8 @@
                     <th>
                         <div class="media">
                             <div class="media-body">
-                                <a class="pull_left" href="#">
-                                    <img class="media-object" src="{{ partido.equipo_b.url_bandera }}"/>
+                                <a class="pull_left" href="{% url "detalle_equipo" partido.equipo_b.id %}">
+                                <img class="media-object" src="{{ partido.equipo_b.url_bandera }}"/>
                                 </a>
 
                                 <p class="media-heading">{{ partido.equipo_b }}</p>
