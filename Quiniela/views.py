@@ -23,7 +23,6 @@ class ResultadosEnVivo(TemplateView):
         headers = {'content-type': 'application/json'}
         r = requests.get(url, headers=headers)
         if r.status_code == 200:
-            # json_raw = ast.literal_eval(r.content)
             partidos = []
             json_content = json.loads(r.content)
             for partido in json_content:
@@ -38,7 +37,6 @@ class ResultadosEnVivo(TemplateView):
                 partidos.append(partido_db)
 
             context["json"] = partidos
-            # context["raw"] = json_raw
         else:
             context["json"] = "no hay datos disponibles" + r.status_code
         return context
@@ -136,7 +134,7 @@ class DetalleGrupo(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(DetalleGrupo, self).get_context_data(**kwargs)
-        context['partidos'] = Partido.objects.filter(equipo_a__grupo=self.object)
+        context['partidos'] = Partido.objects.filter(equipo_a__grupo=self.object, tipo_partido="C")
         return context
 
 
