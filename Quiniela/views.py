@@ -27,14 +27,15 @@ class ResultadosEnVivo(TemplateView):
             partidos = []
             json_content = json.loads(r.content)
             for partido in json_content:
-                partidos.append({
-                    "equipo_a": partido["home_team"]["country"],
-                    "url_bandera_a": Equipo.objects.get(codigo=partido['home_team']['code']).url_bandera,
-                    "goles_equipo_a": partido["home_team"]["goals"],
-                    "equipo_b": partido["away_team"]["country"],
-                    "url_bandera_b": Equipo.objects.get(codigo=partido['away_team']['code']).url_bandera,
-                    "goles_equipo_b": partido["away_team"]["goals"]
-                })
+                partido_db = Partido.objects.get(equipo_a__codigo=partido['home_team']['code'],
+                                                 equipo_b__codigo=partido['away_team']['code'])
+                if partido["status"] == "completed" and not partido_db.partido_jugado:
+                    partido_db.goles_equipo_a = partido["home_team"]["goals"]
+                    partido_db.goles_equipo_b = partido["away_team"]["goals"]
+                    partido_db.partido_jugado = True
+                    partido_db.save()
+
+                partidos.append(partido_db)
 
             context["json"] = partidos
             # context["raw"] = json_raw
@@ -237,8 +238,8 @@ class SimularQuiniela(TemplateView):
 
             # for partido in Partido.objects.all():
             # partido.partido_jugado = True
-            #     partido.goles_equipo_a = random.randint(0, 4)
-            #     partido.goles_equipo_b = random.randint(0, 4)
+            # partido.goles_equipo_a = random.randint(0, 4)
+            # partido.goles_equipo_b = random.randint(0, 4)
             partido.save()
             calcular_puntaje_pronosticos(partido)
         calcular_puntos_usuario()

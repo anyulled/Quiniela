@@ -45,6 +45,7 @@ class AdminUsuario(admin.ModelAdmin):
 class AdminPronostico(admin.ModelAdmin):
     fields = ["usuario", "partido", "goles_equipo_a", "goles_equipo_b"]
     list_filter = ["usuario", "partido"]
+    ordering = ["partido"]
 
 
 admin.site.register(Grupo, AdminGrupo)
