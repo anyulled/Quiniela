@@ -1,17 +1,60 @@
 {% extends 'base.html' %}
+{% block head %}
+    <script type="text/javascript" src="//www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load('visualization', '1', {packages: ['corechart']});
+    </script>
+    <script type="text/javascript">
+        function drawVisualization() {
+            var data = new google.visualization.DataTable();
+            {% regroup progreso|dictsort:"usuario__username" by usuario__username as group %}
+            data.addColumn('string', 'fecha');
+            {% for usuario in group %}
+                data.addColumn('string', '{{ usuario.grouper }}');
+
+                {% for pronostico in usuario.list %}
+                    data.addRow(['{{ pronostico.fecha_str }}', {{ pronostico.puntos__sum }}]);
+                {% endfor %}
+            {% endfor %}
+            new google.visualization.LineChart(document.getElementById('visualization')).
+                    draw(data, {curveType: "function", width: 600, height: 400});
+        }
+        {#        google.setOnLoadCallback(drawVisualization);#}
+    </script>
+{% endblock %}
 {% block titulo %}
     Listado de Usuarios
 {% endblock %}
 {% block contenido %}
-    <h2>Listado de Usuarios</h2>
-    <ul class="list-group">
-        {% for usuario in user_list %}
-            <li class="list-group-item {% if forloop.first %} list-group-item-success {% endif %}"  >
-                <a href="{% url 'detalle_usuario' usuario.id %}">
-                    <span {% if forloop.first %}class="text-success" {% endif %}>{{ usuario.first_name|capfirst }} {{ usuario.last_name|capfirst }}</span>
-                </a>
-            <span class="badge">{{ usuario.perfil.puntos }}</span>
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="row">
+        <div class="col-md-12" id="visualization">
+            <h2>Pronosticos</h2>
+            {% regroup progreso|dictsort:"fecha_str" by fecha_str as group %}
+            {% for fecha in group %}
+                <p>{{ fecha.grouper }}</p>
+                <ul>
+                    {% for pronostico in fecha.list %}
+                        <li>{{ pronostico }}</li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Listado de Usuarios</h2>
+            <ul class="list-group">
+                {% for usuario in user_list %}
+                    <li class="list-group-item {% if forloop.first %} list-group-item-success {% endif %}">
+                        <a href="{% url 'detalle_usuario' usuario.id %}">
+                            <span {% if forloop.first %}class="text-success" {% endif %}>{{ usuario.first_name|capfirst }} {{ usuario.last_name|capfirst }}</span>
+                        </a>
+                        <span class="badge">{{ usuario.perfil.puntos }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
 {% endblock %}

@@ -30,25 +30,28 @@
             color: #f9f9f9;
         }
 
-        .navbar-default .navbar-nav>li>a,
-        .navbar-default .navbar-nav>li>a:hover,
-        .navbar-default .navbar-nav>li>a:focus {
+        .navbar-default .navbar-nav > li > a,
+        .navbar-default .navbar-nav > li > a:hover,
+        .navbar-default .navbar-nav > li > a:focus {
             color: #f1f1f1;
         }
 
-        .navbar-default .navbar-nav>.active>a,
-        .navbar-default .navbar-nav>.active>a:hover,
-        .navbar-default .navbar-nav>.active>a:focus {
+        .navbar-default .navbar-nav > .active > a,
+        .navbar-default .navbar-nav > .active > a:hover,
+        .navbar-default .navbar-nav > .active > a:focus {
             color: #f0f0f0;
             background: rgb(51, 114, 166);
         }
     </style>
+    {% block head %}
+
+    {% endblock %}
 </head>
 <body>
 <div class="container">
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
-        <div class="navbar-header">
+            <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -56,8 +59,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-            <a class="navbar-brand" href="{% url "en_vivo" %}">Menu</a>
-        </div>
+                <a class="navbar-brand" href="{% url "en_vivo" %}">Menu</a>
+            </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -88,6 +91,11 @@
     <div class="page-header">
         <img src="http://img.fifa.com/images/fwc/2014/brand/header.es.png?v=130455967371601304" height="120"/>
     </div>
+    {% if messages %}
+        {% for message in messages %}
+            <p class="alert alert-info">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
     {% block contenido %}
 
     {% endblock %}

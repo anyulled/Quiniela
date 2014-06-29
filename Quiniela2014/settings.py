@@ -39,7 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'django.contrib.staticfiles',
     'Quiniela',
-    'south'
+    'south',
 )
 
 MIDDLEWARE_CLASSES = (

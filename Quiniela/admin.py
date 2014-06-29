@@ -51,6 +51,5 @@ class AdminPronostico(admin.ModelAdmin):
 admin.site.register(Grupo, AdminGrupo)
 admin.site.register(Equipo, AdminEquipo)
 admin.site.register(Partido, AdminPartido)
-# admin.site.register(Usuario, AdminUsuario)
 admin.site.register(Pronostico, AdminPronostico)
 admin.site.register(Perfil)

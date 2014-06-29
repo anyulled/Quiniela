@@ -14,7 +14,7 @@ urlpatterns = patterns('',
                        url(r'^partidos/(?P<pk>\d+)/$', DetallePartido.as_view(), name="detalle_partido"),
                        url(r'^partidos/(?P<pk>\d+)/editar/$', EditarPartido.as_view(), name="editar_partido"),
 
-                       url(r'^$', ListadoEquipos.as_view(), name="listado_equipos"),
+                       url(r'^equipos/$', ListadoEquipos.as_view(), name="listado_equipos"),
                        url(r'^equipos/(?P<pk>\d+)$', DetalleEquipo.as_view(), name="detalle_equipo"),
 
                        url(r'^pronosticos/actualizar_pronostico/(?P<pk>\d+)$', ActualizarPronostico.as_view(),
@@ -25,6 +25,6 @@ urlpatterns = patterns('',
                        url(r'^pronosticos/pronostico_cargado/$', PronosticoCargado.as_view(),
                            name="pronostico_cargado"),
 
-                       url('^en_vivo/$', ResultadosEnVivo.as_view(), name="en_vivo"),
+                       url('^$', ResultadosEnVivo.as_view(), name="en_vivo"),
                        url(r'^simular_quiniela/', SimularQuiniela.as_view(), name="simular_quiniela")
 )
