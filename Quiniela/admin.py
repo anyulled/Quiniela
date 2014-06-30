@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from Quiniela.models import *
 
 
@@ -14,12 +15,16 @@ class AdminPartido(admin.ModelAdmin):
         }),
         ("Resultado", {
             "fields": ("goles_equipo_a", "goles_equipo_b", "partido_jugado")
+        }),
+        ("Ganador", {
+            "fields": ("equipo_ganador",)
         })
     )
+    readonly_fields = ("equipo_ganador",)
     list_display = ["id", "titulo", "goles_equipo_a", "goles_equipo_b", "fecha", "partido_jugado"]
     list_editable = ["goles_equipo_a", "goles_equipo_b", "partido_jugado"]
     list_display_links = ["titulo"]
-    list_filter = ["equipo_a__grupo", "tipo_partido"]
+    list_filter = ["equipo_a__grupo", "tipo_partido", "fecha"]
 
 
 class AdminEquipo(admin.ModelAdmin):
@@ -40,6 +45,7 @@ class AdminUsuario(admin.ModelAdmin):
 class AdminPronostico(admin.ModelAdmin):
     fields = ["usuario", "partido", "goles_equipo_a", "goles_equipo_b"]
     list_filter = ["usuario", "partido"]
+    ordering = ["partido"]
 
 
 admin.site.register(Grupo, AdminGrupo)

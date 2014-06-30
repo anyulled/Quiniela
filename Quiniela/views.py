@@ -1,5 +1,6 @@
 import json
 import requests
+
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
 from django.forms.models import inlineformset_factory
@@ -9,6 +10,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.decorators import method_decorator
 from django.views.generic import FormView, UpdateView, TemplateView, DetailView, ListView, CreateView
+
 from Quiniela.forms import *
 
 
@@ -17,25 +19,24 @@ class ResultadosEnVivo(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ResultadosEnVivo, self).get_context_data(**kwargs)
-        url = "http://worldcup.sfg.io/matches/current"
+        url = "http://worldcup.sfg.io/matches/today"
         headers = {'content-type': 'application/json'}
         r = requests.get(url, headers=headers)
         if r.status_code == 200:
-            # json_raw = ast.literal_eval(r.content)
             partidos = []
             json_content = json.loads(r.content)
             for partido in json_content:
-                partidos.append({
-                    "equipo_a": partido["home_team"]["country"],
-                    "url_bandera_a": Equipo.objects.get(codigo=partido['home_team']['code']).url_bandera,
-                    "goles_equipo_a": partido["home_team"]["goals"],
-                    "equipo_b": partido["away_team"]["country"],
-                    "url_bandera_b": Equipo.objects.get(codigo=partido['away_team']['code']).url_bandera,
-                    "goles_equipo_b": partido["away_team"]["goals"]
-                })
+                partido_db = Partido.objects.get(equipo_a__codigo=partido['home_team']['code'],
+                                                 equipo_b__codigo=partido['away_team']['code'])
+                if partido["status"] == "completed" and not partido_db.partido_jugado:
+                    partido_db.goles_equipo_a = partido["home_team"]["goals"]
+                    partido_db.goles_equipo_b = partido["away_team"]["goals"]
+                    partido_db.partido_jugado = True
+                    partido_db.save()
+
+                partidos.append(partido_db)
 
             context["json"] = partidos
-            # context["raw"] = json_raw
         else:
             context["json"] = "no hay datos disponibles" + r.status_code
         return context
@@ -95,7 +96,7 @@ class CargarPronostico(FormView):
                 pronostico.goles_equipo_b = goles_equipo_b_form
             pronostico.save()
 
-        return HttpResponseRedirect(reverse_lazy("pronostico_cargado"))
+        return HttpResponseRedirect(reverse_lazy("simular_quiniela"))
 
 
 class ListadoGrupos(ListView):
@@ -133,7 +134,7 @@ class DetalleGrupo(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(DetalleGrupo, self).get_context_data(**kwargs)
-        context['partidos'] = Partido.objects.filter(equipo_a__grupo=self.object)
+        context['partidos'] = Partido.objects.filter(equipo_a__grupo=self.object, tipo_partido="C")
         return context
 
 
@@ -235,8 +236,8 @@ class SimularQuiniela(TemplateView):
 
             # for partido in Partido.objects.all():
             # partido.partido_jugado = True
-            #     partido.goles_equipo_a = random.randint(0, 4)
-            #     partido.goles_equipo_b = random.randint(0, 4)
+            # partido.goles_equipo_a = random.randint(0, 4)
+            # partido.goles_equipo_b = random.randint(0, 4)
             partido.save()
             calcular_puntaje_pronosticos(partido)
         calcular_puntos_usuario()
