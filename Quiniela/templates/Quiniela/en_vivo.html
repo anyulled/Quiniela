@@ -7,7 +7,7 @@
         <h2>Resultados en vivo</h2>
     </div>
     <div class="row">
-        {% for partido in json %}
+        {% for partido in partidos %}
             <div class="col-md-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
@@ -24,7 +24,7 @@
             </div>
         {% empty %}
             <div class="col-md-12">
-                <p>No hay partidos disponibles</p>
+                <p class="alert alert-info">No hay partidos disponibles</p>
             </div>
         {% endfor %}
     </div>

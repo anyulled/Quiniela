@@ -1,4 +1,24 @@
 {% extends 'base.html' %}
+{% block head %}
+    <script type="text/javascript" src="//www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load('visualization', '1', {packages: ['corechart']});
+    </script>
+    <script type="text/javascript">
+        function drawVisualization() {
+            var data = google.visualization.arrayToDataTable([
+                ['fecha', 'puntos'],
+                {% for dia in progreso %}
+                    ['{{ dia.fecha_str }}', {{ dia.puntos__sum }}] {% if not forloop.last %},{% endif %}
+                {% endfor %}
+            ]);
+
+            new google.visualization.LineChart(document.getElementById('visualization')).
+                    draw(data, {curveType: "function", width: 600, height: 400});
+        }
+        google.setOnLoadCallback(drawVisualization);
+    </script>
+{% endblock %}
 {% block titulo %}
     {{ usuario }}
 {% endblock %}
@@ -6,6 +26,15 @@
     <h2>{{ usuario.first_name|capfirst }} {{ usuario.last_name|capfirst }} &raquo;
         <small>{{ usuario.perfil.puntos|default:0 }} Puntos</small>
     </h2>
+    <h3>Progreso</h3>
+    <div class="row">
+        <div class="col-md-12" id="grafico">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" id="visualization">
+        </div>
+    </div>
     <h3>Pronósticos</h3>
     <table class="table table-responsive table-hover">
         <tr>
@@ -27,7 +56,7 @@
                         -
                         <img src="{{ pronostico.partido.equipo_b.url_bandera }}" alt="{{ pronostico.partido.equipo_b }}"
                              height="24" border="1"/>
-                        <a href="{%  url "detalle_partido" pronostico.partido.id %}">{{ pronostico.partido }}</a>
+                        <a href="{% url "detalle_partido" pronostico.partido.id %}">{{ pronostico.partido }}</a>
                     </td>
                     {% if pronostico.partido.partido_jugado %}
                         <td class="align_center">{{ pronostico.partido.goles_equipo_a }}:{{ pronostico.partido.goles_equipo_b }}</td>

@@ -1,8 +1,11 @@
 import json
 import requests
 
+from django.contrib import messages
+from django.db import connection
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
+from django.db.models import Sum
 from django.forms.models import inlineformset_factory
 from django.forms.formsets import formset_factory
 from django.http import HttpResponseRedirect
@@ -18,27 +21,32 @@ class ResultadosEnVivo(TemplateView):
     template_name = "Quiniela/en_vivo.html"
 
     def get_context_data(self, **kwargs):
+        global r
         context = super(ResultadosEnVivo, self).get_context_data(**kwargs)
         url = "http://worldcup.sfg.io/matches/today"
         headers = {'content-type': 'application/json'}
-        r = requests.get(url, headers=headers)
+        try:
+            r = requests.get(url, headers=headers)
+        except Exception, ex:
+            messages.add_message(self.request, messages.ERROR, 'Ha ocurrido un error al procesar los resultados.' + ex)
         if r.status_code == 200:
             partidos = []
             json_content = json.loads(r.content)
             for partido in json_content:
                 partido_db = Partido.objects.get(equipo_a__codigo=partido['home_team']['code'],
                                                  equipo_b__codigo=partido['away_team']['code'])
+                partido_db.goles_equipo_a = partido["home_team"]["goals"]
+                partido_db.goles_equipo_b = partido["away_team"]["goals"]
                 if partido["status"] == "completed" and not partido_db.partido_jugado:
-                    partido_db.goles_equipo_a = partido["home_team"]["goals"]
-                    partido_db.goles_equipo_b = partido["away_team"]["goals"]
                     partido_db.partido_jugado = True
                     partido_db.save()
 
                 partidos.append(partido_db)
 
-            context["json"] = partidos
+            context["partidos"] = partidos
+            context['json'] = json_content
         else:
-            context["json"] = "no hay datos disponibles" + r.status_code
+            context["partidos"] = "no hay datos disponibles" + r.status_code
         return context
 
 
@@ -117,6 +125,13 @@ class ListadoEquipos(ListView):
 class ListadoUsuarios(ListView):
     model = User
 
+    def get_context_data(self, **kwargs):
+        contexto = super(ListadoUsuarios, self).get_context_data(**kwargs)
+        truncate_date = connection.ops.date_trunc_sql('day', 'Quiniela_partido.fecha')
+        contexto['progreso'] = Pronostico.objects.all().extra({'fecha_str': truncate_date}). \
+            values('usuario__username', "fecha_str").annotate(Sum('puntos'))
+        return contexto
+
     def get_queryset(self):
         return User.objects.all().order_by("-perfil__puntos")
 
@@ -141,6 +156,13 @@ class DetalleGrupo(DetailView):
 class DetalleUsuario(DetailView):
     model = User
     context_object_name = "usuario"
+
+    def get_context_data(self, **kwargs):
+        truncate_date = connection.ops.date_trunc_sql('day', 'Quiniela_partido.fecha')
+        context = super(DetalleUsuario, self).get_context_data(**kwargs)
+        context['progreso'] = self.object.pronostico_set.extra({'fecha_str': truncate_date}) \
+            .values("fecha_str").annotate(Sum("puntos"))
+        return context
 
 
 class DetallePartido(DetailView):
