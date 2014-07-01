@@ -34,7 +34,7 @@
                 <p>{{ fecha.grouper }}</p>
                 <ul>
                     {% for pronostico in fecha.list %}
-                        <li>{{ pronostico }}</li>
+                        <li>{{ pronostico }} | {{ forloop.parentloop.revcounter0 }} {{ forloop.revcounter0 }}</li>
                     {% endfor %}
                 </ul>
             {% endfor %}
