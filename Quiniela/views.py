@@ -1,3 +1,4 @@
+# coding=utf-8
 import json
 import requests
 
@@ -220,6 +221,7 @@ class EditarPartido(UpdateView):
     form_class = PartidoForm
 
     def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, "Partido guardado con éxito")
         return reverse_lazy("detalle_partido", args=[self.object.pk])
 
 
@@ -262,7 +264,13 @@ class UsuarioRegistrado(TemplateView):
 class ActualizarPronostico(UpdateView):
     model = Pronostico
     form_class = PronosticoForm
-    success_url = "/pronosticoCargado"
+
+    def form_valid(self, form):
+        messages.add_message(self.request, messages.SUCCESS, "Pronóstico actualizado con éxito")
+        return super(ActualizarPronostico, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy("actualizar_pronostico", self.object.pk)
 
     def get_context_data(self, **kwargs):
         context = super(ActualizarPronostico, self).get_context_data(**kwargs)
