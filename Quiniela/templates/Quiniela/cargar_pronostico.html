@@ -22,7 +22,8 @@
                     {% if forloop.counter == forloop.parentloop.counter %}
                         <tr>
                             <td class="align_right">
-                                <img src="{{ datos_partido.partido.equipo_a.url_bandera }}" height="24"
+                                <img src="/static/Quiniela/img/banderas/{{ datos_partido.partido.equipo_a.url_bandera }}"
+                                     height="24"
                                      alt="{{ datos_partido.partido.equipo_a.nombre }}"/>
                             </td>
                             <td class="align_right"> {{ datos_partido.partido.equipo_a.nombre }} </td>
@@ -30,8 +31,9 @@
                             <td class="align-left">{{ formulario.goles_equipo_b }}</td>
                             <td class="align-left">{{ datos_partido.partido.equipo_b.nombre }}</td>
                             <td class="align-left">
-                                <img src="{{ datos_partido.partido.equipo_b.url_bandera }}" height="24"
-                                                        alt="{{ datos_partido.partido.equipo_b.nombre }}"/>
+                                <img src="/static/Quiniela/img/banderas/{{ datos_partido.partido.equipo_b.url_bandera }}"
+                                     height="24"
+                                     alt="{{ datos_partido.partido.equipo_b.nombre }}"/>
                             </td>
                         </tr>
                     {% endif %}

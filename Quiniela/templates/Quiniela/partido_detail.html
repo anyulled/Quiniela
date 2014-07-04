@@ -19,7 +19,8 @@
                         <div class="media">
                             <div class="media-body">
                                 <a href="{% url "detalle_equipo" partido.equipo_a.id %}" class="pull_left">
-                                <img class="media-object" src="{{ partido.equipo_a.url_bandera }}"/>
+                                    <img class="media-object"
+                                         src="/static/Quiniela/img/banderas/{{ partido.equipo_a.url_bandera }}"/>
                                 </a>
 
                                 <p class="media-heading"> {{ partido.equipo_a }}</p>
@@ -30,7 +31,8 @@
                         <div class="media">
                             <div class="media-body">
                                 <a class="pull_left" href="{% url "detalle_equipo" partido.equipo_b.id %}">
-                                <img class="media-object" src="{{ partido.equipo_b.url_bandera }}"/>
+                                    <img class="media-object"
+                                         src="/static/Quiniela/img/banderas/{{ partido.equipo_b.url_bandera }}"/>
                                 </a>
 
                                 <p class="media-heading">{{ partido.equipo_b }}</p>
@@ -69,10 +71,11 @@
             {% endif %}
         </div>
     </div>
-    {% if user.is_superuser %}<div class="row">
-        <div class="col-md-12">
-            <a class="btn btn-primary" href="{% url "editar_partido" partido.id %}">Editar Resultado</a>
+    {% if user.is_superuser %}
+        <div class="row">
+            <div class="col-md-12">
+                <a class="btn btn-primary" href="{% url "editar_partido" partido.id %}">Editar Resultado</a>
+            </div>
         </div>
-    </div>
     {% endif %}
 {% endblock %}

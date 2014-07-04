@@ -4,7 +4,8 @@
 {% endblock %}
 {% block contenido %}
     <div class="page-header">
-        <h2><img src="{{ equipo.url_bandera }}" height="32" class="pull-left"/> {{ equipo.nombre }}
+        <h2><img src="/static/Quiniela/img/banderas/{{ equipo.url_bandera }}" height="32"
+                 class="pull-left"/> {{ equipo.nombre }}
             <small><a href="{% url "detalle_grupo" equipo.grupo.id %}">{{ equipo.grupo }}</a></small>
         </h2>
     </div>

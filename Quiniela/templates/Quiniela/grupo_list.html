@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block titulo %}
     Listado de Grupos
 {% endblock %}
@@ -18,7 +19,8 @@
                     </a>
                     {% for equipo in grupo.equipos_clasificados %}
                         <a href="{% url "detalle_equipo" equipo.id %}" class="list-group-item">
-                            <img class="bandera" src="{{ equipo.url_bandera }}" height="24"/>
+                            <img class="bandera" src="/static/Quiniela/img/banderas/{{ equipo.url_bandera }}"
+                                 height="24"/>
                             {{ equipo.nombre }}
                             <span class="badge">Pts. {{ equipo.puntos }} | DG. {{ equipo.goles_diferencia }}</span>
                         </a>
@@ -40,8 +42,10 @@
         <tr>
             <td>
                 <p class="text-center">
-                    <img src="{{ grupo_list.0.equipos_clasificados.0.url_bandera }}" alt="" height="24"/> -
-                    <img src="{{ grupo_list.1.equipos_clasificados.1.url_bandera }}" alt="" height="24"/>
+                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.0.equipos_clasificados.0.url_bandera }}"
+                         alt="" height="24"/> -
+                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.1.equipos_clasificados.1.url_bandera }}"
+                         alt="" height="24"/>
                 </p>
 
                 <p class="text-center">
@@ -50,8 +54,10 @@
             </td>
             <td>
                 <p class="text-center">
-                    <img src="{{ grupo_list.0.equipos_clasificados.1.url_bandera }}" alt="" height="24"/> -
-                    <img src="{{ grupo_list.1.equipos_clasificados.0.url_bandera }}" alt="" height="24"/>
+                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.0.equipos_clasificados.1.url_bandera }}"
+                         alt="" height="24"/> -
+                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.1.equipos_clasificados.0.url_bandera }}"
+                         alt="" height="24"/>
                 </p>
 
                 <p class="text-center">
@@ -60,8 +66,10 @@
             </td>
             <td>
                 <p class="text-center">
-                    <img src="{{ grupo_list.2.equipos_clasificados.0.url_bandera }}" alt="" height="24"/> -
-                    <img src="{{ grupo_list.3.equipos_clasificados.1.url_bandera }}" alt="" height="24"/>
+                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.2.equipos_clasificados.0.url_bandera }}"
+                         alt="" height="24"/> -
+                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.3.equipos_clasificados.1.url_bandera }}"
+                         alt="" height="24"/>
                 </p>
 
                 <p class="text-center">
@@ -70,8 +78,10 @@
             </td>
             <td>
                 <p class="text-center">
-                    <img src="{{ grupo_list.2.equipos_clasificados.1.url_bandera }}" alt="" height="24"/> -
-                    <img src="{{ grupo_list.3.equipos_clasificados.0.url_bandera }}" alt="" height="24"/>
+                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.2.equipos_clasificados.1.url_bandera }}"
+                         alt="" height="24"/> -
+                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.3.equipos_clasificados.0.url_bandera }}"
+                         alt="" height="24"/>
                 </p>
 
                 <p class="text-center">
@@ -80,8 +90,10 @@
             </td>
             <td>
                 <p class="text-center">
-                    <img src="{{ grupo_list.4.equipos_clasificados.0.url_bandera }}" alt="" height="24"/> -
-                    <img src="{{ grupo_list.5.equipos_clasificados.1.url_bandera }}" alt="" height="24"/>
+                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.4.equipos_clasificados.0.url_bandera }}"
+                         alt="" height="24"/> -
+                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.5.equipos_clasificados.1.url_bandera }}"
+                         alt="" height="24"/>
                 </p>
 
                 <p class="text-center">
@@ -90,8 +102,10 @@
             </td>
             <td>
                 <p class="text-center">
-                    <img src="{{ grupo_list.4.equipos_clasificados.1.url_bandera }}" alt="" height="24"/> -
-                    <img src="{{ grupo_list.5.equipos_clasificados.0.url_bandera }}" alt="" height="24"/>
+                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.4.equipos_clasificados.1.url_bandera }}"
+                         alt="" height="24"/> -
+                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.5.equipos_clasificados.0.url_bandera }}"
+                         alt="" height="24"/>
                 </p>
 
                 <p class="text-center">
@@ -100,8 +114,10 @@
             </td>
             <td>
                 <p class="text-center">
-                    <img src="{{ grupo_list.6.equipos_clasificados.0.url_bandera }}" alt="" height="24"/> -
-                    <img src="{{ grupo_list.7.equipos_clasificados.1.url_bandera }}" alt="" height="24"/>
+                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.6.equipos_clasificados.0.url_bandera }}"
+                         alt="" height="24"/> -
+                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.7.equipos_clasificados.1.url_bandera }}"
+                         alt="" height="24"/>
                 </p>
 
                 <p class="text-center">{{ grupo_list.6.equipos_clasificados.0.nombre|capfirst }}
@@ -109,8 +125,10 @@
             </td>
             <td>
                 <p class="text-center">
-                    <img src="{{ grupo_list.6.equipos_clasificados.1.url_bandera }}" alt="" height="24"/> -
-                    <img src="{{ grupo_list.7.equipos_clasificados.0.url_bandera }}" alt="" height="24"/>
+                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.6.equipos_clasificados.1.url_bandera }}"
+                         alt="" height="24"/> -
+                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.7.equipos_clasificados.0.url_bandera }}"
+                         alt="" height="24"/>
                 </p>
 
                 <p class="text-center">

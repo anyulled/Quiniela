@@ -24,7 +24,9 @@
             </tr>
             {% for equipo in equipo.list %}
                 <tr>
-                    <td style="width: 75px;"><img class="bandera" src="{{ equipo.url_bandera }}" height="24"/></td>
+                    <td style="width: 75px;"><img class="bandera"
+                                                  src="/static/Quiniela/img/banderas/{{ equipo.url_bandera }}"
+                                                  height="24"/></td>
                     <td style="width: 500px;" class="align_center">
                         <b>
                             <a href="{% url "detalle_equipo" equipo.id %}">{{ equipo.nombre }}</a>

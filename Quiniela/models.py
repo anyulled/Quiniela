@@ -168,10 +168,7 @@ class Partido(models.Model):
     equipo_ganador = models.ForeignKey(Equipo, related_name="equipo_ganador", null=True)
     tipo_partido = models.CharField(choices=tipo_partido_opciones, max_length=100, null=False)
     partido_jugado = models.BooleanField(default=False)
-    fecha = models.DateField(null=False)
-
-    class Meta:
-        ordering = ["fecha"]
+    fecha = models.DateField(auto_now_add=True, null=False)
 
     def titulo(self):
         return Partido.__unicode__(self)
@@ -191,7 +188,6 @@ class Partido(models.Model):
     es_pasado.short_description = 'Partido Culminado?'
 
     def save(self, *args, **kwargs):
-        super(Partido, self).save(*args, **kwargs)
         if self.partido_jugado:
             if self.goles_equipo_a == self.goles_equipo_b:      # Empate
                 self.equipo_a.partidos_empatados = contar_partidos_empatados(self.equipo_a)
@@ -216,7 +212,6 @@ class Partido(models.Model):
             self.equipo_b.goles_en_contra = contar_goles_en_contra(self.equipo_b)
             self.equipo_a.save()
             self.equipo_b.save()
-        super(Partido, self).save(*args, **kwargs)
         calcular_puntaje_pronosticos(self)
         return super(Partido, self).save(*args, **kwargs)
 

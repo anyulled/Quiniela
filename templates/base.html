@@ -4,45 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Quiniela Brasil 2014:: {% block titulo %} {% endblock %}</title>
-    <link rel="stylesheet" href="{% static "Quiniela/style.css" %}"/>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:400,300,600' rel='stylesheet'
-          type='text/css'>
-    <style media="all">
-        * {
-            font-family: 'Open Sans', sans-serif;
-        }
-
-        small {
-            font-family: 'Open Sans Condensed', sans-serif;
-        }
-
-        body {
-            background: url("http://img.fifa.com/images/fwc/2014/brand/bg.jpg?v=130480061310043630") center 159px no-repeat;
-        }
-
-        .navbar {
-            background: #326295;
-        }
-
-        .navbar-default .navbar-brand,
-        .navbar-default .navbar-brand:hover,
-        .navbar-default .navbar-brand:focus {
-            color: #f9f9f9;
-        }
-
-        .navbar-default .navbar-nav > li > a,
-        .navbar-default .navbar-nav > li > a:hover,
-        .navbar-default .navbar-nav > li > a:focus {
-            color: #f1f1f1;
-        }
-
-        .navbar-default .navbar-nav > .active > a,
-        .navbar-default .navbar-nav > .active > a:hover,
-        .navbar-default .navbar-nav > .active > a:focus {
-            color: #f0f0f0;
-            background: rgb(51, 114, 166);
-        }
-    </style>
+    <link rel="stylesheet" href="{% static "Quiniela/css/bootstrap.min.css" %}"/>
+    <link rel="stylesheet" href="{% static "Quiniela/default.css" %}"/>
     {% block head %}
 
     {% endblock %}
@@ -89,7 +52,7 @@
         </div>
     </nav>
     <div class="page-header">
-        <img src="http://img.fifa.com/images/fwc/2014/brand/header.es.png?v=130455967371601304" height="120"/>
+        <img src="{% static "Quiniela/img/header.es.png" %}" height="120"/>
     </div>
     {% if messages %}
         {% for message in messages %}

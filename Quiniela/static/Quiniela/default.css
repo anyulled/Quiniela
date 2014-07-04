@@ -1,89 +1,36 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:400,300,600);
 
 * {
-    font-family: sans-serif;
-    font-weight: lighter;
-}
-
-h1 {
     font-family: 'Open Sans', sans-serif;
-    font-size: 18px;
-    clear: both;
-    padding-top: 10px;
 }
 
-h2 {
-    font-family: 'Open Sans', sans-serif;
-    color: #00356A;
-    font-size: 16px;
-    clear: both;
-    padding-top: 14px;
+small {
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 
-h3 {
-    font-size: 14px;
-    clear: both;
-    font-family: "Open Sans", sans-serif;
+body {
+    background: url("http://img.fifa.com/images/fwc/2014/brand/bg.jpg?v=130480061310043630") center 159px no-repeat;
 }
 
-table {
-    border-radius: 5px;
-    table-layout: auto;
-    padding: 0;
-    border-spacing: 0;
-    width: 95%;
-    margin: 0 auto;
-    font-size: 12px;
+.navbar {
+    background: #326295;
 }
 
-th {
-    background-color: #326295;
-    color: #c0cbd9;
-    border: dotted darkgray;
-    border-width: 0 0 1px 0;
-    font-size: 12px;
-    padding: 5px;
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #f9f9f9;
 }
 
-td{
-    padding: 3px;
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #f1f1f1;
 }
 
-b{
-    font-weight: bold;
-}
-
-td.align_right {
-    text-align: right;
-}
-
-td.align_center{
-    text-align: center;
-}
-
-img.bandera {
-    height: 32px;
-}
-
-ul.no-list {
-    list-style-type: none;
-}
-
-li {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 12px;
-}
-
-ul.menu {
-    list-style-type: none;
-    display: block;
-}
-
-ul.menu li {
-    float: left;
-}
-
-ul.menu li a {
-    text-decoration: none;
-    padding-left: 5px;
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #f0f0f0;
+    background: rgb(51, 114, 166);
 }

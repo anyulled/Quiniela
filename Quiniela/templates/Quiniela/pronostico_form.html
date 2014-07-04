@@ -13,18 +13,24 @@
         {% csrf_token %}
         <div class="form-group">
             <div class="col-sm-3">
-                <label for="id_goles_equipo_a"><img src="{{ partido.equipo_a.url_bandera }}" />{{ partido.equipo_a }}</label>
+                <label for="id_goles_equipo_a"><img
+                        src="/static/Quiniela/img/banderas/{{ partido.equipo_a.url_bandera }}"/>{{ partido.equipo_a }}
+                </label>
             </div>
             <div class="col-sm-3">
-                <input id="id_goles_equipo_a" type="number" min="0" max="10" name="goles_equipo_a" value="{{ form.goles_equipo_a.value }}"/>
+                <input id="id_goles_equipo_a" type="number" min="0" max="10" name="goles_equipo_a"
+                       value="{{ form.goles_equipo_a.value }}"/>
                 <span class="help-block">{{ form.goles_equipo_a.errors }}</span>
             </div>
             <div class="col-sm-3">
-                <input id="id_goles_equipo_b" type="number" min="0" max="10" name="goles_equipo_b" value="{{ form.goles_equipo_b.value }}"/>
+                <input id="id_goles_equipo_b" type="number" min="0" max="10" name="goles_equipo_b"
+                       value="{{ form.goles_equipo_b.value }}"/>
                 <span class="help-block">{{ form.goles_equipo_b.errors }}</span>
             </div>
             <div class="col-sm-3">
-                <label for="id_goles_equipo_b"><img src="{{ partido.equipo_b.url_bandera }}" />{{ partido.equipo_b }}</label>
+                <label for="id_goles_equipo_b"><img
+                        src="/static/Quiniela/img/banderas/{{ partido.equipo_b.url_bandera }}"/>{{ partido.equipo_b }}
+                </label>
             </div>
         </div>
         <div class="form-group">

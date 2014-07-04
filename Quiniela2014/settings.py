@@ -92,14 +92,15 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "Quiniela/static/Quiniela").replace("/", os.pathsep),
-    os.path.join(BASE_DIR, "Quiniela/static/Quiniela/css").replace("/", os.pathsep),
-)
-STATIC_ROOT = os.path.join(BASE_DIR, "Quiniela/static")
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, "Quiniela/static/Quiniela").replace("/", os.pathsep),
+#     os.path.join(BASE_DIR, "Quiniela/static/Quiniela/css").replace("/", os.pathsep),
+# )
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
 TEMPLATE_DIRS = os.path.join(BASE_DIR, "templates")
 STATIC_URL = '/static/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "Quiniela/static/Quiniela/img").replace("/", os.pathsep)
+MEDIA_ROOT = os.path.join(SITE_ROOT, 'media')
 LOGIN_URL = "/login"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT = "/logout"

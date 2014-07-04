@@ -51,10 +51,12 @@
             {% for pronostico in pronostico_group.list %}
                 <tr>
                     <td {% if not  pronostico.partido.partido_jugado %} colspan="4" {% endif %} >
-                        <img src="{{ pronostico.partido.equipo_a.url_bandera }}" alt="{{ pronostico.partido.equipo_a }}"
+                        <img src="/static/Quiniela/img/banderas/{{ pronostico.partido.equipo_a.url_bandera }}"
+                             alt="{{ pronostico.partido.equipo_a }}"
                              height="24" border="1"/>
                         -
-                        <img src="{{ pronostico.partido.equipo_b.url_bandera }}" alt="{{ pronostico.partido.equipo_b }}"
+                        <img src="/static/Quiniela/img/banderas/{{ pronostico.partido.equipo_b.url_bandera }}"
+                             alt="{{ pronostico.partido.equipo_b }}"
                              height="24" border="1"/>
                         <a href="{% url "detalle_partido" pronostico.partido.id %}">{{ pronostico.partido }}</a>
                     </td>
