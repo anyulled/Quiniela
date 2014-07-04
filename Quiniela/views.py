@@ -33,15 +33,18 @@ class ResultadosEnVivo(TemplateView):
             partidos = []
             json_content = json.loads(r.content)
             for partido in json_content:
-                partido_db = Partido.objects.get(equipo_a__codigo=partido['home_team']['code'],
-                                                 equipo_b__codigo=partido['away_team']['code'])
-                partido_db.goles_equipo_a = partido["home_team"]["goals"]
-                partido_db.goles_equipo_b = partido["away_team"]["goals"]
-                if partido["status"] == "completed" and not partido_db.partido_jugado:
-                    partido_db.partido_jugado = True
-                    partido_db.save()
+                try:
+                    partido_db = Partido.objects.get(equipo_a__codigo=partido['home_team']['code'],
+                                                     equipo_b__codigo=partido['away_team']['code'])
+                    partido_db.goles_equipo_a = partido["home_team"]["goals"]
+                    partido_db.goles_equipo_b = partido["away_team"]["goals"]
+                    if partido["status"] == "completed" and not partido_db.partido_jugado:
+                        partido_db.partido_jugado = True
+                        partido_db.save()
 
-                partidos.append(partido_db)
+                    partidos.append(partido_db)
+                except Partido.DoesNotExist, e:
+                    messages.add_message(self.request, messages.ERROR, "Error al cargar partido: " + e.message)
 
             context["partidos"] = partidos
             context['json'] = json_content
