@@ -3,6 +3,7 @@
     <script type="text/javascript" src="//www.google.com/jsapi"></script>
     <script type="text/javascript">
         google.load('visualization', '1', {packages: ['corechart']});
+        google.load('visualization', '1', {packages: ['table']});
     </script>
     <script type="text/javascript">
         function drawVisualization() {
@@ -10,16 +11,19 @@
             {% regroup progreso|dictsort:"usuario__username" by usuario__username as group %}
             data.addColumn('string', 'fecha');
             {% for usuario in group %}
-                data.addColumn('string', '{{ usuario.grouper }}');
-
+                data.addColumn('number', '{{ usuario.grouper }}');
+            {% endfor %}
+            data.addRows({{ group.0.list|length}});
+            {% for usuario in group %}
                 {% for pronostico in usuario.list %}
-                    data.addRow(['{{ pronostico.fecha_str }}', {{ pronostico.puntos__sum }}]);
+                    data.setCell({{ forloop.revcounter0 }}, 0, '{{ pronostico.fecha_str }}');
+                    data.setCell({{ forloop.revcounter0 }}, ({{ forloop.parentloop.revcounter0 }}+1), {{ pronostico.puntos__sum }});
                 {% endfor %}
             {% endfor %}
-            new google.visualization.LineChart(document.getElementById('visualization')).
-                    draw(data, {curveType: "function", width: 600, height: 400});
+            new google.visualization.LineChart(document.getElementById('visualization')).draw(data, {curveType: "function", width: '100%', height: 600});
+            new google.visualization.Table(document.getElementById('table')).draw(data, null);
         }
-        {#        google.setOnLoadCallback(drawVisualization);#}
+        google.setOnLoadCallback(drawVisualization);
     </script>
 {% endblock %}
 {% block titulo %}
@@ -27,20 +31,16 @@
 {% endblock %}
 {% block contenido %}
     <div class="row">
-        <div class="col-md-12" id="visualization">
+        <div class="col-m2-12">
             <h2>Pronosticos</h2>
-            {% regroup progreso|dictsort:"fecha_str" by fecha_str as group %}
-            {% for fecha in group %}
-                <p>{{ fecha.grouper }}</p>
-                <ul>
-                    {% for pronostico in fecha.list %}
-                        <li>{{ pronostico }} | {{ forloop.parentloop.revcounter0 }} {{ forloop.revcounter0 }}</li>
-                    {% endfor %}
-                </ul>
-            {% endfor %}
         </div>
     </div>
-
+    <div class="row">
+        <div class="col-md-12" id="visualization">&nbsp; </div>
+    </div>
+    <div class="row">
+        <div class="col-m2-12" id="table">&nbsp;</div>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <h2>Listado de Usuarios</h2>
@@ -56,5 +56,4 @@
             </ul>
         </div>
     </div>
-
 {% endblock %}

@@ -14,7 +14,7 @@
             ]);
 
             new google.visualization.LineChart(document.getElementById('visualization')).
-                    draw(data, {curveType: "function", width: 600, height: 400});
+                    draw(data, {curveType: "function", width: '100%', height: 400});
         }
         google.setOnLoadCallback(drawVisualization);
     </script>
