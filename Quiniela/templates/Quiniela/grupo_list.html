@@ -9,7 +9,16 @@
             <small> Equipos Clasificados</small>
         </h2>
     </div>
-
+    <div class="row">
+        <ol class="breadcrumb">
+            <li class="active">Clasificatorio</li>
+            <li><a href="#octavos">Octavos de final</a></li>
+            <li><a href="#cuartos">Cuartos de final</a></li>
+            <li><a href="#semifinal">Semifinal</a></li>
+            <li><a href="#final">Final</a></li>
+            <li><a href="#tercero">Tercer Lugar</a></li>
+        </ol>
+    </div>
     <div class="row">
         {% for grupo in grupo_list %}
             <div class="col-md-6">
@@ -35,134 +44,76 @@
             <h2>Ronda Eliminatoria</h2>
         </div>
     </div>
-    <table class="table table-bordered table-responsive table-hover">
+    <table class="table table-responsive">
         <tr class="default">
-            <th class="info" colspan="8">Octavos de Final</th>
+            <th class="info" colspan="8"><a name="octavos">Octavos de Final</a></th>
         </tr>
         <tr>
-            <td>
-                <p class="text-center">
-                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.0.equipos_clasificados.0.url_bandera }}"
-                         alt="" height="24"/> -
-                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.1.equipos_clasificados.1.url_bandera }}"
-                         alt="" height="24"/>
-                </p>
-
-                <p class="text-center">
-                    {{ grupo_list.0.equipos_clasificados.0.nombre|capfirst }}
-                    vs. {{ grupo_list.1.equipos_clasificados.1.nombre }} </p>
-            </td>
-            <td>
-                <p class="text-center">
-                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.0.equipos_clasificados.1.url_bandera }}"
-                         alt="" height="24"/> -
-                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.1.equipos_clasificados.0.url_bandera }}"
-                         alt="" height="24"/>
-                </p>
-
-                <p class="text-center">
-                    {{ grupo_list.0.equipos_clasificados.1.nombre|capfirst }}
-                    vs. {{ grupo_list.1.equipos_clasificados.0.nombre }}</p>
-            </td>
-            <td>
-                <p class="text-center">
-                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.2.equipos_clasificados.0.url_bandera }}"
-                         alt="" height="24"/> -
-                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.3.equipos_clasificados.1.url_bandera }}"
-                         alt="" height="24"/>
-                </p>
-
-                <p class="text-center">
-                    {{ grupo_list.2.equipos_clasificados.0.nombre|capfirst }}
-                    vs. {{ grupo_list.3.equipos_clasificados.1.nombre }}</p>
-            </td>
-            <td>
-                <p class="text-center">
-                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.2.equipos_clasificados.1.url_bandera }}"
-                         alt="" height="24"/> -
-                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.3.equipos_clasificados.0.url_bandera }}"
-                         alt="" height="24"/>
-                </p>
-
-                <p class="text-center">
-                    {{ grupo_list.2.equipos_clasificados.1.nombre|capfirst }}
-                    vs. {{ grupo_list.3.equipos_clasificados.0.nombre }}</p>
-            </td>
-            <td>
-                <p class="text-center">
-                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.4.equipos_clasificados.0.url_bandera }}"
-                         alt="" height="24"/> -
-                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.5.equipos_clasificados.1.url_bandera }}"
-                         alt="" height="24"/>
-                </p>
-
-                <p class="text-center">
-                    {{ grupo_list.4.equipos_clasificados.0.nombre|capfirst }}
-                    vs. {{ grupo_list.5.equipos_clasificados.1.nombre }}</p>
-            </td>
-            <td>
-                <p class="text-center">
-                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.4.equipos_clasificados.1.url_bandera }}"
-                         alt="" height="24"/> -
-                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.5.equipos_clasificados.0.url_bandera }}"
-                         alt="" height="24"/>
-                </p>
-
-                <p class="text-center">
-                    {{ grupo_list.4.equipos_clasificados.1.nombre|capfirst }}
-                    vs. {{ grupo_list.5.equipos_clasificados.0.nombre }}</p>
-            </td>
-            <td>
-                <p class="text-center">
-                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.6.equipos_clasificados.0.url_bandera }}"
-                         alt="" height="24"/> -
-                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.7.equipos_clasificados.1.url_bandera }}"
-                         alt="" height="24"/>
-                </p>
-
-                <p class="text-center">{{ grupo_list.6.equipos_clasificados.0.nombre|capfirst }}
-                    vs. {{ grupo_list.7.equipos_clasificados.1.nombre }}</p>
-            </td>
-            <td>
-                <p class="text-center">
-                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.6.equipos_clasificados.1.url_bandera }}"
-                         alt="" height="24"/> -
-                    <img src="/static/Quiniela/img/banderas/{{ grupo_list.7.equipos_clasificados.0.url_bandera }}"
-                         alt="" height="24"/>
-                </p>
-
-                <p class="text-center">
-                    {{ grupo_list.6.equipos_clasificados.1.nombre|capfirst }}
-                    vs. {{ grupo_list.7.equipos_clasificados.0.nombre }}</p>
-            </td>
+            {% for partido in partidos_octavos_de_final %}
+                <td>
+                    {% include "Quiniela/info_partido.html" %}
+                </td>
+            {% empty %}
+                <td colspan="8">
+                    <p class="text-center">Por definir</p>
+                </td>
+            {% endfor %}
         </tr>
         <tr class="warning">
-            <th colspan="8">Cuatros de Final</th>
+            <th colspan="8"><a name="cuartos">Cuartos de Final</a></th>
         </tr>
         <tr>
-            <td colspan="2"><p class="text-center">uno</p></td>
-            <td colspan="2"><p class="text-center">dos</p></td>
-            <td colspan="2"><p class="text-center">tres</p></td>
-            <td colspan="2"><p class="text-center">cuatro</p></td>
+            {% for partido in partidos_cuartos_de_final %}
+                <td colspan="2">
+                    {% include "Quiniela/info_partido.html" %}
+                </td>
+            {% empty %}
+                <td colspan="8">
+                    <p class="text-center">Por definir</p>
+                </td>
+            {% endfor %}
         </tr>
         <tr class="danger">
-            <th colspan="8">Semifinal</th>
+            <th colspan="8"><a name="semifinal">Semifinal</a></th>
         </tr>
         <tr>
-            <td colspan="4"><p class="text-center">uno</p></td>
-            <td colspan="4"><p class="text-center">dos</p></td>
+            {% for partido in partidos_semi_final %}
+                <td colspan="4">
+                    {% include "Quiniela/info_partido.html" %}
+                </td>
+            {% empty %}
+                <td colspan="8">
+                    <p class="text-center">Por definir</p>
+                </td>
+            {% endfor %}
         </tr>
         <tr class="success">
-            <th colspan="8">Final</th>
+            <th colspan="8"><a name="final">Final</a></th>
         </tr>
         <tr>
-            <td colspan="8"><p class="text-center">uno</p></td>
+            {% for partido in partido_final %}
+                <td colspan="8">
+                    {% include "Quiniela/info_partido.html" %}
+                </td>
+            {% empty %}
+                <td colspan="8">
+                    <p class="text-center">Por definir</p>
+                </td>
+            {% endfor %}
         </tr>
         <tr class="active">
-            <th colspan="8">Tercer Lugar</th>
+            <th colspan="8"><a name="tercero">Tercer Lugar</a></th>
         </tr>
         <tr>
-            <td colspan="8"><p class="text-center">Uno</p></td>
+            {% for partido in partido_tercer_lugar %}
+                <td colspan="8">
+                    {% include "Quiniela/info_partido.html" %}
+                </td>
+            {% empty %}
+                <td colspan="8">
+                    <p class="text-center">Por definir</p>
+                </td>
+            {% endfor %}
         </tr>
     </table>
 {% endblock %}

@@ -9,20 +9,7 @@
     <div class="row">
         {% for partido in partidos %}
             <div class="col-md-6">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <p class="text-center">
-                            <img src="/static/Quiniela/img/banderas/{{ partido.equipo_a.url_bandera }}"
-                                 alt="{{ partido.equipo_a }}" height="24"/>
-                            {{ partido.equipo_a }} vs. {{ partido.equipo_b }}
-                            <img src="/static/Quiniela/img/banderas/{{ partido.equipo_b.url_bandera }}"
-                                 alt="{{ partido.equipo_b }}" height="24"/>
-                        </p>
-                    </div>
-                    <div class="panel-body">
-                        <p class="text-center">{{ partido.goles_equipo_a }} - {{ partido.goles_equipo_b }}</p>
-                    </div>
-                </div>
+                {% include "Quiniela/info_partido.html" %}
             </div>
         {% empty %}
             <div class="col-md-12">

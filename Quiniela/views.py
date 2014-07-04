@@ -134,6 +134,15 @@ class CargarPronostico(FormView):
 class ListadoGrupos(ListView):
     model = Grupo
 
+    def get_context_data(self, **kwargs):
+        context = super(ListadoGrupos, self).get_context_data(**kwargs)
+        context["partidos_octavos_de_final"] = Partido.objects.filter(tipo_partido="O")
+        context["partidos_cuartos_de_final"] = Partido.objects.filter(tipo_partido="CU")
+        context["partidos_semifinal"] = Partido.objects.filter(tipo_partido="SF")
+        context["partido_final"] = Partido.objects.filter(tipo_partido="F")
+        context["partido_tercer_lugar"] = Partido.objects.filter(tipo_partido="TL")
+        return context
+
     def get_queryset(self):
         return Grupo.objects.all().order_by("nombre").distinct()
 

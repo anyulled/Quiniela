@@ -11,7 +11,7 @@ class EquiposInline(admin.StackedInline):
 class AdminPartido(admin.ModelAdmin):
     fieldsets = (
         ("Partido", {
-            "fields": ("fecha", "equipo_a", "equipo_b", "tipo_partido")
+            "fields": ("equipo_a", "equipo_b", "tipo_partido")
         }),
         ("Resultado", {
             "fields": ("goles_equipo_a", "goles_equipo_b", "partido_jugado")
