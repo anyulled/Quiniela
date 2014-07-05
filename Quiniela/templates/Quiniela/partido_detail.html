@@ -5,77 +5,50 @@
 {% block contenido %}
     <div class="page-header">
         <h2>{{ partido }}
-            <small> Mi Pronostico</small>
+            <small>{{ partido.fecha }}</small>
         </h2>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <table class="table table-responsive">
-                <tr class="active">
-                    <td colspan="2" class="align_center">{{ partido.fecha }}</td>
-                </tr>
-                <tr>
-                    <th>
-                        <div class="media">
-                            <div class="media-body">
-                                <a href="{% url "detalle_equipo" partido.equipo_a.id %}" class="pull_left">
-                                    <img class="media-object"
-                                         src="/static/Quiniela/img/banderas/{{ partido.equipo_a.url_bandera }}"/>
-                                </a>
-
-                                <p class="media-heading"> {{ partido.equipo_a }}</p>
-                            </div>
-                        </div>
-                    </th>
-                    <th>
-                        <div class="media">
-                            <div class="media-body">
-                                <a class="pull_left" href="{% url "detalle_equipo" partido.equipo_b.id %}">
-                                    <img class="media-object"
-                                         src="/static/Quiniela/img/banderas/{{ partido.equipo_b.url_bandera }}"/>
-                                </a>
-
-                                <p class="media-heading">{{ partido.equipo_b }}</p>
-                            </div>
-                        </div>
-                    </th>
-                </tr>
-                <tr>
-                    <td class="align_center">{{ partido.goles_equipo_a }}</td>
-                    <td class="align_center">{{ partido.goles_equipo_b }}</td>
-                </tr>
-            </table>
+           {% include "Quiniela/info_partido.html" with fecha_partido="True" %}
+            {% if user.is_superuser %}
+            <a class="btn btn-primary" href="{% url "editar_partido" partido.id %}">Editar Resultado</a>
+            {% endif %}
         </div>
         <div class="col-md-6">
             {% if user.is_authenticated %}
-                <table class="table table-responsive">
-                    <tr class="active">
-                        <th>{{ partido.equipo_a }}</th>
-                        <th>{{ partido.equipo_b }}</th>
-                    </tr>
-                    <tr>
-                        <td>{{ pronostico.goles_equipo_a|default:'0' }}</td>
-                        <td>{{ pronostico.goles_equipo_b|default:'0' }}</td>
-                    </tr>
-                    <tr>
-                        <th>Puntos</th>
-                        <td>{{ pronostico.puntos|default:0 }}</td>
-                    </tr>
-                </table>
-                {% if partido.es_pasado %}
-                    <p class="alert alert-warning">Partido culminado</p>
-                {% else %}
-                    <a href="{% url 'actualizar_pronostico' pronostico.id %}" class="btn btn-primary">Actualizar
-                        Pronostico</a>
-                {% endif %}
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="panel-titule">
+                        <h4><span class="glyphicon glyphicon-ok"></span> Mi Pronostico</h4>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-responsive">
+                        <tr class="active">
+                            <th>{{ partido.equipo_a }}</th>
+                            <th>{{ partido.equipo_b }}</th>
+                        </tr>
+                        <tr>
+                            <td>{{ pronostico.goles_equipo_a|default:'0' }}</td>
+                            <td>{{ pronostico.goles_equipo_b|default:'0' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Puntos</th>
+                            <td>{{ pronostico.puntos|default:0 }}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="panel-footer">
+                    {% if partido.es_pasado %}
+                        <p class="alert alert-warning">Partido culminado</p>
+                    {% else %}
+                        <a href="{% url 'actualizar_pronostico' pronostico.id %}" class="btn btn-primary">Actualizar
+                            Pronostico</a>
+                    {% endif %}
+                </div>
+            </div>
             {% endif %}
         </div>
     </div>
-    {% if user.is_superuser %}
-        <div class="row">
-            <div class="col-md-12">
-                <a class="btn btn-primary" href="{% url "editar_partido" partido.id %}">Editar Resultado</a>
-            </div>
-        </div>
-    {% endif %}
 {% endblock %}

@@ -1,15 +1,28 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <p class="text-center">
-            <img src="/static/Quiniela/img/banderas/{{ partido.equipo_a.url_bandera }}"
-                 alt="{{ partido.equipo_a }}" height="24"/>
-            {{ partido.equipo_a }} vs. {{ partido.equipo_b }}
-            <img src="/static/Quiniela/img/banderas/{{ partido.equipo_b.url_bandera }}"
-                 alt="{{ partido.equipo_b }}" height="24"/>
-        </p>
+        <div class="panel-title">
+            <h5 class="text-center">
+                <img src="/static/Quiniela/img/banderas/{{ partido.equipo_a.url_bandera }}"
+                     alt="{{ partido.equipo_a }}" height="24"/>
+                {% if abreviado %}
+                    <a href="{% url "detalle_partido" partido.id %}">{{ partido.equipo_a.codigo }}<br/> vs.<br/> {{ partido.equipo_b.codigo }}</a>
+
+                {% else %}
+                    <a href="{% url "detalle_partido" partido.id %}">{{ partido }}</a>
+
+                {% endif %}
+                <img src="/static/Quiniela/img/banderas/{{ partido.equipo_b.url_bandera }}"
+                     alt="{{ partido.equipo_b }}" height="24"/>
+            </h5>
+        </div>
     </div>
     <div class="panel-body">
-        <p class="text-center">{{ partido.goles_equipo_a }} - {{ partido.goles_equipo_b }}</p>
+        {% if fecha_partido %}
+            <p class="text-center">{{ partido.fecha }}</p>
+        {% endif %}
+        <p class="text-center">
+            {{ partido.goles_equipo_a }} - {{ partido.goles_equipo_b }}
+        </p>
     </div>
     <div class="panel-footer">
         <p class="text-center">

@@ -9,7 +9,7 @@ small {
 }
 
 body {
-    background: url("http://img.fifa.com/images/fwc/2014/brand/bg.jpg?v=130480061310043630") center 159px no-repeat;
+    background: url("img/bg.jpg") center 159px no-repeat;
 }
 
 .navbar {
@@ -33,4 +33,8 @@ body {
 .navbar-default .navbar-nav > .active > a:focus {
     color: #f0f0f0;
     background: rgb(51, 114, 166);
+}
+
+div.panel-heading > div > h5 > a{
+    color:white;
 }

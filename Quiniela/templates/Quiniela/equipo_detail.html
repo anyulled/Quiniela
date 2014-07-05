@@ -11,12 +11,12 @@
     </div>
     <table class="table table-bordered table-responsive">
         <tr>
-            <th class="active">Juegos Ganados</th>
-            <th class="active">Juegos Empatados</th>
-            <th class="active">Juegos Perdidos</th>
-            <th class="active">Goles a Favor</th>
-            <th class="active">Goles en Contra</th>
-            <th class="active">Puntos</th>
+            <th class="success">Juegos Ganados</th>
+            <th class="success">Juegos Empatados</th>
+            <th class="success">Juegos Perdidos</th>
+            <th class="success">Goles a Favor</th>
+            <th class="success">Goles en Contra</th>
+            <th class="success">Puntos</th>
         </tr>
         <tr>
             <td>{{ equipo.partidos_ganados }}</td>
@@ -27,17 +27,26 @@
             <td>{{ equipo.puntos }}</td>
         </tr>
     </table>
-    {% regroup partidos by tipo_partido as total_partidos %}
+    {% regroup partidos|dictsort:"tipo_partido" by tipo_partido as total_partidos %}
     <h2>Partidos</h2>
     {% for total_partido in total_partidos %}
-        <h3>{% if total_partido.grouper == 'C' %}
-            Clasificatorio
+        <h3>
+        {% if total_partido.grouper == 'O' %}
+            Octavos de Final
+        {% elif total_partido.grouper == 'CU' %}
+            Cuartos de Final
+        {% elif total_partido.grouper == 'S' %}
+            SemiFinal
+        {% elif total_partido.grouper == 'F' %}
+            Final
+        {% elif total_partido.grouper == 'TL' %}
+            Tercer Lugar
         {% else %}
-            Eliminatorio
+            Clasificatorio
         {% endif %} </h3>
         <table class="table table-bordered table-responsive table-striped">
             <tr>
-                <th class="active">Partido</th>
+                <th class="active" style="width: 50%;">Partido</th>
                 <th class="active">Fecha</th>
             </tr>
             {% for partido in total_partido.list %}

@@ -165,6 +165,8 @@ class Partido(models.Model):
     equipo_b = models.ForeignKey(Equipo, related_name="equipo_b", null=True)
     goles_equipo_a = models.IntegerField(default=0)
     goles_equipo_b = models.IntegerField(default=0)
+    goles_penalty_equipo_a = models.IntegerField(default=0)
+    goles_penalty_equipo_b = models.IntegerField(default=0)
     equipo_ganador = models.ForeignKey(Equipo, related_name="equipo_ganador", null=True)
     tipo_partido = models.CharField(choices=tipo_partido_opciones, max_length=100, null=False)
     partido_jugado = models.BooleanField(default=False)
@@ -190,10 +192,16 @@ class Partido(models.Model):
     def save(self, *args, **kwargs):
         if self.partido_jugado:
             if self.goles_equipo_a == self.goles_equipo_b:      # Empate
-                self.equipo_a.partidos_empatados = contar_partidos_empatados(self.equipo_a)
-                self.equipo_b.partidos_empatados = contar_partidos_empatados(self.equipo_b)
-                self.equipo_a.puntos = calcular_puntos_equipo(self.equipo_a)
-                self.equipo_b.puntos = calcular_puntos_equipo(self.equipo_b)
+                if self.tipo_partido is not "C":
+                    if self.goles_penalty_equipo_a > self.goles_penalty_equipo_b:
+                        self.equipo_ganador = self.equipo_a
+                    else:
+                        self.equipo_ganador = self.equipo_b
+                else:
+                    self.equipo_a.partidos_empatados = contar_partidos_empatados(self.equipo_a)
+                    self.equipo_b.partidos_empatados = contar_partidos_empatados(self.equipo_b)
+                    self.equipo_a.puntos = calcular_puntos_equipo(self.equipo_a)
+                    self.equipo_b.puntos = calcular_puntos_equipo(self.equipo_b)
             elif self.goles_equipo_a > self.goles_equipo_b:     # Ganador A
                 self.equipo_ganador = self.equipo_a
                 self.equipo_a.partidos_ganados = contar_partidos_ganados(self.equipo_a)

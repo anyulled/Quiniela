@@ -51,7 +51,7 @@
         <tr>
             {% for partido in partidos_octavos_de_final %}
                 <td>
-                    {% include "Quiniela/info_partido.html" %}
+                    {% include "Quiniela/info_partido.html" with abreviado="True" %}
                 </td>
             {% empty %}
                 <td colspan="8">

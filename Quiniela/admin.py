@@ -16,6 +16,9 @@ class AdminPartido(admin.ModelAdmin):
         ("Resultado", {
             "fields": ("goles_equipo_a", "goles_equipo_b", "partido_jugado")
         }),
+        ("Penalties", {
+            "fields": ("goles_penalty_equipo_a", "goles_penalty_equipo_b")
+        }),
         ("Ganador", {
             "fields": ("equipo_ganador",)
         })
